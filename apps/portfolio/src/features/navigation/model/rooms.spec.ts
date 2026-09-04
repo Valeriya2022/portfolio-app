@@ -19,13 +19,7 @@ describe('rooms', () => {
     expect(rooms[0]).toMatchObject({ id: 'about', path: '/', number: 1 });
   });
 
-  it('fills a three-floor house with three rooms per floor', () => {
-    for (const floor of [1, 2, 3]) {
-      expect(rooms.filter((room) => room.floor === floor)).toHaveLength(3);
-    }
-  });
-
-  it('finds rooms horizontally on the same floor', () => {
+  it('finds adjacent rooms in a circular horizontal sequence', () => {
     const projects = rooms.find((room) => room.id === 'projects');
 
     if (!projects) {
@@ -33,6 +27,8 @@ describe('rooms', () => {
     }
 
     expect(getAdjacentRoom(projects, 'right')?.id).toBe('architecture');
-    expect(getAdjacentRoom(projects, 'left')?.id).toBe('frontend');
+    expect(getAdjacentRoom(projects, 'left')?.id).toBe('ai');
+    expect(getAdjacentRoom(rooms[0], 'left')?.id).toBe('engineering');
+    expect(getAdjacentRoom(rooms[rooms.length - 1], 'right')?.id).toBe('about');
   });
 });

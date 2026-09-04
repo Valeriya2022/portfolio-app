@@ -88,12 +88,12 @@ export function RoomNavigation() {
           className="border-t border-line-subtle bg-house-canvas px-room-inline py-4 lg:hidden"
           id="mobile-room-navigation"
         >
-          <div className="grid grid-cols-3 gap-x-4 gap-y-1">
+          <div className="flex gap-5 overflow-x-auto pb-2">
             {rooms.map((room) => (
               <Link
                 activeOptions={{ exact: true }}
                 activeProps={{ 'aria-current': 'page' }}
-                className="rounded-control py-2 text-xs text-ink-muted [&[data-status=active]]:text-ink-primary"
+                className="shrink-0 rounded-control py-2 text-xs text-ink-muted [&[data-status=active]]:text-ink-primary"
                 key={room.id}
                 onClick={() => setIsOpen(false)}
                 to={room.path}
