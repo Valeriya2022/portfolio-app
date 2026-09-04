@@ -13,12 +13,13 @@ describe('App', () => {
     expect(baseElement).toBeTruthy();
   });
 
-  it('should render the portfolio heading', () => {
+  it('should render the first room', () => {
     const { getByRole } = render(
       <BrowserRouter>
         <App />
       </BrowserRouter>,
     );
     expect(getByRole('heading', { name: 'Portfolio' })).toBeTruthy();
+    expect(getByRole('region', { name: 'Portfolio' })).toBeTruthy();
   });
 });
