@@ -8,7 +8,13 @@ export function RoomNavigation() {
       <ul>
         {rooms.map((room) => (
           <li key={room.id}>
-            <Link to={room.path}>{room.navLabel}</Link>
+            <Link
+              activeOptions={{ exact: true }}
+              activeProps={{ 'aria-current': 'page' }}
+              to={room.path}
+            >
+              {room.navLabel}
+            </Link>
           </li>
         ))}
       </ul>
