@@ -12,11 +12,12 @@ describe('App', () => {
     const { findByRole } = render(<RouterProvider router={router} />);
 
     expect(await findByRole('region', { name: 'Portfolio' })).toBeTruthy();
+    fireEvent.click(await findByRole('button', { name: /Rooms/ }));
     const roomNavigation = await findByRole('navigation', {
       name: 'Portfolio rooms',
     });
     expect(within(roomNavigation).getAllByRole('link')).toHaveLength(
-      rooms.length + 1,
+      rooms.length,
     );
     expect(
       await findByRole('img', { name: 'Current position: About' }),
@@ -51,6 +52,7 @@ describe('App', () => {
     );
     const { findByRole } = render(<RouterProvider router={router} />);
 
+    fireEvent.click(await findByRole('button', { name: /Rooms/ }));
     fireEvent.click(await findByRole('link', { name: 'Projects' }));
 
     expect(
