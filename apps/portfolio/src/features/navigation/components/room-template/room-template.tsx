@@ -81,7 +81,7 @@ export function RoomTemplate({
 
       <span
         aria-hidden="true"
-        className="absolute right-room-inline bottom-cluster font-mono text-[0.625rem] tracking-[0.2em] text-ink-muted uppercase"
+        className="absolute right-room-inline bottom-20 font-mono text-[0.625rem] tracking-[0.2em] text-ink-muted uppercase sm:bottom-cluster"
       >
         Position / {formattedNumber}.00
       </span>

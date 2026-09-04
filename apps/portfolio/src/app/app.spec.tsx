@@ -1,5 +1,5 @@
 import { createMemoryHistory, RouterProvider } from '@tanstack/react-router';
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render, within } from '@testing-library/react';
 
 import { rooms } from '../features/navigation';
 import { createPortfolioRouter } from './router';
@@ -9,12 +9,15 @@ describe('App', () => {
     const router = createPortfolioRouter(
       createMemoryHistory({ initialEntries: ['/'] }),
     );
-    const { findAllByRole, findByRole } = render(
-      <RouterProvider router={router} />,
-    );
+    const { findByRole } = render(<RouterProvider router={router} />);
 
     expect(await findByRole('region', { name: 'Portfolio' })).toBeTruthy();
-    expect(await findAllByRole('link')).toHaveLength(rooms.length + 1);
+    const roomNavigation = await findByRole('navigation', {
+      name: 'Portfolio rooms',
+    });
+    expect(within(roomNavigation).getAllByRole('link')).toHaveLength(
+      rooms.length + 1,
+    );
     expect(
       await findByRole('img', { name: 'Current position: About' }),
     ).toBeTruthy();
@@ -34,6 +37,10 @@ describe('App', () => {
     expect(
       await findByRole('region', { name: 'C# / .NET Engineering' }),
     ).toBeTruthy();
+    expect(
+      await findByRole('link', { name: 'Previous room: Frontend' }),
+    ).toBeTruthy();
+    expect(await findByRole('link', { name: 'Next room: AI' })).toBeTruthy();
   });
 
   it('navigates between rooms', async () => {

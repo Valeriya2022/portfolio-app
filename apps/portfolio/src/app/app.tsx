@@ -1,12 +1,13 @@
 import { Outlet } from '@tanstack/react-router';
 
-import { RoomNavigation } from '../features/navigation';
+import { RoomControls, RoomNavigation } from '../features/navigation';
 
 export function App() {
   return (
     <>
       <RoomNavigation />
       <Outlet />
+      <RoomControls />
     </>
   );
 }
