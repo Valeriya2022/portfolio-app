@@ -23,9 +23,10 @@ export function RoomTemplate({
   return (
     <section
       aria-labelledby={headingId}
-      className="relative isolate grid min-h-svh overflow-hidden border-y border-line-subtle bg-house-canvas px-room-inline pt-[clamp(9rem,18vh,12rem)] pb-room-block"
+      className="relative isolate grid min-h-svh overflow-hidden border-y border-line-subtle bg-house-canvas px-room-inline pt-48 pb-room-block md:pt-[clamp(9rem,18vh,12rem)]"
       data-room={name}
       data-room-number={formattedNumber}
+      id="room-entrance"
     >
       <div
         aria-hidden="true"
@@ -65,7 +66,10 @@ export function RoomTemplate({
           ) : null}
         </header>
 
-        <div className="relative max-w-4xl rounded-panel border border-line-default bg-house-overlay p-panel text-ink-secondary shadow-panel backdrop-blur-xl before:absolute before:inset-x-6 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[var(--room-accent)] before:to-transparent before:opacity-70">
+        <div
+          className="relative max-w-4xl scroll-mt-32 rounded-panel border border-line-default bg-house-overlay p-panel text-ink-secondary shadow-panel backdrop-blur-xl before:absolute before:inset-x-6 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-[var(--room-accent)] before:to-transparent before:opacity-70"
+          id="room-detail"
+        >
           <div className="space-y-cluster leading-relaxed">{children}</div>
         </div>
 
@@ -81,7 +85,7 @@ export function RoomTemplate({
 
       <span
         aria-hidden="true"
-        className="absolute right-room-inline bottom-20 font-mono text-[0.625rem] tracking-[0.2em] text-ink-muted uppercase sm:bottom-cluster"
+        className="absolute right-room-inline bottom-cluster hidden font-mono text-[0.625rem] tracking-[0.2em] text-ink-muted uppercase sm:block"
       >
         Position / {formattedNumber}.00
       </span>

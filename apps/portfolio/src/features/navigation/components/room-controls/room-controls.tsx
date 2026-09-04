@@ -15,40 +15,67 @@ export function RoomControls() {
 
   return (
     <nav
-      aria-label="Room sequence"
-      className="fixed inset-x-0 bottom-4 z-40 mx-auto flex w-fit max-w-[calc(100%-2rem)] items-center border border-line-default bg-house-overlay p-1 shadow-panel backdrop-blur-xl sm:bottom-6"
+      aria-label="Spatial room controls"
+      className="pointer-events-none fixed inset-0 z-40 font-mono text-[0.625rem] tracking-[0.14em] uppercase"
     >
       {previousRoom ? (
         <Link
           aria-label={`Previous room: ${previousRoom.navLabel}`}
-          className="flex min-w-0 items-center gap-3 px-3 py-2 font-mono text-[0.6875rem] tracking-[0.08em] text-ink-muted uppercase transition-colors duration-[var(--duration-interaction)] hover:text-ink-primary sm:px-4"
+          className="pointer-events-auto absolute top-1/2 left-2 flex -translate-y-1/2 items-center gap-2 border border-line-default bg-house-overlay px-2 py-3 text-ink-muted shadow-panel backdrop-blur-xl transition-colors duration-[var(--duration-interaction)] hover:border-line-luminous hover:text-ink-primary sm:left-5 sm:px-3"
           to={previousRoom.path}
         >
           <span aria-hidden="true" className="text-accent-primary">
             ←
           </span>
-          <span className="truncate">{previousRoom.navLabel}</span>
+          <span className="hidden [writing-mode:vertical-rl] sm:block">
+            {previousRoom.navLabel}
+          </span>
         </Link>
-      ) : (
-        <span aria-hidden="true" className="w-10 sm:w-16" />
-      )}
-
-      <span aria-hidden="true" className="h-5 w-px shrink-0 bg-line-default" />
+      ) : null}
 
       {nextRoom ? (
         <Link
           aria-label={`Next room: ${nextRoom.navLabel}`}
-          className="flex min-w-0 items-center gap-3 px-3 py-2 font-mono text-[0.6875rem] tracking-[0.08em] text-ink-muted uppercase transition-colors duration-[var(--duration-interaction)] hover:text-ink-primary sm:px-4"
+          className="pointer-events-auto absolute top-1/2 right-2 flex -translate-y-1/2 items-center gap-2 border border-line-default bg-house-overlay px-2 py-3 text-ink-muted shadow-panel backdrop-blur-xl transition-colors duration-[var(--duration-interaction)] hover:border-line-luminous hover:text-ink-primary sm:right-5 sm:px-3"
           to={nextRoom.path}
         >
-          <span className="truncate">{nextRoom.navLabel}</span>
+          <span className="hidden [writing-mode:vertical-rl] sm:block">
+            {nextRoom.navLabel}
+          </span>
           <span aria-hidden="true" className="text-accent-primary">
             →
           </span>
         </Link>
-      ) : (
-        <span aria-hidden="true" className="w-10 sm:w-16" />
-      )}
+      ) : null}
+
+      <a
+        className="pointer-events-auto absolute top-32 left-1/2 flex -translate-x-1/2 items-center gap-2 border border-line-default bg-house-overlay px-3 py-2 text-ink-muted shadow-panel backdrop-blur-xl transition-colors duration-[var(--duration-interaction)] hover:border-line-luminous hover:text-ink-primary md:top-24"
+        href="#room-detail"
+      >
+        <span aria-hidden="true" className="text-accent-primary">
+          ↑
+        </span>
+        Detail
+      </a>
+
+      <a
+        className="pointer-events-auto absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 border border-line-default bg-house-overlay px-3 py-2 text-ink-muted shadow-panel backdrop-blur-xl transition-colors duration-[var(--duration-interaction)] hover:border-line-luminous hover:text-ink-primary sm:bottom-6"
+        href="#room-entrance"
+      >
+        <span aria-hidden="true" className="text-accent-primary">
+          ↓
+        </span>
+        Back
+      </a>
+
+      <span
+        aria-hidden="true"
+        className="absolute top-1/2 left-0 h-px w-2 -translate-y-1/2 bg-line-luminous sm:w-5"
+      />
+      <span
+        aria-hidden="true"
+        className="absolute top-1/2 right-0 h-px w-2 -translate-y-1/2 bg-line-luminous sm:w-5"
+      />
     </nav>
   );
 }

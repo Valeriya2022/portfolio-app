@@ -41,6 +41,8 @@ describe('App', () => {
       await findByRole('link', { name: 'Previous room: Frontend' }),
     ).toBeTruthy();
     expect(await findByRole('link', { name: 'Next room: AI' })).toBeTruthy();
+    expect(await findByRole('link', { name: 'Detail' })).toBeTruthy();
+    expect(await findByRole('link', { name: 'Back' })).toBeTruthy();
   });
 
   it('navigates between rooms', async () => {
