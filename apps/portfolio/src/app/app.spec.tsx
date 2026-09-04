@@ -38,11 +38,11 @@ describe('App', () => {
       await findByRole('region', { name: 'C# / .NET Engineering' }),
     ).toBeTruthy();
     expect(
-      await findByRole('link', { name: 'Previous room: Frontend' }),
+      await findByRole('link', { name: 'Room below: Frontend' }),
     ).toBeTruthy();
-    expect(await findByRole('link', { name: 'Next room: AI' })).toBeTruthy();
-    expect(await findByRole('link', { name: 'Detail' })).toBeTruthy();
-    expect(await findByRole('link', { name: 'Back' })).toBeTruthy();
+    expect(
+      await findByRole('link', { name: 'Room to the right: AI' }),
+    ).toBeTruthy();
   });
 
   it('navigates between rooms', async () => {

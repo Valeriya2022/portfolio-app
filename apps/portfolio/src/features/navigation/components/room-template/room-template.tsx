@@ -59,7 +59,7 @@ export function RoomTemplate({
         </header>
 
         <div
-          className="relative max-w-4xl scroll-mt-32 rounded-panel border border-line-subtle bg-house-overlay p-panel text-ink-secondary shadow-panel backdrop-blur-xl"
+          className="relative max-w-3xl scroll-mt-32 text-ink-secondary"
           id="room-detail"
         >
           <div className="space-y-cluster leading-relaxed">{children}</div>

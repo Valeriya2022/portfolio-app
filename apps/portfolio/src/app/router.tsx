@@ -10,6 +10,7 @@ import { AiRoom } from '../features/ai';
 import { ArchitectureRoom } from '../features/architecture';
 import { BackendRoom } from '../features/backend';
 import { ContactRoom } from '../features/contact';
+import { EngineeringRoom } from '../features/engineering';
 import { ExperienceRoom } from '../features/experience';
 import { FrontendRoom } from '../features/frontend';
 import { ProjectsRoom } from '../features/projects';
@@ -65,6 +66,12 @@ const contactRoute = createRoute({
   component: ContactRoom,
 });
 
+const engineeringRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/engineering',
+  component: EngineeringRoom,
+});
+
 const routeTree = rootRoute.addChildren([
   aboutRoute,
   frontendRoute,
@@ -74,6 +81,7 @@ const routeTree = rootRoute.addChildren([
   architectureRoute,
   experienceRoute,
   contactRoute,
+  engineeringRoute,
 ]);
 
 export function createPortfolioRouter(history?: RouterHistory) {
