@@ -39,8 +39,8 @@
   --spacing-cluster: clamp(0.75rem, 1.5vw, 1.5rem);
 
   /* Shape and material */
-  --radius-panel: 0.875rem;
-  --radius-control: 0.5rem;
+  --radius-panel: 0.75rem;
+  --radius-control: 0.4rem;
   --shadow-panel: 0 24px 80px rgb(0 0 0 / 35%);
   --shadow-glow: 0 0 32px rgb(99 230 255 / 14%);
   --shadow-glow-strong: 0 0 48px rgb(99 230 255 / 24%);

@@ -19,63 +19,48 @@ export function RoomControls() {
       className="pointer-events-none fixed inset-0 z-40 font-mono text-[0.625rem] tracking-[0.14em] uppercase"
     >
       {previousRoom ? (
-        <Link
-          aria-label={`Previous room: ${previousRoom.navLabel}`}
-          className="pointer-events-auto absolute top-1/2 left-2 flex -translate-y-1/2 items-center gap-2 border border-line-default bg-house-overlay px-2 py-3 text-ink-muted shadow-panel backdrop-blur-xl transition-colors duration-[var(--duration-interaction)] hover:border-line-luminous hover:text-ink-primary sm:left-5 sm:px-3"
-          to={previousRoom.path}
-        >
-          <span aria-hidden="true" className="text-accent-primary">
-            ←
-          </span>
-          <span className="hidden [writing-mode:vertical-rl] sm:block">
-            {previousRoom.navLabel}
-          </span>
-        </Link>
+        <span className="group pointer-events-auto absolute inset-y-28 left-0 flex w-20 items-center justify-start sm:w-28">
+          <Link
+            aria-label={`Previous room: ${previousRoom.navLabel}`}
+            className="flex size-10 -translate-x-2 items-center justify-center rounded-control border border-line-default bg-house-overlay text-ink-muted opacity-0 shadow-panel backdrop-blur-xl transition-[opacity,transform,border-color,color] duration-[var(--duration-panel)] group-hover:translate-x-3 group-hover:opacity-100 hover:border-line-luminous hover:text-ink-primary focus-visible:translate-x-3 focus-visible:opacity-100 [@media(pointer:coarse)]:translate-x-2 [@media(pointer:coarse)]:opacity-100 sm:group-hover:translate-x-5 sm:focus-visible:translate-x-5"
+            to={previousRoom.path}
+          >
+            <span aria-hidden="true">←</span>
+          </Link>
+        </span>
       ) : null}
 
       {nextRoom ? (
-        <Link
-          aria-label={`Next room: ${nextRoom.navLabel}`}
-          className="pointer-events-auto absolute top-1/2 right-2 flex -translate-y-1/2 items-center gap-2 border border-line-default bg-house-overlay px-2 py-3 text-ink-muted shadow-panel backdrop-blur-xl transition-colors duration-[var(--duration-interaction)] hover:border-line-luminous hover:text-ink-primary sm:right-5 sm:px-3"
-          to={nextRoom.path}
-        >
-          <span className="hidden [writing-mode:vertical-rl] sm:block">
-            {nextRoom.navLabel}
-          </span>
-          <span aria-hidden="true" className="text-accent-primary">
-            →
-          </span>
-        </Link>
+        <span className="group pointer-events-auto absolute inset-y-28 right-0 flex w-20 items-center justify-end sm:w-28">
+          <Link
+            aria-label={`Next room: ${nextRoom.navLabel}`}
+            className="flex size-10 translate-x-2 items-center justify-center rounded-control border border-line-default bg-house-overlay text-ink-muted opacity-0 shadow-panel backdrop-blur-xl transition-[opacity,transform,border-color,color] duration-[var(--duration-panel)] group-hover:-translate-x-3 group-hover:opacity-100 hover:border-line-luminous hover:text-ink-primary focus-visible:-translate-x-3 focus-visible:opacity-100 [@media(pointer:coarse)]:-translate-x-2 [@media(pointer:coarse)]:opacity-100 sm:group-hover:-translate-x-5 sm:focus-visible:-translate-x-5"
+            to={nextRoom.path}
+          >
+            <span aria-hidden="true">→</span>
+          </Link>
+        </span>
       ) : null}
 
-      <a
-        className="pointer-events-auto absolute top-32 left-1/2 flex -translate-x-1/2 items-center gap-2 border border-line-default bg-house-overlay px-3 py-2 text-ink-muted shadow-panel backdrop-blur-xl transition-colors duration-[var(--duration-interaction)] hover:border-line-luminous hover:text-ink-primary md:top-24"
-        href="#room-detail"
-      >
-        <span aria-hidden="true" className="text-accent-primary">
-          ↑
-        </span>
-        Detail
-      </a>
+      <span className="group pointer-events-auto absolute top-20 left-1/2 flex h-24 w-40 -translate-x-1/2 items-start justify-center">
+        <a
+          className="flex -translate-y-2 items-center gap-2 rounded-control border border-line-default bg-house-overlay px-3 py-2 text-ink-muted opacity-0 shadow-panel backdrop-blur-xl transition-[opacity,transform,border-color,color] duration-[var(--duration-panel)] group-hover:translate-y-3 group-hover:opacity-100 hover:border-line-luminous hover:text-ink-primary focus-visible:translate-y-3 focus-visible:opacity-100 [@media(pointer:coarse)]:translate-y-12 [@media(pointer:coarse)]:opacity-100 md:[@media(pointer:coarse)]:translate-y-3"
+          href="#room-detail"
+        >
+          <span aria-hidden="true">↑</span>
+          Detail
+        </a>
+      </span>
 
-      <a
-        className="pointer-events-auto absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 border border-line-default bg-house-overlay px-3 py-2 text-ink-muted shadow-panel backdrop-blur-xl transition-colors duration-[var(--duration-interaction)] hover:border-line-luminous hover:text-ink-primary sm:bottom-6"
-        href="#room-entrance"
-      >
-        <span aria-hidden="true" className="text-accent-primary">
-          ↓
-        </span>
-        Back
-      </a>
-
-      <span
-        aria-hidden="true"
-        className="absolute top-1/2 left-0 h-px w-2 -translate-y-1/2 bg-line-luminous sm:w-5"
-      />
-      <span
-        aria-hidden="true"
-        className="absolute top-1/2 right-0 h-px w-2 -translate-y-1/2 bg-line-luminous sm:w-5"
-      />
+      <span className="group pointer-events-auto absolute inset-x-20 bottom-0 flex h-24 items-end justify-center sm:inset-x-28">
+        <a
+          className="mb-4 flex translate-y-2 items-center gap-2 rounded-control border border-line-default bg-house-overlay px-3 py-2 text-ink-muted opacity-0 shadow-panel backdrop-blur-xl transition-[opacity,transform,border-color,color] duration-[var(--duration-panel)] group-hover:translate-y-0 group-hover:opacity-100 hover:border-line-luminous hover:text-ink-primary focus-visible:translate-y-0 focus-visible:opacity-100 [@media(pointer:coarse)]:translate-y-0 [@media(pointer:coarse)]:opacity-100 sm:mb-6"
+          href="#room-entrance"
+        >
+          <span aria-hidden="true">↓</span>
+          Back
+        </a>
+      </span>
     </nav>
   );
 }

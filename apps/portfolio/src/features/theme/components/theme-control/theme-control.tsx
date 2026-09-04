@@ -7,13 +7,13 @@ export function ThemeControl() {
   return (
     <div
       aria-label={`Appearance: ${mode}, currently ${resolvedTheme}`}
-      className="flex items-center gap-0.5 border border-line-subtle bg-house-canvas/50 p-0.5"
+      className="flex items-center gap-0.5 rounded-control border border-line-subtle bg-house-canvas/50 p-0.5"
       role="group"
     >
       {themeModes.map((themeMode) => (
         <button
           aria-pressed={mode === themeMode}
-          className="px-2 py-1 font-mono text-[0.625rem] tracking-[0.1em] text-ink-muted uppercase transition-colors duration-[var(--duration-interaction)] hover:text-ink-primary aria-pressed:bg-house-elevated aria-pressed:text-accent-primary"
+          className="rounded-[0.3rem] px-2 py-1 font-mono text-[0.625rem] tracking-[0.08em] text-ink-muted transition-colors duration-[var(--duration-interaction)] hover:text-ink-primary aria-pressed:bg-house-elevated aria-pressed:text-accent-primary"
           key={themeMode}
           onClick={() => setMode(themeMode)}
           type="button"
