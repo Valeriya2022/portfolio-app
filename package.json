@@ -5,7 +5,9 @@
   "scripts": {
     "changeset": "changeset",
     "changeset version": "changeset version",
-    "prepare": "husky"
+    "prepare": "husky",
+    "start": "nx run-many --target=dev --parallel",
+    "start:portfolio": "nx run portfolio:dev"
   },
   "private": true,
   "devDependencies": {
