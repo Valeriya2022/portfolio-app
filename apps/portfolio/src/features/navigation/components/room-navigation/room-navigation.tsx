@@ -1,18 +1,43 @@
 import { Link, useRouterState } from '@tanstack/react-router';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { ThemeControl } from '../../../theme';
 import { rooms } from '../../model/rooms';
 
 export function RoomNavigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   });
   const activeRoom = rooms.find((room) => room.path === pathname) ?? rooms[0];
 
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const closeOutside = (event: PointerEvent) => {
+      if (!headerRef.current?.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setIsOpen(false);
+    };
+
+    document.addEventListener('pointerdown', closeOutside);
+    document.addEventListener('keydown', closeOnEscape);
+
+    return () => {
+      document.removeEventListener('pointerdown', closeOutside);
+      document.removeEventListener('keydown', closeOnEscape);
+    };
+  }, [isOpen]);
+
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-line-subtle bg-house-canvas/90 backdrop-blur-md">
+    <header
+      className="fixed inset-x-0 top-0 z-50 border-b border-line-subtle bg-house-canvas/90 backdrop-blur-md"
+      ref={headerRef}
+    >
       <div className="mx-auto flex h-14 max-w-[90rem] items-center gap-5 px-room-inline">
         <Link
           aria-label="Portfolio home"

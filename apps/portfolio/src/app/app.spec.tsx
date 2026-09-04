@@ -54,4 +54,24 @@ describe('App', () => {
       await findByRole('region', { name: 'Selected Projects' }),
     ).toBeTruthy();
   });
+
+  it('closes the mobile navigation when clicking outside the header', async () => {
+    const router = createPortfolioRouter(
+      createMemoryHistory({ initialEntries: ['/'] }),
+    );
+    const { findByRole, queryByRole } = render(
+      <RouterProvider router={router} />,
+    );
+
+    fireEvent.click(await findByRole('button', { name: 'Menu' }));
+    expect(
+      await findByRole('navigation', { name: 'Mobile portfolio rooms' }),
+    ).toBeTruthy();
+
+    fireEvent.pointerDown(await findByRole('region', { name: 'Portfolio' }));
+
+    expect(
+      queryByRole('navigation', { name: 'Mobile portfolio rooms' }),
+    ).toBeNull();
+  });
 });

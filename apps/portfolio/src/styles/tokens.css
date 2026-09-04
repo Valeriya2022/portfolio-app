@@ -7,30 +7,30 @@
     'SFMono-Regular', Consolas, 'Liberation Mono', ui-monospace, monospace;
 
   /* House palette */
-  --color-house-void: #05070a;
-  --color-house-canvas: #090c11;
-  --color-house-surface: #10151c;
-  --color-house-elevated: #171e27;
-  --color-house-overlay: rgb(23 30 39 / 72%);
+  --color-house-void: #090909;
+  --color-house-canvas: #0f0f10;
+  --color-house-surface: #171719;
+  --color-house-elevated: #222225;
+  --color-house-overlay: rgb(23 23 25 / 78%);
 
   /* Text hierarchy */
-  --color-ink-primary: #f4f7fb;
-  --color-ink-secondary: #aab5c3;
-  --color-ink-muted: #6f7b89;
-  --color-ink-inverse: #080b0f;
+  --color-ink-primary: #f5f5f4;
+  --color-ink-secondary: #b8b8b3;
+  --color-ink-muted: #7f7f7a;
+  --color-ink-inverse: #111112;
 
   /* Shared accents and system states */
-  --color-accent-primary: #63e6ff;
-  --color-accent-secondary: #9b8cff;
-  --color-status-success: #61e8a1;
-  --color-status-warning: #ffd166;
-  --color-status-danger: #ff6b7a;
-  --color-status-info: #74a7ff;
+  --color-accent-primary: #a5b4fc;
+  --color-accent-secondary: #c4b5fd;
+  --color-status-success: #86d9ad;
+  --color-status-warning: #e8c77a;
+  --color-status-danger: #ef8f98;
+  --color-status-info: #93b4ed;
 
   /* Architectural lines */
-  --color-line-subtle: rgb(170 181 195 / 12%);
-  --color-line-default: rgb(170 181 195 / 24%);
-  --color-line-luminous: rgb(99 230 255 / 52%);
+  --color-line-subtle: rgb(245 245 244 / 9%);
+  --color-line-default: rgb(245 245 244 / 16%);
+  --color-line-luminous: rgb(165 180 252 / 42%);
 
   /* Spatial rhythm */
   --spacing-room-inline: clamp(1.25rem, 4vw, 5rem);
@@ -42,8 +42,8 @@
   --radius-panel: 0.75rem;
   --radius-control: 0.4rem;
   --shadow-panel: 0 24px 80px rgb(0 0 0 / 35%);
-  --shadow-glow: 0 0 32px rgb(99 230 255 / 14%);
-  --shadow-glow-strong: 0 0 48px rgb(99 230 255 / 24%);
+  --shadow-glow: 0 0 32px rgb(165 180 252 / 10%);
+  --shadow-glow-strong: 0 0 48px rgb(165 180 252 / 16%);
 
   /* Shared motion physics */
   --ease-spatial: cubic-bezier(0.22, 1, 0.36, 1);
@@ -56,7 +56,7 @@
 
   /* Room-level variables may override these defaults. */
   --room-accent: var(--color-accent-primary);
-  --room-light: rgb(99 230 255 / 8%);
+  --room-light: rgb(165 180 252 / 6%);
 
   /* Timing uses one physical language across the house. */
   --duration-instant: 120ms;
@@ -80,33 +80,33 @@
 [data-theme='day'] {
   color-scheme: light;
 
-  --color-house-void: #dbe2e8;
-  --color-house-canvas: #edf1f4;
-  --color-house-surface: #f7f9fa;
+  --color-house-void: #e8e7e3;
+  --color-house-canvas: #f4f3ef;
+  --color-house-surface: #faf9f6;
   --color-house-elevated: #ffffff;
-  --color-house-overlay: rgb(247 249 250 / 78%);
+  --color-house-overlay: rgb(250 249 246 / 82%);
 
-  --color-ink-primary: #101820;
-  --color-ink-secondary: #465463;
-  --color-ink-muted: #6d7a87;
-  --color-ink-inverse: #f5f7f9;
+  --color-ink-primary: #1c1c1b;
+  --color-ink-secondary: #53534f;
+  --color-ink-muted: #777772;
+  --color-ink-inverse: #faf9f6;
 
-  --color-accent-primary: #007d94;
-  --color-accent-secondary: #6757c7;
-  --color-status-success: #167552;
-  --color-status-warning: #9a6500;
-  --color-status-danger: #b52e43;
-  --color-status-info: #265fae;
+  --color-accent-primary: #4f46e5;
+  --color-accent-secondary: #7c3aed;
+  --color-status-success: #247a51;
+  --color-status-warning: #946514;
+  --color-status-danger: #b43d4c;
+  --color-status-info: #3569a8;
 
-  --color-line-subtle: rgb(16 24 32 / 9%);
-  --color-line-default: rgb(16 24 32 / 18%);
-  --color-line-luminous: rgb(0 125 148 / 42%);
+  --color-line-subtle: rgb(28 28 27 / 9%);
+  --color-line-default: rgb(28 28 27 / 16%);
+  --color-line-luminous: rgb(79 70 229 / 34%);
 
   --room-accent: var(--color-accent-primary);
-  --room-light: rgb(0 125 148 / 8%);
+  --room-light: rgb(79 70 229 / 5%);
   --focus-ring-color: var(--color-accent-primary);
 
-  --shadow-panel: 0 24px 80px rgb(24 38 50 / 12%);
-  --shadow-glow: 0 0 32px rgb(0 125 148 / 10%);
-  --shadow-glow-strong: 0 0 48px rgb(0 125 148 / 18%);
+  --shadow-panel: 0 24px 80px rgb(28 28 27 / 10%);
+  --shadow-glow: 0 0 32px rgb(79 70 229 / 7%);
+  --shadow-glow-strong: 0 0 48px rgb(79 70 229 / 12%);
 }
