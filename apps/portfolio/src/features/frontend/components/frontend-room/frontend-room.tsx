@@ -14,6 +14,10 @@ export function FrontendRoom() {
   return (
     <RoomTemplate name={room.name} number={room.number} title={room.title}>
       <p>This interface is part of the frontend demonstration.</p>
+      <p>
+        The environment follows the visitor&apos;s local time, with persistent
+        automatic, day, and night modes.
+      </p>
       <h2>Capabilities</h2>
       <ul aria-label="Frontend capabilities">
         {capabilities.map((capability) => (

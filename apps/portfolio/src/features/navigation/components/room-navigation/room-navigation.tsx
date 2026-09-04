@@ -1,5 +1,6 @@
 import { Link } from '@tanstack/react-router';
 
+import { ThemeControl } from '../../../theme';
 import { rooms } from '../../model/rooms';
 import { RoomMap } from '../room-map';
 
@@ -18,7 +19,10 @@ export function RoomNavigation() {
           >
             V / Dev House
           </Link>
-          <RoomMap />
+          <div className="flex items-center gap-3">
+            <ThemeControl />
+            <RoomMap />
+          </div>
         </div>
 
         <ul className="flex w-full gap-1 overflow-x-auto border-t border-line-subtle px-2 py-2 md:w-auto md:border-t-0 md:px-3">

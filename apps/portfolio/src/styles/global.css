@@ -12,14 +12,21 @@
     color: var(--color-ink-primary);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+    transition:
+      background-color var(--duration-panel) var(--ease-responsive),
+      color var(--duration-panel) var(--ease-responsive);
   }
 
   body {
     min-height: 100vh;
     margin: 0;
-    background:
-      radial-gradient(circle at 50% 0%, var(--room-light), transparent 38rem),
-      var(--color-house-canvas);
+    background-color: var(--color-house-canvas);
+    background-image: radial-gradient(
+      circle at 50% 0%,
+      var(--room-light),
+      transparent 38rem
+    );
+    transition: background-color var(--duration-panel) var(--ease-responsive);
   }
 
   button,
