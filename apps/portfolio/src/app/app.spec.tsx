@@ -1,25 +1,30 @@
+import { createMemoryHistory, RouterProvider } from '@tanstack/react-router';
 import { render } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
 
-import App from './app';
+import { rooms } from '../features/navigation';
+import { createPortfolioRouter } from './router';
 
 describe('App', () => {
-  it('should render successfully', () => {
-    const { baseElement } = render(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>,
+  it('renders the About room and navigation', async () => {
+    const router = createPortfolioRouter(
+      createMemoryHistory({ initialEntries: ['/'] }),
     );
-    expect(baseElement).toBeTruthy();
+    const { findAllByRole, findByRole } = render(
+      <RouterProvider router={router} />,
+    );
+
+    expect(await findByRole('region', { name: 'Portfolio' })).toBeTruthy();
+    expect(await findAllByRole('link')).toHaveLength(rooms.length);
   });
 
-  it('should render the first room', () => {
-    const { getByRole } = render(
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>,
+  it('renders a registered room path', async () => {
+    const router = createPortfolioRouter(
+      createMemoryHistory({ initialEntries: ['/backend'] }),
     );
-    expect(getByRole('heading', { name: 'Portfolio' })).toBeTruthy();
-    expect(getByRole('region', { name: 'Portfolio' })).toBeTruthy();
+    const { findByRole } = render(<RouterProvider router={router} />);
+
+    expect(
+      await findByRole('region', { name: 'C# / .NET Engineering' }),
+    ).toBeTruthy();
   });
 });

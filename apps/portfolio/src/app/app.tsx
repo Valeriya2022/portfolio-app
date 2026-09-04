@@ -1,12 +1,13 @@
-import { Route, Routes } from 'react-router-dom';
+import { Outlet } from '@tanstack/react-router';
 
-import { AboutRoom } from '../features/about';
+import { RoomNavigation } from '../features/navigation';
 
 export function App() {
   return (
-    <Routes>
-      <Route path="/" element={<AboutRoom />} />
-    </Routes>
+    <>
+      <RoomNavigation />
+      <Outlet />
+    </>
   );
 }
 export default App;
