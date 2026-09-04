@@ -9,8 +9,6 @@ export function RoomControls() {
   const currentRoom = rooms.find((room) => room.path === pathname) ?? rooms[0];
   const leftRoom = getAdjacentRoom(currentRoom, 'left');
   const rightRoom = getAdjacentRoom(currentRoom, 'right');
-  const upperRoom = getAdjacentRoom(currentRoom, 'up');
-  const lowerRoom = getAdjacentRoom(currentRoom, 'down');
 
   return (
     <nav
@@ -51,30 +49,6 @@ export function RoomControls() {
               {rightRoom.navLabel}
               <span aria-hidden="true">→</span>
             </span>
-          </Link>
-        </span>
-      ) : null}
-
-      {upperRoom ? (
-        <span className="group pointer-events-auto absolute top-20 left-1/2 flex h-24 w-40 -translate-x-1/2 items-start justify-center">
-          <Link
-            aria-label={`Room above: ${upperRoom.navLabel}`}
-            className="flex -translate-y-2 items-center rounded-control border border-line-default bg-house-overlay px-3 py-2 text-ink-muted opacity-0 shadow-panel backdrop-blur-xl transition-[opacity,transform,border-color,color] duration-[var(--duration-panel)] group-hover:translate-y-3 group-hover:opacity-100 hover:border-line-luminous hover:text-ink-primary focus-visible:translate-y-3 focus-visible:opacity-100 [@media(pointer:coarse)]:translate-y-12 [@media(pointer:coarse)]:opacity-100 md:[@media(pointer:coarse)]:translate-y-3"
-            to={upperRoom.path}
-          >
-            <span aria-hidden="true">↑</span>
-          </Link>
-        </span>
-      ) : null}
-
-      {lowerRoom ? (
-        <span className="group pointer-events-auto absolute inset-x-20 bottom-0 flex h-24 items-end justify-center sm:inset-x-28">
-          <Link
-            aria-label={`Room below: ${lowerRoom.navLabel}`}
-            className="mb-4 flex translate-y-2 items-center rounded-control border border-line-default bg-house-overlay px-3 py-2 text-ink-muted opacity-0 shadow-panel backdrop-blur-xl transition-[opacity,transform,border-color,color] duration-[var(--duration-panel)] group-hover:translate-y-0 group-hover:opacity-100 hover:border-line-luminous hover:text-ink-primary focus-visible:translate-y-0 focus-visible:opacity-100 [@media(pointer:coarse)]:translate-y-0 [@media(pointer:coarse)]:opacity-100 sm:mb-6"
-            to={lowerRoom.path}
-          >
-            <span aria-hidden="true">↓</span>
           </Link>
         </span>
       ) : null}

@@ -25,16 +25,14 @@ describe('rooms', () => {
     }
   });
 
-  it('finds rooms by physical direction', () => {
+  it('finds rooms horizontally on the same floor', () => {
     const projects = rooms.find((room) => room.id === 'projects');
 
     if (!projects) {
       throw new Error('Projects room is missing');
     }
 
-    expect(getAdjacentRoom(projects, 'up')?.id).toBe('ai');
     expect(getAdjacentRoom(projects, 'right')?.id).toBe('architecture');
-    expect(getAdjacentRoom(projects, 'down')?.id).toBe('experience');
     expect(getAdjacentRoom(projects, 'left')?.id).toBe('frontend');
   });
 });

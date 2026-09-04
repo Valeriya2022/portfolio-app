@@ -106,19 +106,17 @@ export type Room = (typeof rooms)[number];
 export type RoomId = Room['id'];
 export type RoomPath = Room['path'];
 
-export type RoomDirection = 'up' | 'right' | 'down' | 'left';
+export type RoomDirection = 'right' | 'left';
 
 export function getAdjacentRoom(
   room: Room,
   direction: RoomDirection,
 ): Room | undefined {
-  const floorOffset = direction === 'up' ? 1 : direction === 'down' ? -1 : 0;
-  const positionOffset =
-    direction === 'right' ? 1 : direction === 'left' ? -1 : 0;
+  const positionOffset = direction === 'right' ? 1 : -1;
 
   return rooms.find(
     (candidate) =>
-      candidate.floor === room.floor + floorOffset &&
+      candidate.floor === room.floor &&
       candidate.position === room.position + positionOffset,
   );
 }
