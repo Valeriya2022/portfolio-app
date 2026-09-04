@@ -14,7 +14,10 @@ describe('App', () => {
     );
 
     expect(await findByRole('region', { name: 'Portfolio' })).toBeTruthy();
-    expect(await findAllByRole('link')).toHaveLength(rooms.length);
+    expect(await findAllByRole('link')).toHaveLength(rooms.length + 1);
+    expect(
+      await findByRole('img', { name: 'Current position: About' }),
+    ).toBeTruthy();
     expect(
       (await findByRole('link', { name: 'About' })).getAttribute(
         'aria-current',
