@@ -1,0 +1,78 @@
+@theme {
+  /* Typography */
+  --font-sans:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', sans-serif;
+  --font-mono:
+    'SFMono-Regular', Consolas, 'Liberation Mono', ui-monospace, monospace;
+
+  /* House palette */
+  --color-house-void: #05070a;
+  --color-house-canvas: #090c11;
+  --color-house-surface: #10151c;
+  --color-house-elevated: #171e27;
+  --color-house-overlay: rgb(23 30 39 / 72%);
+
+  /* Text hierarchy */
+  --color-ink-primary: #f4f7fb;
+  --color-ink-secondary: #aab5c3;
+  --color-ink-muted: #6f7b89;
+  --color-ink-inverse: #080b0f;
+
+  /* Shared accents and system states */
+  --color-accent-primary: #63e6ff;
+  --color-accent-secondary: #9b8cff;
+  --color-status-success: #61e8a1;
+  --color-status-warning: #ffd166;
+  --color-status-danger: #ff6b7a;
+  --color-status-info: #74a7ff;
+
+  /* Architectural lines */
+  --color-line-subtle: rgb(170 181 195 / 12%);
+  --color-line-default: rgb(170 181 195 / 24%);
+  --color-line-luminous: rgb(99 230 255 / 52%);
+
+  /* Spatial rhythm */
+  --spacing-room-inline: clamp(1.25rem, 4vw, 5rem);
+  --spacing-room-block: clamp(5rem, 10vh, 9rem);
+  --spacing-panel: clamp(1.25rem, 2.5vw, 2.5rem);
+  --spacing-cluster: clamp(0.75rem, 1.5vw, 1.5rem);
+
+  /* Shape and material */
+  --radius-panel: 0.875rem;
+  --radius-control: 0.5rem;
+  --shadow-panel: 0 24px 80px rgb(0 0 0 / 35%);
+  --shadow-glow: 0 0 32px rgb(99 230 255 / 14%);
+  --shadow-glow-strong: 0 0 48px rgb(99 230 255 / 24%);
+
+  /* Shared motion physics */
+  --ease-spatial: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-inertial: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-responsive: cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+:root {
+  color-scheme: dark;
+
+  /* Room-level variables may override these defaults. */
+  --room-accent: var(--color-accent-primary);
+  --room-light: rgb(99 230 255 / 8%);
+
+  /* Timing uses one physical language across the house. */
+  --duration-instant: 120ms;
+  --duration-interaction: 220ms;
+  --duration-panel: 420ms;
+  --duration-room: 700ms;
+  --duration-depth: 900ms;
+
+  /* Shared spatial measurements */
+  --room-perspective: 1400px;
+  --room-depth-near: 3rem;
+  --room-depth-mid: 8rem;
+  --room-depth-far: 16rem;
+
+  /* Accessible interaction state */
+  --focus-ring-color: var(--color-accent-primary);
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 4px;
+}
