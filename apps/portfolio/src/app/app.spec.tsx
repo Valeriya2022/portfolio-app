@@ -9,9 +9,12 @@ describe('App', () => {
     const router = createPortfolioRouter(
       createMemoryHistory({ initialEntries: ['/'] }),
     );
-    const { findByRole } = render(<RouterProvider router={router} />);
+    const { container, findByRole } = render(
+      <RouterProvider router={router} />,
+    );
 
     expect(await findByRole('region', { name: 'Portfolio' })).toBeTruthy();
+    expect(container.querySelector('canvas')).toBeNull();
     const overviewControl = await findByRole('button', {
       name: 'Visualize menu',
     });

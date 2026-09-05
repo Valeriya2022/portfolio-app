@@ -129,12 +129,17 @@ function Ring({
           >
             <mesh onClick={() => onSelect?.(item, index)}>
               <boxGeometry args={[3.2, 2.2, 0.12]} />
-              <meshStandardMaterial
-                color={isActive ? '#6366f1' : '#3f3f46'}
-                emissive={isActive ? '#312e81' : '#09090b'}
-                emissiveIntensity={isActive ? 0.45 : 0.12}
-                metalness={0.12}
-                roughness={0.72}
+              <meshPhysicalMaterial
+                clearcoat={0.9}
+                clearcoatRoughness={0.18}
+                color={isActive ? '#818cf8' : '#d4d4d8'}
+                depthWrite={false}
+                emissive={isActive ? '#312e81' : '#18181b'}
+                emissiveIntensity={isActive ? 0.24 : 0.06}
+                metalness={0.08}
+                opacity={isActive ? 0.72 : 0.48}
+                roughness={0.2}
+                transparent
               />
             </mesh>
             {overview ? <RoomLabel item={item} /> : null}
@@ -196,6 +201,8 @@ export function SpatialRing(props: SpatialRingProps) {
     didDragRef.current = false;
   };
 
+  if (!props.overview) return null;
+
   return (
     <div
       aria-hidden={!props.overview}
@@ -204,17 +211,18 @@ export function SpatialRing(props: SpatialRingProps) {
       onPointerMove={updateDrag}
       onPointerUp={finishDrag}
       style={{
-        background: props.overview
-          ? 'color-mix(in srgb, var(--color-house-canvas) 92%, transparent)'
-          : undefined,
+        backdropFilter: 'blur(28px) saturate(135%)',
+        background:
+          'color-mix(in srgb, var(--color-house-canvas) 68%, transparent)',
         inset: 0,
-        opacity: props.overview ? 1 : 0.08,
-        pointerEvents: props.overview ? 'auto' : 'none',
+        opacity: 1,
+        pointerEvents: 'auto',
         position: 'fixed',
         touchAction: 'none',
         transition:
           'opacity var(--duration-room, 700ms) var(--ease-spatial, ease), background-color var(--duration-room, 700ms) var(--ease-spatial, ease)',
-        zIndex: props.overview ? 30 : 0,
+        WebkitBackdropFilter: 'blur(28px) saturate(135%)',
+        zIndex: 30,
       }}
     >
       <Canvas camera={{ fov: 42, near: 0.1, far: 100, position: [0, 0, 8.5] }}>
