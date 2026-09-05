@@ -159,17 +159,17 @@ function Ring({
                 color={
                   isActive
                     ? theme === 'day'
-                      ? '#c7d2fe'
+                      ? '#ffffff'
                       : '#4338ca'
                     : theme === 'day'
-                      ? '#f4f4f5'
+                      ? '#ffffff'
                       : '#3f3f46'
                 }
                 depthWrite={false}
                 emissive={
                   isActive
                     ? theme === 'day'
-                      ? '#a5b4fc'
+                      ? '#ffffff'
                       : '#312e81'
                     : theme === 'day'
                       ? '#ffffff'
@@ -177,7 +177,9 @@ function Ring({
                 }
                 emissiveIntensity={theme === 'day' ? 0.08 : 0.32}
                 metalness={0.08}
-                opacity={theme === 'day' ? 0.72 : 0.84}
+                opacity={
+                  theme === 'day' ? (isActive ? 0.78 : 0.58) : 0.84
+                }
                 roughness={0.16}
                 transparent
               />
