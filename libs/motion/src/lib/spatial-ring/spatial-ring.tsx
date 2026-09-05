@@ -25,6 +25,7 @@ export type SpatialRingProps = {
 
 type RingProps = SpatialRingProps & {
   dragRotation: number;
+  onRoomHover: (isHovering: boolean) => void;
   reducedMotion: boolean;
   theme: 'day' | 'night';
 };
@@ -95,6 +96,7 @@ function Ring({
   activeIndex,
   dragRotation,
   items,
+  onRoomHover,
   onSelect,
   overview,
   reducedMotion,
@@ -144,6 +146,8 @@ function Ring({
           <group
             key={item.id}
             onClick={() => onSelect?.(item, index)}
+            onPointerOut={() => onRoomHover(false)}
+            onPointerOver={() => onRoomHover(true)}
             position={[Math.sin(angle) * 5.2, 0, Math.cos(angle) * 5.2]}
             rotation={[0, angle, 0]}
           >
@@ -193,6 +197,8 @@ function supportsWebGL() {
 export function SpatialRing(props: SpatialRingProps) {
   const [reducedMotion, setReducedMotion] = useState(false);
   const [dragRotation, setDragRotation] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [isRoomHovered, setIsRoomHovered] = useState(false);
   const [theme, setTheme] = useState<'day' | 'night'>(() =>
     document.documentElement.dataset.theme === 'day' ? 'day' : 'night',
   );
@@ -225,7 +231,7 @@ export function SpatialRing(props: SpatialRingProps) {
     if (!props.overview) return;
     dragStartRef.current = event.clientX;
     didDragRef.current = false;
-    event.currentTarget.setPointerCapture(event.pointerId);
+    setIsDragging(true);
   };
 
   const updateDrag = (event: ReactPointerEvent<HTMLDivElement>) => {
@@ -239,6 +245,7 @@ export function SpatialRing(props: SpatialRingProps) {
     if (dragStartRef.current === null) return;
     const distance = event.clientX - dragStartRef.current;
     dragStartRef.current = null;
+    setIsDragging(false);
     setDragRotation(0);
     const roomOffset = getDragRoomOffset(distance, props.items.length);
     if (roomOffset !== 0) props.onRotate?.(roomOffset);
@@ -264,7 +271,7 @@ export function SpatialRing(props: SpatialRingProps) {
         backdropFilter: 'blur(28px) saturate(135%)',
         background:
           'color-mix(in srgb, var(--color-house-canvas) 68%, transparent)',
-        cursor: 'grab',
+        cursor: isRoomHovered ? 'pointer' : isDragging ? 'grabbing' : 'grab',
         inset: 0,
         opacity: 1,
         pointerEvents: 'auto',
@@ -282,6 +289,7 @@ export function SpatialRing(props: SpatialRingProps) {
         <Ring
           {...props}
           dragRotation={dragRotation}
+          onRoomHover={setIsRoomHovered}
           reducedMotion={reducedMotion}
           theme={theme}
         />
