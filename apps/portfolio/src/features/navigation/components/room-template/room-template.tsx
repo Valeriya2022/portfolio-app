@@ -29,7 +29,7 @@ export function RoomTemplate({
       id="room-entrance"
     >
       <div className="relative mx-auto grid w-full max-w-[90rem] content-between gap-16">
-        <header className="max-w-5xl">
+        <header className="glass-surface max-w-5xl p-panel">
           <div className="mb-7 flex items-center gap-4 font-mono text-[0.6875rem] tracking-[0.16em] text-ink-muted uppercase">
             <p>
               Room {formattedNumber} / {name}

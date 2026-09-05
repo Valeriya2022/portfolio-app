@@ -43,7 +43,7 @@ export function RoomNavigation({
 
   return (
     <header
-      className="fixed inset-x-0 top-0 z-50 border-b border-line-subtle bg-house-canvas/90 backdrop-blur-md"
+      className="glass-surface fixed inset-x-3 top-3 z-50 rounded-panel lg:inset-x-5"
       ref={headerRef}
     >
       <div className="mx-auto flex h-14 max-w-[90rem] items-center gap-5 px-room-inline">
@@ -81,7 +81,7 @@ export function RoomNavigation({
         </span>
         <button
           aria-pressed={isVisualizing}
-          className="shrink-0 text-xs text-ink-secondary transition-colors hover:text-ink-primary aria-pressed:text-accent-primary"
+          className="glass-control shrink-0 px-3 py-1.5 text-xs aria-pressed:text-accent-primary"
           onClick={() => {
             setIsOpen(false);
             onVisualize();
@@ -93,7 +93,7 @@ export function RoomNavigation({
         <button
           aria-controls="mobile-room-navigation"
           aria-expanded={isOpen}
-          className="text-xs text-ink-primary lg:hidden"
+          className="glass-control px-3 py-1.5 text-xs lg:hidden"
           onClick={() => setIsOpen((open) => !open)}
           type="button"
         >
@@ -104,7 +104,7 @@ export function RoomNavigation({
       {isOpen ? (
         <nav
           aria-label="Mobile portfolio rooms"
-          className="border-t border-line-subtle bg-house-canvas px-room-inline py-4 lg:hidden"
+          className="border-t border-line-subtle px-room-inline py-4 lg:hidden"
           id="mobile-room-navigation"
         >
           <div className="flex gap-5 overflow-x-auto pb-2">

@@ -47,12 +47,12 @@ function RoomLabel({ item }: { item: SpatialRingItem }) {
     if (!context) return null;
 
     context.clearRect(0, 0, canvas.width, canvas.height);
-    context.fillStyle = '#f5f5f4';
+    context.fillStyle = '#ffffff';
     context.font = '600 38px Inter, system-ui, sans-serif';
     context.textAlign = 'center';
     context.textBaseline = 'middle';
     context.fillText(item.label, canvas.width / 2, 88);
-    context.fillStyle = '#c7c7c2';
+    context.fillStyle = '#e4e4e7';
     context.font = '400 23px Inter, system-ui, sans-serif';
     context.fillText(item.description, canvas.width / 2, 158, 440);
 
@@ -132,13 +132,13 @@ function Ring({
               <meshPhysicalMaterial
                 clearcoat={0.9}
                 clearcoatRoughness={0.18}
-                color={isActive ? '#818cf8' : '#d4d4d8'}
+                color={isActive ? '#4338ca' : '#1c1c1e'}
                 depthWrite={false}
                 emissive={isActive ? '#312e81' : '#18181b'}
                 emissiveIntensity={isActive ? 0.24 : 0.06}
                 metalness={0.08}
-                opacity={isActive ? 0.72 : 0.48}
-                roughness={0.2}
+                opacity={isActive ? 0.82 : 0.7}
+                roughness={0.16}
                 transparent
               />
             </mesh>

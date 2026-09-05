@@ -45,6 +45,13 @@
   --shadow-glow: 0 0 32px rgb(165 180 252 / 10%);
   --shadow-glow-strong: 0 0 48px rgb(165 180 252 / 16%);
 
+  /* Liquid glass */
+  --glass-fill: rgb(24 24 27 / 62%);
+  --glass-fill-strong: rgb(24 24 27 / 78%);
+  --glass-border: rgb(255 255 255 / 16%);
+  --glass-highlight: rgb(255 255 255 / 10%);
+  --glass-shadow: 0 12px 40px rgb(0 0 0 / 24%);
+
   /* Shared motion physics */
   --ease-spatial: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-inertial: cubic-bezier(0.16, 1, 0.3, 1);
@@ -109,4 +116,9 @@
   --shadow-panel: 0 24px 80px rgb(28 28 27 / 10%);
   --shadow-glow: 0 0 32px rgb(79 70 229 / 7%);
   --shadow-glow-strong: 0 0 48px rgb(79 70 229 / 12%);
+  --glass-fill: rgb(255 255 255 / 58%);
+  --glass-fill-strong: rgb(255 255 255 / 74%);
+  --glass-border: rgb(255 255 255 / 78%);
+  --glass-highlight: rgb(255 255 255 / 88%);
+  --glass-shadow: 0 12px 40px rgb(31 38 58 / 12%);
 }

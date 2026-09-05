@@ -52,6 +52,45 @@
   }
 }
 
+@layer components {
+  .glass-surface,
+  .glass-control {
+    border: 1px solid var(--glass-border);
+    background: var(--glass-fill);
+    box-shadow:
+      inset 0 1px 0 var(--glass-highlight),
+      var(--glass-shadow);
+    -webkit-backdrop-filter: blur(22px) saturate(145%);
+    backdrop-filter: blur(22px) saturate(145%);
+  }
+
+  .glass-surface {
+    border-radius: var(--radius-panel);
+  }
+
+  .glass-control {
+    border-radius: var(--radius-control);
+    color: var(--color-ink-primary);
+    transition:
+      background-color var(--duration-interaction) var(--ease-responsive),
+      border-color var(--duration-interaction) var(--ease-responsive),
+      transform var(--duration-interaction) var(--ease-responsive);
+  }
+
+  .glass-control:hover {
+    background: var(--glass-fill-strong);
+    border-color: color-mix(
+      in srgb,
+      var(--glass-border) 72%,
+      var(--color-ink-primary)
+    );
+  }
+
+  .glass-control:active {
+    transform: scale(0.97);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
