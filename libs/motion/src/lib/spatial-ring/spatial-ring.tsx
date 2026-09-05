@@ -132,10 +132,11 @@ function Ring({
         return (
           <group
             key={item.id}
+            onClick={() => onSelect?.(item, index)}
             position={[Math.sin(angle) * 5.2, 0, Math.cos(angle) * 5.2]}
             rotation={[0, angle, 0]}
           >
-            <mesh onClick={() => onSelect?.(item, index)}>
+            <mesh>
               <boxGeometry args={[3.2, 2.2, 0.12]} />
               <meshPhysicalMaterial
                 clearcoat={0.9}
@@ -251,6 +252,7 @@ export function SpatialRing(props: SpatialRingProps) {
         backdropFilter: 'blur(28px) saturate(135%)',
         background:
           'color-mix(in srgb, var(--color-house-canvas) 68%, transparent)',
+        cursor: 'grab',
         inset: 0,
         opacity: 1,
         pointerEvents: 'auto',
