@@ -4,6 +4,7 @@ export type RoomDefinition = {
   navLabel: string;
   number: number;
   path: string;
+  summary: string;
   title: string;
 };
 
@@ -14,6 +15,7 @@ export const rooms = [
     navLabel: 'About',
     number: 1,
     path: '/',
+    summary: 'Who I am and how I work.',
     title: 'Portfolio',
   },
   {
@@ -22,6 +24,7 @@ export const rooms = [
     navLabel: 'Frontend',
     number: 2,
     path: '/frontend',
+    summary: 'Accessible React interfaces.',
     title: 'React Engineering',
   },
   {
@@ -30,6 +33,7 @@ export const rooms = [
     navLabel: 'C#',
     number: 3,
     path: '/backend',
+    summary: 'Reliable .NET systems.',
     title: 'C# / .NET Engineering',
   },
   {
@@ -38,6 +42,7 @@ export const rooms = [
     navLabel: 'AI',
     number: 4,
     path: '/ai',
+    summary: 'AI-assisted engineering workflow.',
     title: 'AI-Assisted Engineering',
   },
   {
@@ -46,6 +51,7 @@ export const rooms = [
     navLabel: 'Projects',
     number: 5,
     path: '/projects',
+    summary: 'Selected work and decisions.',
     title: 'Selected Projects',
   },
   {
@@ -54,6 +60,7 @@ export const rooms = [
     navLabel: 'Architecture',
     number: 6,
     path: '/architecture',
+    summary: 'Structure behind this portfolio.',
     title: 'How This Portfolio Is Built',
   },
   {
@@ -62,6 +69,7 @@ export const rooms = [
     navLabel: 'Experience',
     number: 7,
     path: '/experience',
+    summary: 'Roles, growth, and impact.',
     title: 'Career Progression',
   },
   {
@@ -70,6 +78,7 @@ export const rooms = [
     navLabel: 'Contact',
     number: 8,
     path: '/contact',
+    summary: 'Start a conversation.',
     title: 'Contact',
   },
   {
@@ -78,6 +87,7 @@ export const rooms = [
     navLabel: 'Engineering',
     number: 9,
     path: '/engineering',
+    summary: 'Principles, quality, and delivery.',
     title: 'Engineering Practice',
   },
 ] as const satisfies readonly RoomDefinition[];

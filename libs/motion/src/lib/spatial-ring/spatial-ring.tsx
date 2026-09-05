@@ -3,6 +3,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { CanvasTexture, Group, MathUtils, SRGBColorSpace } from 'three';
 
 export type SpatialRingItem = {
+  description: string;
   id: string;
   label: string;
 };
@@ -16,25 +17,38 @@ export type SpatialRingProps = {
 
 type RingProps = SpatialRingProps & { reducedMotion: boolean };
 
-function RoomLabel({ label }: { label: string }) {
+export function getShortestCircularDelta(
+  previousIndex: number,
+  activeIndex: number,
+  itemCount: number,
+) {
+  const directDelta = activeIndex - previousIndex;
+  const halfRing = Math.floor(itemCount / 2);
+  return ((directDelta + halfRing + itemCount) % itemCount) - halfRing;
+}
+
+function RoomLabel({ item }: { item: SpatialRingItem }) {
   const texture = useMemo(() => {
     const canvas = document.createElement('canvas');
     canvas.width = 512;
-    canvas.height = 128;
+    canvas.height = 256;
     const context = canvas.getContext('2d');
     if (!context) return null;
 
     context.clearRect(0, 0, canvas.width, canvas.height);
     context.fillStyle = '#f5f5f4';
-    context.font = '500 38px Inter, system-ui, sans-serif';
+    context.font = '600 38px Inter, system-ui, sans-serif';
     context.textAlign = 'center';
     context.textBaseline = 'middle';
-    context.fillText(label, canvas.width / 2, canvas.height / 2);
+    context.fillText(item.label, canvas.width / 2, 88);
+    context.fillStyle = '#c7c7c2';
+    context.font = '400 23px Inter, system-ui, sans-serif';
+    context.fillText(item.description, canvas.width / 2, 158, 440);
 
     const labelTexture = new CanvasTexture(canvas);
     labelTexture.colorSpace = SRGBColorSpace;
     return labelTexture;
-  }, [label]);
+  }, [item]);
 
   useEffect(() => () => texture?.dispose(), [texture]);
 
@@ -42,7 +56,7 @@ function RoomLabel({ label }: { label: string }) {
 
   return (
     <mesh position={[0, 0, 0.08]}>
-      <planeGeometry args={[2.6, 0.65]} />
+      <planeGeometry args={[2.8, 1.4]} />
       <meshBasicMaterial map={texture} toneMapped={false} transparent />
     </mesh>
   );
@@ -57,17 +71,34 @@ function Ring({
 }: RingProps) {
   const groupRef = useRef<Group>(null);
   const step = (Math.PI * 2) / items.length;
-  const targetRotation = -activeIndex * step;
+  const previousIndexRef = useRef(activeIndex);
+  const targetRotationRef = useRef(-activeIndex * step);
+
+  useEffect(() => {
+    const previousIndex = previousIndexRef.current;
+    const wrappedDelta = getShortestCircularDelta(
+      previousIndex,
+      activeIndex,
+      items.length,
+    );
+
+    targetRotationRef.current -= wrappedDelta * step;
+    previousIndexRef.current = activeIndex;
+  }, [activeIndex, items.length, step]);
 
   useFrame(({ camera }, delta) => {
     const group = groupRef.current;
     if (!group) return;
 
     const amount = reducedMotion ? 1 : 1 - Math.exp(-delta * 4.5);
-    group.rotation.y = MathUtils.lerp(group.rotation.y, targetRotation, amount);
+    group.rotation.y = MathUtils.lerp(
+      group.rotation.y,
+      targetRotationRef.current,
+      amount,
+    );
     camera.position.z = MathUtils.lerp(
       camera.position.z,
-      overview ? 18 : 9.2,
+      overview ? 18 : 8.5,
       amount,
     );
   });
@@ -94,7 +125,7 @@ function Ring({
                 roughness={0.72}
               />
             </mesh>
-            {overview ? <RoomLabel label={item.label} /> : null}
+            {overview ? <RoomLabel item={item} /> : null}
           </group>
         );
       })}
@@ -137,7 +168,7 @@ export function SpatialRing(props: SpatialRingProps) {
         zIndex: props.overview ? 30 : 0,
       }}
     >
-      <Canvas camera={{ fov: 42, near: 0.1, far: 100, position: [0, 0, 9.2] }}>
+      <Canvas camera={{ fov: 42, near: 0.1, far: 100, position: [0, 0, 8.5] }}>
         <ambientLight intensity={1.5} />
         <directionalLight intensity={2.4} position={[4, 6, 8]} />
         <Ring {...props} reducedMotion={reducedMotion} />

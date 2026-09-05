@@ -15,6 +15,12 @@ describe('App', () => {
     const overviewControl = await findByRole('button', { name: 'View rooms' });
     fireEvent.click(overviewControl);
     expect(await findByRole('button', { name: 'Enter room' })).toBeTruthy();
+    expect(
+      await findByRole('button', { name: 'Rotate to previous room' }),
+    ).toBeTruthy();
+    expect(
+      await findByRole('button', { name: 'Rotate to next room' }),
+    ).toBeTruthy();
     const roomNavigation = await findByRole('navigation', {
       name: 'Portfolio rooms',
     });
