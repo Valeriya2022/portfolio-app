@@ -81,7 +81,7 @@ export function RoomUniverse({
         <>
           <button
             aria-label="Rotate to previous room"
-            className="glass-control fixed top-1/2 left-4 z-[60] -translate-y-1/2 px-3 py-2 disabled:opacity-30 md:left-[calc(50%-26rem)]"
+            className="glass-control fixed top-1/2 left-4 z-[60] -translate-y-1/2 px-3 py-2 disabled:opacity-30 md:left-[calc(50%-31rem)]"
             disabled={isRotating}
             onClick={() => rotate(-1)}
             type="button"
@@ -90,7 +90,7 @@ export function RoomUniverse({
           </button>
           <button
             aria-label="Rotate to next room"
-            className="glass-control fixed top-1/2 right-4 z-[60] -translate-y-1/2 px-3 py-2 disabled:opacity-30 md:right-[calc(50%-26rem)]"
+            className="glass-control fixed top-1/2 right-4 z-[60] -translate-y-1/2 px-3 py-2 disabled:opacity-30 md:right-[calc(50%-31rem)]"
             disabled={isRotating}
             onClick={() => rotate(1)}
             type="button"
