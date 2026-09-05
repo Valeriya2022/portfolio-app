@@ -12,9 +12,11 @@ describe('App', () => {
     const { findByRole } = render(<RouterProvider router={router} />);
 
     expect(await findByRole('region', { name: 'Portfolio' })).toBeTruthy();
-    const overviewControl = await findByRole('button', { name: 'View rooms' });
+    const overviewControl = await findByRole('button', {
+      name: 'Visualize menu',
+    });
     fireEvent.click(overviewControl);
-    expect(await findByRole('button', { name: 'Enter room' })).toBeTruthy();
+    expect(overviewControl.getAttribute('aria-pressed')).toBe('true');
     expect(
       await findByRole('button', { name: 'Rotate to previous room' }),
     ).toBeTruthy();

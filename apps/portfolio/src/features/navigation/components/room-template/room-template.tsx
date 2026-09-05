@@ -28,11 +28,6 @@ export function RoomTemplate({
       data-room-number={formattedNumber}
       id="room-entrance"
     >
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute top-0 left-1/2 -z-10 h-[36rem] w-[64rem] max-w-[120vw] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--room-light)] blur-3xl"
-      />
-
       <div className="relative mx-auto grid w-full max-w-[90rem] content-between gap-16">
         <header className="max-w-5xl">
           <div className="mb-7 flex items-center gap-4 font-mono text-[0.6875rem] tracking-[0.16em] text-ink-muted uppercase">

@@ -1,5 +1,5 @@
 import { Outlet } from '@tanstack/react-router';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useState } from 'react';
 
 import { RoomNavigation } from '../features/navigation';
 
@@ -10,12 +10,20 @@ const RoomUniverse = lazy(() =>
 );
 
 export function App() {
+  const [isVisualizing, setIsVisualizing] = useState(false);
+
   return (
     <>
       <Suspense fallback={null}>
-        <RoomUniverse />
+        <RoomUniverse
+          isOverview={isVisualizing}
+          onOverviewChange={setIsVisualizing}
+        />
       </Suspense>
-      <RoomNavigation />
+      <RoomNavigation
+        isVisualizing={isVisualizing}
+        onVisualize={() => setIsVisualizing((visualizing) => !visualizing)}
+      />
       <Outlet />
     </>
   );

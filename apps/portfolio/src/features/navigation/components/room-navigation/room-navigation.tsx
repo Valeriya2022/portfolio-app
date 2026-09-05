@@ -4,7 +4,15 @@ import { useEffect, useRef, useState } from 'react';
 import { ThemeControl } from '../../../theme';
 import { rooms } from '../../model/rooms';
 
-export function RoomNavigation() {
+export type RoomNavigationProps = {
+  isVisualizing: boolean;
+  onVisualize: () => void;
+};
+
+export function RoomNavigation({
+  isVisualizing,
+  onVisualize,
+}: RoomNavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const pathname = useRouterState({
@@ -71,6 +79,17 @@ export function RoomNavigation() {
         <span className="ml-auto truncate text-xs text-ink-muted lg:hidden">
           {activeRoom.navLabel}
         </span>
+        <button
+          aria-pressed={isVisualizing}
+          className="shrink-0 text-xs text-ink-secondary transition-colors hover:text-ink-primary aria-pressed:text-accent-primary"
+          onClick={() => {
+            setIsOpen(false);
+            onVisualize();
+          }}
+          type="button"
+        >
+          Visualize menu
+        </button>
         <button
           aria-controls="mobile-room-navigation"
           aria-expanded={isOpen}
