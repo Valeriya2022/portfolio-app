@@ -6,13 +6,13 @@ describe('RoomTemplate', () => {
   it('renders an accessible room structure', () => {
     const { getByRole, getByText } = render(
       <RoomTemplate
-        controls={<button type="button">Next room</button>}
+        controls={<button type="button">Next section</button>}
         description="Introduction"
         name="Spawn"
         number={1}
         title="About me"
       >
-        <p>Room content</p>
+        <p>Section content</p>
       </RoomTemplate>,
     );
 
@@ -20,8 +20,8 @@ describe('RoomTemplate', () => {
 
     expect(room.getAttribute('data-room')).toBe('Spawn');
     expect(room.getAttribute('data-room-number')).toBe('01');
-    expect(getByText('Room content')).toBeTruthy();
-    expect(getByRole('contentinfo', { name: 'Room controls' })).toBeTruthy();
+    expect(getByText('Section content')).toBeTruthy();
+    expect(getByRole('contentinfo', { name: 'Section controls' })).toBeTruthy();
   });
 
   it('omits optional content when it is not provided', () => {

@@ -29,7 +29,7 @@ export const rooms = [
   },
   {
     id: 'backend',
-    name: 'Backend Room',
+    name: 'Backend',
     navLabel: 'C#',
     number: 3,
     path: '/backend',
@@ -38,7 +38,7 @@ export const rooms = [
   },
   {
     id: 'ai',
-    name: 'AI Engineering Room',
+    name: 'AI Engineering',
     navLabel: 'AI',
     number: 4,
     path: '/ai',
@@ -56,7 +56,7 @@ export const rooms = [
   },
   {
     id: 'architecture',
-    name: 'Architecture Room',
+    name: 'Architecture',
     navLabel: 'Architecture',
     number: 6,
     path: '/architecture',
@@ -83,7 +83,7 @@ export const rooms = [
   },
   {
     id: 'engineering',
-    name: 'Engineering Room',
+    name: 'Engineering',
     navLabel: 'Engineering',
     number: 9,
     path: '/engineering',

@@ -29,7 +29,7 @@ export function RoomNavigation({
         </Link>
 
         <nav
-          aria-label="Portfolio rooms"
+          aria-label="Portfolio sections"
           className="hidden min-w-0 flex-1 items-center justify-center gap-1 lg:flex"
         >
           {rooms.map((room) => (

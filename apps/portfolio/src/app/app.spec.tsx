@@ -21,13 +21,13 @@ describe('App', () => {
     fireEvent.click(overviewControl);
     expect(overviewControl.getAttribute('aria-pressed')).toBe('true');
     expect(
-      await findByRole('button', { name: 'Rotate to previous room' }),
+      await findByRole('button', { name: 'Rotate to previous section' }),
     ).toBeTruthy();
     expect(
-      await findByRole('button', { name: 'Rotate to next room' }),
+      await findByRole('button', { name: 'Rotate to next section' }),
     ).toBeTruthy();
     const roomNavigation = await findByRole('navigation', {
-      name: 'Portfolio rooms',
+      name: 'Portfolio sections',
     });
     expect(within(roomNavigation).getAllByRole('link')).toHaveLength(
       rooms.length,
@@ -71,7 +71,7 @@ describe('App', () => {
 
     fireEvent.click(await findByRole('button', { name: 'Visualize menu' }));
     const nextRoom = await findByRole('button', {
-      name: 'Rotate to next room',
+      name: 'Rotate to next section',
     });
 
     fireEvent.click(nextRoom);
@@ -95,7 +95,7 @@ describe('App', () => {
     expect(await findByRole('button', { name: 'Visualize menu' })).toBeTruthy();
     expect(queryByRole('button', { name: 'Menu' })).toBeNull();
     expect(
-      queryByRole('navigation', { name: 'Mobile portfolio rooms' }),
+      queryByRole('navigation', { name: 'Mobile portfolio sections' }),
     ).toBeNull();
   });
 });

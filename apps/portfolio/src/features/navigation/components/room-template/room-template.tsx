@@ -32,7 +32,7 @@ export function RoomTemplate({
         <header className="glass-surface max-w-5xl p-panel">
           <div className="mb-7 flex items-center gap-4 font-mono text-[0.6875rem] tracking-[0.16em] text-ink-muted uppercase">
             <p>
-              Room {formattedNumber} / {name}
+              {formattedNumber} / {name}
             </p>
             <span
               aria-hidden="true"
@@ -62,7 +62,7 @@ export function RoomTemplate({
 
         {controls ? (
           <footer
-            aria-label="Room controls"
+            aria-label="Section controls"
             className="border-t border-line-subtle pt-cluster font-mono text-xs tracking-widest text-ink-muted uppercase"
           >
             {controls}

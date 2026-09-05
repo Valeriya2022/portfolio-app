@@ -103,7 +103,7 @@ export function SpatialRing({
 
   return (
     <div
-      aria-label="Room visualization"
+      aria-label="Portfolio visualization"
       onClickCapture={suppressDragClick}
       onPointerDown={startDrag}
       onPointerMove={updateDrag}
@@ -115,6 +115,7 @@ export function SpatialRing({
           'color-mix(in srgb, var(--color-house-canvas) 68%, transparent)',
         cursor: isRoomHovered ? 'pointer' : isDragging ? 'grabbing' : 'grab',
         inset: 0,
+        overflow: 'hidden',
         position: 'fixed',
         touchAction: 'none',
         WebkitBackdropFilter: 'blur(28px) saturate(135%)',
@@ -122,7 +123,7 @@ export function SpatialRing({
       }}
     >
       <div
-        aria-label="Portfolio rooms"
+        aria-label="Portfolio sections"
         role="group"
         style={{
           height: '100%',
@@ -134,7 +135,7 @@ export function SpatialRing({
       >
         <div
           style={{
-            height: 160,
+            height: 'min(160px, 30vw)',
             left: '50%',
             position: 'absolute',
             top: '50%',
@@ -143,7 +144,7 @@ export function SpatialRing({
             transition: isDragging
               ? 'none'
               : 'transform var(--duration-room, 700ms) var(--ease-spatial, ease)',
-            width: 240,
+            width: 'min(240px, 40vw)',
           }}
         >
           {items.map((item, index) => {
@@ -151,7 +152,7 @@ export function SpatialRing({
 
             return (
               <button
-                aria-label={`Enter ${item.label} room`}
+                aria-label={`Open ${item.label}`}
                 aria-current={isActive ? 'true' : undefined}
                 className="glass-surface"
                 key={item.id}
@@ -168,14 +169,14 @@ export function SpatialRing({
                   display: 'flex',
                   flexDirection: 'column',
                   gap: 12,
-                  height: 160,
+                  height: 'min(160px, 30vw)',
                   justifyContent: 'center',
                   left: 0,
                   position: 'absolute',
                   textAlign: 'center',
                   top: 0,
-                  transform: `rotateY(${index * step}deg) translateZ(340px)`,
-                  width: 240,
+                  transform: `rotateY(${index * step}deg) translateZ(clamp(190px, 26vw, 340px))`,
+                  width: 'min(240px, 40vw)',
                 }}
                 type="button"
               >

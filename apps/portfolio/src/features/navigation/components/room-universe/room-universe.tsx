@@ -61,7 +61,7 @@ export function RoomUniverse({
       {isOverview ? (
         <>
           <button
-            aria-label="Rotate to previous room"
+            aria-label="Rotate to previous section"
             className="glass-control fixed top-1/2 left-4 z-[60] -translate-y-1/2 px-3 py-2 md:left-[calc(50%-31rem)]"
             onClick={() => rotate(-1)}
             type="button"
@@ -69,7 +69,7 @@ export function RoomUniverse({
             ←
           </button>
           <button
-            aria-label="Rotate to next room"
+            aria-label="Rotate to next section"
             className="glass-control fixed top-1/2 right-4 z-[60] -translate-y-1/2 px-3 py-2 md:right-[calc(50%-31rem)]"
             onClick={() => rotate(1)}
             type="button"
