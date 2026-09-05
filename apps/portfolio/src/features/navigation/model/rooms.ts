@@ -95,18 +95,3 @@ export const rooms = [
 export type Room = (typeof rooms)[number];
 export type RoomId = Room['id'];
 export type RoomPath = Room['path'];
-
-export type RoomDirection = 'right' | 'left';
-
-export function getAdjacentRoom(
-  room: Room,
-  direction: RoomDirection,
-): Room | undefined {
-  const currentIndex = rooms.findIndex((candidate) => candidate.id === room.id);
-  if (currentIndex === -1) return undefined;
-
-  const offset = direction === 'right' ? 1 : -1;
-  const adjacentIndex = (currentIndex + offset + rooms.length) % rooms.length;
-
-  return rooms[adjacentIndex];
-}

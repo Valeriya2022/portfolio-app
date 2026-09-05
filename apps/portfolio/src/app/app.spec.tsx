@@ -43,9 +43,6 @@ describe('App', () => {
     expect(
       await findByRole('region', { name: 'C# / .NET Engineering' }),
     ).toBeTruthy();
-    expect(
-      await findByRole('link', { name: 'Room to the right: AI' }),
-    ).toBeTruthy();
   });
 
   it('navigates between rooms', async () => {

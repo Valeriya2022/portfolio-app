@@ -67,6 +67,7 @@ export function RoomUniverse() {
       <SpatialRing
         activeIndex={activeIndex}
         items={ringItems}
+        onRotate={rotate}
         onSelect={selectRoom}
         overview={isOverview}
       />
@@ -82,7 +83,7 @@ export function RoomUniverse() {
         <>
           <button
             aria-label="Rotate to previous room"
-            className="fixed top-1/2 left-room-inline z-[60] -translate-y-1/2 rounded-control border border-line-subtle bg-house-canvas/80 px-3 py-2 text-ink-secondary backdrop-blur-md disabled:opacity-30"
+            className="fixed top-1/2 left-4 z-[60] -translate-y-1/2 rounded-control border border-line-subtle bg-house-canvas/80 px-3 py-2 text-ink-secondary backdrop-blur-md disabled:opacity-30 md:left-[calc(50%-21rem)]"
             disabled={isRotating}
             onClick={() => rotate(-1)}
             type="button"
@@ -91,7 +92,7 @@ export function RoomUniverse() {
           </button>
           <button
             aria-label="Rotate to next room"
-            className="fixed top-1/2 right-room-inline z-[60] -translate-y-1/2 rounded-control border border-line-subtle bg-house-canvas/80 px-3 py-2 text-ink-secondary backdrop-blur-md disabled:opacity-30"
+            className="fixed top-1/2 right-4 z-[60] -translate-y-1/2 rounded-control border border-line-subtle bg-house-canvas/80 px-3 py-2 text-ink-secondary backdrop-blur-md disabled:opacity-30 md:right-[calc(50%-21rem)]"
             disabled={isRotating}
             onClick={() => rotate(1)}
             type="button"
@@ -99,7 +100,7 @@ export function RoomUniverse() {
             →
           </button>
           <p className="pointer-events-none fixed inset-x-0 bottom-7 z-40 hidden text-center text-xs text-ink-muted md:block">
-            Select a room or return to the current one
+            Drag to rotate, select a room, or return to the current one
           </p>
         </>
       ) : null}

@@ -1,5 +1,12 @@
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import {
+  type MouseEvent as ReactMouseEvent,
+  type PointerEvent as ReactPointerEvent,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { CanvasTexture, Group, MathUtils, SRGBColorSpace } from 'three';
 
 export type SpatialRingItem = {
@@ -11,11 +18,15 @@ export type SpatialRingItem = {
 export type SpatialRingProps = {
   activeIndex: number;
   items: readonly SpatialRingItem[];
+  onRotate?: (direction: -1 | 1) => void;
   onSelect?: (item: SpatialRingItem, index: number) => void;
   overview: boolean;
 };
 
-type RingProps = SpatialRingProps & { reducedMotion: boolean };
+type RingProps = SpatialRingProps & {
+  dragRotation: number;
+  reducedMotion: boolean;
+};
 
 export function getShortestCircularDelta(
   previousIndex: number,
@@ -64,6 +75,7 @@ function RoomLabel({ item }: { item: SpatialRingItem }) {
 
 function Ring({
   activeIndex,
+  dragRotation,
   items,
   onSelect,
   overview,
@@ -93,7 +105,7 @@ function Ring({
     const amount = reducedMotion ? 1 : 1 - Math.exp(-delta * 4.5);
     group.rotation.y = MathUtils.lerp(
       group.rotation.y,
-      targetRotationRef.current,
+      targetRotationRef.current + dragRotation,
       amount,
     );
     camera.position.z = MathUtils.lerp(
@@ -139,6 +151,9 @@ function supportsWebGL() {
 
 export function SpatialRing(props: SpatialRingProps) {
   const [reducedMotion, setReducedMotion] = useState(false);
+  const [dragRotation, setDragRotation] = useState(0);
+  const dragStartRef = useRef<number | null>(null);
+  const didDragRef = useRef(false);
 
   useEffect(() => {
     if (!window.matchMedia) return;
@@ -152,9 +167,42 @@ export function SpatialRing(props: SpatialRingProps) {
 
   if (!supportsWebGL()) return null;
 
+  const startDrag = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (!props.overview) return;
+    dragStartRef.current = event.clientX;
+    didDragRef.current = false;
+    event.currentTarget.setPointerCapture(event.pointerId);
+  };
+
+  const updateDrag = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (dragStartRef.current === null) return;
+    const distance = event.clientX - dragStartRef.current;
+    didDragRef.current = Math.abs(distance) > 8;
+    setDragRotation(distance * 0.0035);
+  };
+
+  const finishDrag = (event: ReactPointerEvent<HTMLDivElement>) => {
+    if (dragStartRef.current === null) return;
+    const distance = event.clientX - dragStartRef.current;
+    dragStartRef.current = null;
+    setDragRotation(0);
+    if (Math.abs(distance) >= 48) props.onRotate?.(distance > 0 ? -1 : 1);
+  };
+
+  const suppressDragClick = (event: ReactMouseEvent<HTMLDivElement>) => {
+    if (!didDragRef.current) return;
+    event.preventDefault();
+    event.stopPropagation();
+    didDragRef.current = false;
+  };
+
   return (
     <div
       aria-hidden={!props.overview}
+      onClickCapture={suppressDragClick}
+      onPointerDown={startDrag}
+      onPointerMove={updateDrag}
+      onPointerUp={finishDrag}
       style={{
         background: props.overview
           ? 'color-mix(in srgb, var(--color-house-canvas) 92%, transparent)'
@@ -163,6 +211,7 @@ export function SpatialRing(props: SpatialRingProps) {
         opacity: props.overview ? 1 : 0.08,
         pointerEvents: props.overview ? 'auto' : 'none',
         position: 'fixed',
+        touchAction: 'none',
         transition:
           'opacity var(--duration-room, 700ms) var(--ease-spatial, ease), background-color var(--duration-room, 700ms) var(--ease-spatial, ease)',
         zIndex: props.overview ? 30 : 0,
@@ -171,7 +220,11 @@ export function SpatialRing(props: SpatialRingProps) {
       <Canvas camera={{ fov: 42, near: 0.1, far: 100, position: [0, 0, 8.5] }}>
         <ambientLight intensity={1.5} />
         <directionalLight intensity={2.4} position={[4, 6, 8]} />
-        <Ring {...props} reducedMotion={reducedMotion} />
+        <Ring
+          {...props}
+          dragRotation={dragRotation}
+          reducedMotion={reducedMotion}
+        />
       </Canvas>
     </div>
   );

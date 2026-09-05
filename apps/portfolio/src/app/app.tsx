@@ -1,7 +1,7 @@
 import { Outlet } from '@tanstack/react-router';
 import { lazy, Suspense } from 'react';
 
-import { RoomControls, RoomNavigation } from '../features/navigation';
+import { RoomNavigation } from '../features/navigation';
 
 const RoomUniverse = lazy(() =>
   import('../features/navigation/components/room-universe').then((module) => ({
@@ -17,7 +17,6 @@ export function App() {
       </Suspense>
       <RoomNavigation />
       <Outlet />
-      <RoomControls />
     </>
   );
 }
