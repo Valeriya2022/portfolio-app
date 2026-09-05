@@ -63,7 +63,7 @@ describe('App', () => {
     ).toBeTruthy();
   });
 
-  it('closes the mobile navigation when clicking outside the header', async () => {
+  it('uses the visualization as the only mobile room menu', async () => {
     const router = createPortfolioRouter(
       createMemoryHistory({ initialEntries: ['/'] }),
     );
@@ -71,15 +71,8 @@ describe('App', () => {
       <RouterProvider router={router} />,
     );
 
-    fireEvent.click(await findByRole('button', { name: 'Menu' }));
-    expect(
-      await findByRole('navigation', { name: 'Mobile portfolio rooms' }),
-    ).toBeTruthy();
-
-    fireEvent.pointerDown(await findByRole('region', { name: 'Portfolio' }));
-
-    expect(
-      queryByRole('navigation', { name: 'Mobile portfolio rooms' }),
-    ).toBeNull();
+    expect(await findByRole('button', { name: 'Visualize menu' })).toBeTruthy();
+    expect(queryByRole('button', { name: 'Menu' })).toBeNull();
+    expect(queryByRole('navigation', { name: 'Mobile portfolio rooms' })).toBeNull();
   });
 });

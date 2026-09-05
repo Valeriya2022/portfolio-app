@@ -1,5 +1,4 @@
 import { Link, useRouterState } from '@tanstack/react-router';
-import { useEffect, useRef, useState } from 'react';
 
 import { ThemeControl } from '../../../theme';
 import { rooms } from '../../model/rooms';
@@ -13,39 +12,13 @@ export function RoomNavigation({
   isVisualizing,
   onVisualize,
 }: RoomNavigationProps) {
-  const [isOpen, setIsOpen] = useState(false);
-  const headerRef = useRef<HTMLElement>(null);
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   });
   const activeRoom = rooms.find((room) => room.path === pathname) ?? rooms[0];
 
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const closeOutside = (event: PointerEvent) => {
-      if (!headerRef.current?.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setIsOpen(false);
-    };
-
-    document.addEventListener('pointerdown', closeOutside);
-    document.addEventListener('keydown', closeOnEscape);
-
-    return () => {
-      document.removeEventListener('pointerdown', closeOutside);
-      document.removeEventListener('keydown', closeOnEscape);
-    };
-  }, [isOpen]);
-
   return (
-    <header
-      className="glass-surface fixed inset-x-3 top-3 z-50 rounded-panel lg:inset-x-5"
-      ref={headerRef}
-    >
+    <header className="glass-surface fixed inset-x-3 top-3 z-50 rounded-panel lg:inset-x-5">
       <div className="mx-auto flex h-14 max-w-[90rem] items-center gap-5 px-room-inline">
         <Link
           aria-label="Portfolio home"
@@ -82,50 +55,12 @@ export function RoomNavigation({
         <button
           aria-pressed={isVisualizing}
           className="glass-control shrink-0 px-3 py-1.5 text-xs aria-pressed:text-accent-primary"
-          onClick={() => {
-            setIsOpen(false);
-            onVisualize();
-          }}
+          onClick={onVisualize}
           type="button"
         >
           Visualize menu
         </button>
-        <button
-          aria-controls="mobile-room-navigation"
-          aria-expanded={isOpen}
-          className="glass-control px-3 py-1.5 text-xs lg:hidden"
-          onClick={() => setIsOpen((open) => !open)}
-          type="button"
-        >
-          {isOpen ? 'Close' : 'Menu'}
-        </button>
       </div>
-
-      {isOpen ? (
-        <nav
-          aria-label="Mobile portfolio rooms"
-          className="border-t border-line-subtle px-room-inline py-4 lg:hidden"
-          id="mobile-room-navigation"
-        >
-          <div className="flex gap-5 overflow-x-auto pb-2">
-            {rooms.map((room) => (
-              <Link
-                activeOptions={{ exact: true }}
-                activeProps={{ 'aria-current': 'page' }}
-                className="shrink-0 rounded-control py-2 text-xs text-ink-muted [&[data-status=active]]:text-ink-primary"
-                key={room.id}
-                onClick={() => setIsOpen(false)}
-                to={room.path}
-              >
-                {room.navLabel}
-              </Link>
-            ))}
-          </div>
-          <div className="mt-3 flex justify-end border-t border-line-subtle pt-3">
-            <ThemeControl />
-          </div>
-        </nav>
-      ) : null}
     </header>
   );
 }
