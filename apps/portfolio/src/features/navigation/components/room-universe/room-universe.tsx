@@ -49,13 +49,12 @@ export function RoomUniverse({
   );
 
   const selectRoom = (item: SpatialRingItem) => {
-    if (rotationLockRef.current) return;
     const room = rooms.find((candidate) => candidate.id === item.id);
     if (room) void navigate({ to: room.path });
     onOverviewChange(false);
   };
 
-  const rotate = (offset: -1 | 1) => {
+  const rotate = (offset: number) => {
     if (rotationLockRef.current) return;
 
     rotationLockRef.current = true;

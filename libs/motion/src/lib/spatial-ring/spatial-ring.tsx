@@ -18,7 +18,7 @@ export type SpatialRingItem = {
 export type SpatialRingProps = {
   activeIndex: number;
   items: readonly SpatialRingItem[];
-  onRotate?: (direction: -1 | 1) => void;
+  onRotate?: (offset: number) => void;
   onSelect?: (item: SpatialRingItem, index: number) => void;
   overview: boolean;
 };
@@ -37,6 +37,17 @@ export function getShortestCircularDelta(
   const directDelta = activeIndex - previousIndex;
   const halfRing = Math.floor(itemCount / 2);
   return ((directDelta + halfRing + itemCount) % itemCount) - halfRing;
+}
+
+export function getDragRoomOffset(distance: number, itemCount: number) {
+  if (Math.abs(distance) < 48) return 0;
+
+  const radiansPerRoom = (Math.PI * 2) / itemCount;
+  const crossedRooms = Math.max(
+    1,
+    Math.round((Math.abs(distance) * 0.0035) / radiansPerRoom),
+  );
+  return distance > 0 ? -crossedRooms : crossedRooms;
 }
 
 function RoomLabel({
@@ -229,7 +240,8 @@ export function SpatialRing(props: SpatialRingProps) {
     const distance = event.clientX - dragStartRef.current;
     dragStartRef.current = null;
     setDragRotation(0);
-    if (Math.abs(distance) >= 48) props.onRotate?.(distance > 0 ? -1 : 1);
+    const roomOffset = getDragRoomOffset(distance, props.items.length);
+    if (roomOffset !== 0) props.onRotate?.(roomOffset);
   };
 
   const suppressDragClick = (event: ReactMouseEvent<HTMLDivElement>) => {
