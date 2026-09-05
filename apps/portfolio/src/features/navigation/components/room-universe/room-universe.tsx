@@ -1,6 +1,6 @@
 import { SpatialRing, type SpatialRingItem } from '@learning-app/motion';
 import { useNavigate, useRouterState } from '@tanstack/react-router';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect } from 'react';
 
 import { rooms } from '../../model/rooms';
 
@@ -19,9 +19,6 @@ export function RoomUniverse({
   isOverview,
   onOverviewChange,
 }: RoomUniverseProps) {
-  const [isRotating, setIsRotating] = useState(false);
-  const rotationLockRef = useRef(false);
-  const rotationTimerRef = useRef<number | undefined>(undefined);
   const navigate = useNavigate();
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
@@ -41,13 +38,6 @@ export function RoomUniverse({
     return () => document.removeEventListener('keydown', closeOnEscape);
   }, [isOverview, onOverviewChange]);
 
-  useEffect(
-    () => () => {
-      if (rotationTimerRef.current) clearTimeout(rotationTimerRef.current);
-    },
-    [],
-  );
-
   const selectRoom = (item: SpatialRingItem) => {
     const room = rooms.find((candidate) => candidate.id === item.id);
     if (room) void navigate({ to: room.path });
@@ -55,17 +45,8 @@ export function RoomUniverse({
   };
 
   const rotate = (offset: number) => {
-    if (rotationLockRef.current) return;
-
-    rotationLockRef.current = true;
-    setIsRotating(true);
     const nextIndex = (activeIndex + offset + rooms.length) % rooms.length;
     void navigate({ to: rooms[nextIndex].path });
-
-    rotationTimerRef.current = window.setTimeout(() => {
-      rotationLockRef.current = false;
-      setIsRotating(false);
-    }, 800);
   };
 
   return (
@@ -81,8 +62,7 @@ export function RoomUniverse({
         <>
           <button
             aria-label="Rotate to previous room"
-            className="glass-control fixed top-1/2 left-4 z-[60] -translate-y-1/2 px-3 py-2 disabled:opacity-30 md:left-[calc(50%-31rem)]"
-            disabled={isRotating}
+            className="glass-control fixed top-1/2 left-4 z-[60] -translate-y-1/2 px-3 py-2 md:left-[calc(50%-31rem)]"
             onClick={() => rotate(-1)}
             type="button"
           >
@@ -90,8 +70,7 @@ export function RoomUniverse({
           </button>
           <button
             aria-label="Rotate to next room"
-            className="glass-control fixed top-1/2 right-4 z-[60] -translate-y-1/2 px-3 py-2 disabled:opacity-30 md:right-[calc(50%-31rem)]"
-            disabled={isRotating}
+            className="glass-control fixed top-1/2 right-4 z-[60] -translate-y-1/2 px-3 py-2 md:right-[calc(50%-31rem)]"
             onClick={() => rotate(1)}
             type="button"
           >

@@ -63,6 +63,27 @@ describe('App', () => {
     ).toBeTruthy();
   });
 
+  it('allows consecutive room rotations without a cooldown', async () => {
+    const router = createPortfolioRouter(
+      createMemoryHistory({ initialEntries: ['/'] }),
+    );
+    const { findByRole } = render(<RouterProvider router={router} />);
+
+    fireEvent.click(await findByRole('button', { name: 'Visualize menu' }));
+    const nextRoom = await findByRole('button', {
+      name: 'Rotate to next room',
+    });
+
+    fireEvent.click(nextRoom);
+    expect(
+      await findByRole('region', { name: 'React Engineering' }),
+    ).toBeTruthy();
+    fireEvent.click(nextRoom);
+    expect(
+      await findByRole('region', { name: 'C# / .NET Engineering' }),
+    ).toBeTruthy();
+  });
+
   it('uses the visualization as the only mobile room menu', async () => {
     const router = createPortfolioRouter(
       createMemoryHistory({ initialEntries: ['/'] }),
@@ -73,6 +94,8 @@ describe('App', () => {
 
     expect(await findByRole('button', { name: 'Visualize menu' })).toBeTruthy();
     expect(queryByRole('button', { name: 'Menu' })).toBeNull();
-    expect(queryByRole('navigation', { name: 'Mobile portfolio rooms' })).toBeNull();
+    expect(
+      queryByRole('navigation', { name: 'Mobile portfolio rooms' }),
+    ).toBeNull();
   });
 });
