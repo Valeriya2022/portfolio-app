@@ -7,7 +7,7 @@ import {
   useRef,
   useState,
 } from 'react';
-import { CanvasTexture, Group, MathUtils, SRGBColorSpace } from 'three';
+import { CanvasTexture, Group, MathUtils, Shape, SRGBColorSpace } from 'three';
 
 export type SpatialRingItem = {
   description: string;
@@ -103,6 +103,56 @@ function Ring({
   theme,
 }: RingProps) {
   const groupRef = useRef<Group>(null);
+  const panelShape = useMemo(() => {
+    const width = 3.2;
+    const height = 2.2;
+    const radius = 0.16;
+    const shape = new Shape();
+
+    shape.moveTo(-width / 2 + radius, -height / 2);
+    shape.lineTo(width / 2 - radius, -height / 2);
+    shape.quadraticCurveTo(
+      width / 2,
+      -height / 2,
+      width / 2,
+      -height / 2 + radius,
+    );
+    shape.lineTo(width / 2, height / 2 - radius);
+    shape.quadraticCurveTo(
+      width / 2,
+      height / 2,
+      width / 2 - radius,
+      height / 2,
+    );
+    shape.lineTo(-width / 2 + radius, height / 2);
+    shape.quadraticCurveTo(
+      -width / 2,
+      height / 2,
+      -width / 2,
+      height / 2 - radius,
+    );
+    shape.lineTo(-width / 2, -height / 2 + radius);
+    shape.quadraticCurveTo(
+      -width / 2,
+      -height / 2,
+      -width / 2 + radius,
+      -height / 2,
+    );
+
+    return shape;
+  }, []);
+  const panelDepth = 0.1;
+  const panelGeometry = useMemo(
+    () => ({
+      bevelEnabled: true,
+      bevelSegments: 4,
+      bevelSize: 0.025,
+      bevelThickness: 0.025,
+      curveSegments: 10,
+      depth: panelDepth,
+    }),
+    [],
+  );
   const step = (Math.PI * 2) / items.length;
   const previousIndexRef = useRef(activeIndex);
   const targetRotationRef = useRef(-activeIndex * step);
@@ -151,38 +201,30 @@ function Ring({
             position={[Math.sin(angle) * 5.2, 0, Math.cos(angle) * 5.2]}
             rotation={[0, angle, 0]}
           >
-            <mesh>
-              <boxGeometry args={[3.2, 2.2, 0.12]} />
-              <meshPhysicalMaterial
-                clearcoat={0.9}
-                clearcoatRoughness={0.18}
-                color={
-                  isActive
-                    ? theme === 'day'
-                      ? '#ffffff'
-                      : '#4338ca'
-                    : theme === 'day'
-                      ? '#ffffff'
-                      : '#3f3f46'
-                }
-                depthWrite={false}
-                emissive={
-                  isActive
-                    ? theme === 'day'
-                      ? '#ffffff'
-                      : '#312e81'
-                    : theme === 'day'
-                      ? '#ffffff'
-                      : '#27272a'
-                }
-                emissiveIntensity={theme === 'day' ? 0.08 : 0.32}
-                metalness={0.08}
-                opacity={
-                  theme === 'day' ? (isActive ? 0.78 : 0.58) : 0.84
-                }
-                roughness={0.16}
-                transparent
-              />
+            <mesh position={[0, 0, -panelDepth / 2]}>
+              <extrudeGeometry args={[panelShape, panelGeometry]} />
+              {theme === 'day' ? (
+                <meshBasicMaterial
+                  color="#ffffff"
+                  depthWrite={false}
+                  opacity={isActive ? 0.78 : 0.58}
+                  toneMapped={false}
+                  transparent
+                />
+              ) : (
+                <meshPhysicalMaterial
+                  clearcoat={0.9}
+                  clearcoatRoughness={0.18}
+                  color={isActive ? '#4338ca' : '#3f3f46'}
+                  depthWrite={false}
+                  emissive={isActive ? '#312e81' : '#27272a'}
+                  emissiveIntensity={0.32}
+                  metalness={0.08}
+                  opacity={0.84}
+                  roughness={0.16}
+                  transparent
+                />
+              )}
             </mesh>
             {overview ? <RoomLabel item={item} theme={theme} /> : null}
           </group>
