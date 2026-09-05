@@ -26,6 +26,7 @@ export type SpatialRingProps = {
 type RingProps = SpatialRingProps & {
   dragRotation: number;
   reducedMotion: boolean;
+  theme: 'day' | 'night';
 };
 
 export function getShortestCircularDelta(
@@ -38,7 +39,13 @@ export function getShortestCircularDelta(
   return ((directDelta + halfRing + itemCount) % itemCount) - halfRing;
 }
 
-function RoomLabel({ item }: { item: SpatialRingItem }) {
+function RoomLabel({
+  item,
+  theme,
+}: {
+  item: SpatialRingItem;
+  theme: 'day' | 'night';
+}) {
   const texture = useMemo(() => {
     const canvas = document.createElement('canvas');
     canvas.width = 512;
@@ -47,19 +54,19 @@ function RoomLabel({ item }: { item: SpatialRingItem }) {
     if (!context) return null;
 
     context.clearRect(0, 0, canvas.width, canvas.height);
-    context.fillStyle = '#ffffff';
+    context.fillStyle = theme === 'day' ? '#1c1c1e' : '#ffffff';
     context.font = '600 38px Inter, system-ui, sans-serif';
     context.textAlign = 'center';
     context.textBaseline = 'middle';
     context.fillText(item.label, canvas.width / 2, 88);
-    context.fillStyle = '#e4e4e7';
+    context.fillStyle = theme === 'day' ? '#52525b' : '#e4e4e7';
     context.font = '400 23px Inter, system-ui, sans-serif';
     context.fillText(item.description, canvas.width / 2, 158, 440);
 
     const labelTexture = new CanvasTexture(canvas);
     labelTexture.colorSpace = SRGBColorSpace;
     return labelTexture;
-  }, [item]);
+  }, [item, theme]);
 
   useEffect(() => () => texture?.dispose(), [texture]);
 
@@ -80,6 +87,7 @@ function Ring({
   onSelect,
   overview,
   reducedMotion,
+  theme,
 }: RingProps) {
   const groupRef = useRef<Group>(null);
   const step = (Math.PI * 2) / items.length;
@@ -132,17 +140,33 @@ function Ring({
               <meshPhysicalMaterial
                 clearcoat={0.9}
                 clearcoatRoughness={0.18}
-                color={isActive ? '#4338ca' : '#1c1c1e'}
+                color={
+                  isActive
+                    ? theme === 'day'
+                      ? '#c7d2fe'
+                      : '#4338ca'
+                    : theme === 'day'
+                      ? '#f4f4f5'
+                      : '#3f3f46'
+                }
                 depthWrite={false}
-                emissive={isActive ? '#312e81' : '#18181b'}
-                emissiveIntensity={isActive ? 0.24 : 0.06}
+                emissive={
+                  isActive
+                    ? theme === 'day'
+                      ? '#a5b4fc'
+                      : '#312e81'
+                    : theme === 'day'
+                      ? '#ffffff'
+                      : '#27272a'
+                }
+                emissiveIntensity={theme === 'day' ? 0.08 : 0.32}
                 metalness={0.08}
-                opacity={isActive ? 0.82 : 0.7}
+                opacity={theme === 'day' ? 0.72 : 0.84}
                 roughness={0.16}
                 transparent
               />
             </mesh>
-            {overview ? <RoomLabel item={item} /> : null}
+            {overview ? <RoomLabel item={item} theme={theme} /> : null}
           </group>
         );
       })}
@@ -157,6 +181,9 @@ function supportsWebGL() {
 export function SpatialRing(props: SpatialRingProps) {
   const [reducedMotion, setReducedMotion] = useState(false);
   const [dragRotation, setDragRotation] = useState(0);
+  const [theme, setTheme] = useState<'day' | 'night'>(() =>
+    document.documentElement.dataset.theme === 'day' ? 'day' : 'night',
+  );
   const dragStartRef = useRef<number | null>(null);
   const didDragRef = useRef(false);
 
@@ -168,6 +195,16 @@ export function SpatialRing(props: SpatialRingProps) {
     updatePreference();
     query.addEventListener('change', updatePreference);
     return () => query.removeEventListener('change', updatePreference);
+  }, []);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    const updateTheme = () =>
+      setTheme(root.dataset.theme === 'day' ? 'day' : 'night');
+    const observer = new MutationObserver(updateTheme);
+    observer.observe(root, { attributeFilter: ['data-theme'] });
+    updateTheme();
+    return () => observer.disconnect();
   }, []);
 
   if (!supportsWebGL()) return null;
@@ -232,6 +269,7 @@ export function SpatialRing(props: SpatialRingProps) {
           {...props}
           dragRotation={dragRotation}
           reducedMotion={reducedMotion}
+          theme={theme}
         />
       </Canvas>
     </div>
