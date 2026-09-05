@@ -12,6 +12,9 @@ describe('App', () => {
     const { findByRole } = render(<RouterProvider router={router} />);
 
     expect(await findByRole('region', { name: 'Portfolio' })).toBeTruthy();
+    const overviewControl = await findByRole('button', { name: 'View rooms' });
+    fireEvent.click(overviewControl);
+    expect(await findByRole('button', { name: 'Enter room' })).toBeTruthy();
     const roomNavigation = await findByRole('navigation', {
       name: 'Portfolio rooms',
     });

@@ -23,7 +23,7 @@ export function RoomTemplate({
   return (
     <section
       aria-labelledby={headingId}
-      className="relative isolate grid min-h-svh overflow-hidden bg-house-canvas px-room-inline pt-48 pb-room-block md:pt-[clamp(8rem,16vh,10rem)]"
+      className="relative isolate grid min-h-svh overflow-hidden bg-transparent px-room-inline pt-48 pb-room-block md:pt-[clamp(8rem,16vh,10rem)]"
       data-room={name}
       data-room-number={formattedNumber}
       id="room-entrance"
