@@ -98,7 +98,7 @@ export function RoomUniverse({
             →
           </button>
           <p className="pointer-events-none fixed inset-x-0 bottom-7 z-40 hidden text-center text-xs text-ink-muted md:block">
-            Drag to rotate or select a room
+            Drag to rotate
           </p>
         </>
       ) : null}
