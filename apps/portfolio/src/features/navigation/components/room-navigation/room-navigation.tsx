@@ -18,8 +18,8 @@ export function RoomNavigation({
   const activeRoom = rooms.find((room) => room.path === pathname) ?? rooms[0];
 
   return (
-    <header className="glass-surface fixed inset-x-3 top-3 z-50 rounded-panel lg:inset-x-5">
-      <div className="mx-auto flex h-14 max-w-[90rem] items-center gap-5 px-room-inline">
+    <header className="glass-surface fixed inset-x-3 top-3 z-50 max-w-[calc(100vw-1.5rem)] rounded-panel lg:inset-x-5 lg:max-w-none">
+      <div className="mx-auto flex h-12 min-w-0 max-w-[90rem] items-center gap-3 px-4 sm:h-14 sm:gap-5 sm:px-room-inline">
         <Link
           aria-label="Portfolio home"
           className="shrink-0 text-sm font-semibold text-ink-primary"
@@ -54,7 +54,7 @@ export function RoomNavigation({
         </span>
         <button
           aria-pressed={isVisualizing}
-          className="glass-control shrink-0 px-3 py-1.5 text-xs aria-pressed:text-accent-primary"
+          className="glass-control shrink-0 px-2.5 py-1.5 text-xs sm:px-3 aria-pressed:text-accent-primary"
           onClick={onVisualize}
           type="button"
         >
