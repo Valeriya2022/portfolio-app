@@ -135,7 +135,7 @@ export function SpatialRing({
       >
         <div
           style={{
-            height: 'min(160px, 30vw)',
+            height: 'min(160px, 32vw)',
             left: '50%',
             position: 'absolute',
             top: '50%',
@@ -144,7 +144,7 @@ export function SpatialRing({
             transition: isDragging
               ? 'none'
               : 'transform var(--duration-room, 700ms) var(--ease-spatial, ease)',
-            width: 'min(240px, 40vw)',
+            width: 'min(240px, 47vw)',
           }}
         >
           {items.map((item, index) => {
@@ -169,14 +169,15 @@ export function SpatialRing({
                   display: 'flex',
                   flexDirection: 'column',
                   gap: 12,
-                  height: 'min(160px, 30vw)',
+                  height: 'min(160px, 32vw)',
                   justifyContent: 'center',
                   left: 0,
                   position: 'absolute',
                   textAlign: 'center',
                   top: 0,
-                  transform: `rotateY(${index * step}deg) translateZ(clamp(190px, 26vw, 340px))`,
-                  width: 'min(240px, 40vw)',
+                  transform: `rotateY(${index * step}deg) translateZ(clamp(300px, 26vw, 340px))`,
+                  width: 'min(240px, 47vw)',
+                  zIndex: isActive ? 10 : 1,
                 }}
                 type="button"
               >
