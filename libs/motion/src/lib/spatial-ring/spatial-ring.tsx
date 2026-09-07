@@ -144,7 +144,7 @@ export function SpatialRing({
             transition: isDragging
               ? 'none'
               : 'transform var(--duration-room, 700ms) var(--ease-spatial, ease)',
-            width: 'min(240px, 47vw)',
+            width: 'min(240px, 52vw)',
           }}
         >
           {items.map((item, index) => {
@@ -176,7 +176,7 @@ export function SpatialRing({
                   textAlign: 'center',
                   top: 0,
                   transform: `rotateY(${index * step}deg) translateZ(clamp(300px, 26vw, 340px))`,
-                  width: 'min(240px, 47vw)',
+                  width: 'min(240px, 52vw)',
                   zIndex: isActive ? 10 : 1,
                 }}
                 type="button"
