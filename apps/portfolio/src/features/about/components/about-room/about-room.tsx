@@ -19,6 +19,8 @@ const education = [
     highlight: 'Ranked 4th out of 41 students.',
   },
   {
+    alt: 'University of Central Asia logo',
+    image: '/images/about/university-of-central-asia.png',
     name: 'University of Central Asia',
     description: 'BSc in Computer Science · Magna cum laude · Thesis prize.',
   },
@@ -121,19 +123,13 @@ export function AboutRoom() {
                 className="glass-surface flex min-h-full flex-col p-5 sm:p-6"
                 key={item.name}
               >
-                {'image' in item ? (
-                  <div className="mb-8 flex h-24 items-center justify-center overflow-hidden rounded-control bg-white p-4">
-                    <img
-                      alt={item.alt}
-                      className="max-h-full max-w-full object-contain"
-                      src={item.image}
-                    />
-                  </div>
-                ) : (
-                  <div className="mb-8 flex h-24 items-center justify-center rounded-control border border-dashed border-line-default px-4 text-center text-xs text-ink-muted">
-                    University photo coming soon
-                  </div>
-                )}
+                <div className="mb-8 flex h-24 items-center justify-center overflow-hidden rounded-control bg-white p-4">
+                  <img
+                    alt={item.alt}
+                    className="max-h-full max-w-full object-contain"
+                    src={item.image}
+                  />
+                </div>
                 <h3 className="text-lg font-semibold text-ink-primary">
                   {item.name}
                 </h3>
