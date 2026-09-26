@@ -4,26 +4,27 @@ const education = [
   {
     alt: 'KU Leuven logo',
     image: '/images/about/ku-leuven.png',
-    name: 'KU Leuven',
+    name: 'KU Leuven - Faculty of Economics and Business',
     location: 'Brussels, Belgium',
     description:
-      'Exchange semester studying enterprise architecture, ICT strategy, and finance.',
+      'Exchange Studies | Sep 2026 - Jan 2027 | ICT Strategy, Enterprise Architecture, Corporate Finance, Financial Markets',
   },
   {
     alt: 'IAE Montpellier logo',
     image: '/images/about/iae-montpellier.png',
-    name: 'IAE Montpellier',
-    location: 'France',
-    description: "Master's in International Business Engineering.",
+    name: 'Master in International Business Engineering',
+    location: 'IAE Montpellier, France',
+    description: 'Sep 2025 - Aug 2027',
     focus:
       'Research focus: Privacy Enhancing Technologies in International Companies.',
-    highlight: 'Ranked 4th out of 41 students.',
+    highlight: 'Rank 4/41',
   },
   {
     alt: 'University of Central Asia logo',
     image: '/images/about/university-of-central-asia.png',
-    name: 'University of Central Asia',
-    description: 'BSc in Computer Science.',
+    name: 'BSc Computer Science',
+    location: 'University of Central Asia, Kyrgyzstan',
+    description: 'Sep 2018 - Jul 2022',
     award: 'Best Research Project Award',
     awardDescription:
       'for building a low-cost digital library for remote regions using Raspberry Pi.',

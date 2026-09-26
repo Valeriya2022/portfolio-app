@@ -33,8 +33,15 @@ describe('AboutRoom', () => {
         'Research focus: Privacy Enhancing Technologies in International Companies.',
       ),
     ).toBeTruthy();
-    expect(getByText('Ranked 4th out of 41 students.')).toBeTruthy();
+    expect(getByText('Rank 4/41')).toBeTruthy();
     expect(getByText('Magna cum laude')).toBeTruthy();
+    expect(getByText('Sep 2025 - Aug 2027')).toBeTruthy();
+    expect(getByText('Sep 2018 - Jul 2022')).toBeTruthy();
+    expect(
+      getByText(
+        'Exchange Studies | Sep 2026 - Jan 2027 | ICT Strategy, Enterprise Architecture, Corporate Finance, Financial Markets',
+      ),
+    ).toBeTruthy();
     expect(getByText('Best Research Project Award')).toBeTruthy();
     expect(
       getByText(
