@@ -9,23 +9,12 @@ describe('App', () => {
     const router = createPortfolioRouter(
       createMemoryHistory({ initialEntries: ['/'] }),
     );
-    const { container, findByRole } = render(
+    const { findByRole, queryByRole } = render(
       <RouterProvider router={router} />,
     );
 
     expect(await findByRole('region', { name: 'About Me' })).toBeTruthy();
-    expect(container.querySelector('canvas')).toBeNull();
-    const overviewControl = await findByRole('button', {
-      name: 'Visualize menu',
-    });
-    fireEvent.click(overviewControl);
-    expect(overviewControl.getAttribute('aria-pressed')).toBe('true');
-    expect(
-      await findByRole('button', { name: 'Rotate to previous section' }),
-    ).toBeTruthy();
-    expect(
-      await findByRole('button', { name: 'Rotate to next section' }),
-    ).toBeTruthy();
+    expect(queryByRole('button', { name: 'Visualize menu' })).toBeNull();
     const roomNavigation = await findByRole('navigation', {
       name: 'Portfolio sections',
     });
@@ -59,24 +48,7 @@ describe('App', () => {
     expect(await findByRole('region', { name: 'Portfolio' })).toBeTruthy();
   });
 
-  it('allows consecutive room rotations without a cooldown', async () => {
-    const router = createPortfolioRouter(
-      createMemoryHistory({ initialEntries: ['/'] }),
-    );
-    const { findByRole } = render(<RouterProvider router={router} />);
-
-    fireEvent.click(await findByRole('button', { name: 'Visualize menu' }));
-    const nextRoom = await findByRole('button', {
-      name: 'Rotate to next section',
-    });
-
-    fireEvent.click(nextRoom);
-    expect(await findByRole('region', { name: 'Portfolio' })).toBeTruthy();
-    fireEvent.click(nextRoom);
-    expect(await findByRole('region', { name: 'About Me' })).toBeTruthy();
-  });
-
-  it('uses the visualization as the only mobile room menu', async () => {
+  it('navigates from the mobile sidebar and closes it', async () => {
     const router = createPortfolioRouter(
       createMemoryHistory({ initialEntries: ['/'] }),
     );
@@ -84,8 +56,32 @@ describe('App', () => {
       <RouterProvider router={router} />,
     );
 
-    expect(await findByRole('button', { name: 'Visualize menu' })).toBeTruthy();
-    expect(queryByRole('button', { name: 'Menu' })).toBeNull();
+    fireEvent.click(await findByRole('button', { name: 'Menu' }));
+    const sidebar = await findByRole('complementary', {
+      name: 'Portfolio sidebar',
+    });
+    fireEvent.click(within(sidebar).getByRole('link', { name: 'Portfolio' }));
+
+    expect(await findByRole('region', { name: 'Portfolio' })).toBeTruthy();
+    expect(
+      queryByRole('complementary', { name: 'Portfolio sidebar' }),
+    ).toBeNull();
+  });
+
+  it('opens and closes the mobile sidebar', async () => {
+    const router = createPortfolioRouter(
+      createMemoryHistory({ initialEntries: ['/'] }),
+    );
+    const { findByRole, queryByRole } = render(
+      <RouterProvider router={router} />,
+    );
+
+    fireEvent.click(await findByRole('button', { name: 'Menu' }));
+    expect(
+      await findByRole('navigation', { name: 'Mobile portfolio sections' }),
+    ).toBeTruthy();
+
+    fireEvent.click(await findByRole('button', { name: 'Close' }));
     expect(
       queryByRole('navigation', { name: 'Mobile portfolio sections' }),
     ).toBeNull();
