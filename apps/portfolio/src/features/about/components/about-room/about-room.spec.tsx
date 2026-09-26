@@ -35,6 +35,11 @@ describe('AboutRoom', () => {
     ).toBeTruthy();
     expect(getByText('Ranked 4th out of 41 students.')).toBeTruthy();
     expect(getByText('Magna cum laude')).toBeTruthy();
+    expect(
+      getByText(
+        'BSc in Computer Science. Best Research Project Award for building a low-cost digital library for remote regions using Raspberry Pi.',
+      ),
+    ).toBeTruthy();
     expect(getByText('Occitanie, France | Remote')).toBeTruthy();
     expect(
       getByText('software engineering opportunities from February 2027'),

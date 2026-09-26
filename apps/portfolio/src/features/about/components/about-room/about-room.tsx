@@ -23,7 +23,8 @@ const education = [
     alt: 'University of Central Asia logo',
     image: '/images/about/university-of-central-asia.png',
     name: 'University of Central Asia',
-    description: 'BSc in Computer Science · Thesis prize.',
+    description:
+      'BSc in Computer Science. Best Research Project Award for building a low-cost digital library for remote regions using Raspberry Pi.',
     highlight: 'Magna cum laude',
   },
 ] as const;
