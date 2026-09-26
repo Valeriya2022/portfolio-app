@@ -14,15 +14,17 @@ const education = [
     image: '/images/about/iae-montpellier.png',
     name: 'IAE Montpellier',
     location: 'France',
-    description:
-      "Master's in International Business Engineering. Research focus: privacy-enhancing technologies in companies.",
+    description: "Master's in International Business Engineering.",
+    focus:
+      'Research focus: Privacy Enhancing Technologies in International Companies.',
     highlight: 'Ranked 4th out of 41 students.',
   },
   {
     alt: 'University of Central Asia logo',
     image: '/images/about/university-of-central-asia.png',
     name: 'University of Central Asia',
-    description: 'BSc in Computer Science · Magna cum laude · Thesis prize.',
+    description: 'BSc in Computer Science · Thesis prize.',
+    highlight: 'Magna cum laude',
   },
 ] as const;
 
@@ -54,7 +56,8 @@ export function AboutRoom() {
 
           <div>
             <p className="mb-4 text-sm font-medium tracking-wide text-accent-primary">
-              Senior Frontend Developer · Full-Stack Experience
+              Senior Frontend Developer | React · TypeScript | Full-Stack
+              Experience
             </p>
             <h1
               className="text-[clamp(2.5rem,6vw,5rem)] leading-[0.98] font-semibold tracking-[-0.045em] text-ink-primary"
@@ -139,6 +142,11 @@ export function AboutRoom() {
                 <p className="mt-4 leading-7 text-ink-secondary">
                   {item.description}
                 </p>
+                {'focus' in item ? (
+                  <p className="mt-4 font-semibold leading-7 text-accent-primary">
+                    {item.focus}
+                  </p>
+                ) : null}
                 {'highlight' in item ? (
                   <p className="mt-4 font-semibold text-accent-primary">
                     {item.highlight}

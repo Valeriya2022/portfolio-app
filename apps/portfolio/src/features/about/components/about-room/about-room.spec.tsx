@@ -20,7 +20,13 @@ describe('AboutRoom', () => {
     expect(getByAltText('KU Leuven logo')).toBeTruthy();
     expect(getByAltText('IAE Montpellier logo')).toBeTruthy();
     expect(getByAltText('University of Central Asia logo')).toBeTruthy();
+    expect(
+      getByText(
+        'Research focus: Privacy Enhancing Technologies in International Companies.',
+      ),
+    ).toBeTruthy();
     expect(getByText('Ranked 4th out of 41 students.')).toBeTruthy();
+    expect(getByText('Magna cum laude')).toBeTruthy();
 
     expect(
       getByRole('link', {
