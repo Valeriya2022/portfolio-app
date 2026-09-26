@@ -21,6 +21,9 @@ describe('AboutRoom', () => {
       ),
     ).toBeTruthy();
     expect(getByText('5+ years of experience')).toBeTruthy();
+    expect(
+      getByText('from landing pages to complex web and mobile applications'),
+    ).toBeTruthy();
     expect(getByAltText('Valeriya Nikiforova')).toBeTruthy();
     expect(getByAltText('KU Leuven logo')).toBeTruthy();
     expect(getByAltText('IAE Montpellier logo')).toBeTruthy();
@@ -32,6 +35,7 @@ describe('AboutRoom', () => {
     ).toBeTruthy();
     expect(getByText('Ranked 4th out of 41 students.')).toBeTruthy();
     expect(getByText('Magna cum laude')).toBeTruthy();
+    expect(getByText('Occitanie, France | Remote')).toBeTruthy();
 
     expect(
       getByRole('link', {
@@ -44,5 +48,15 @@ describe('AboutRoom', () => {
 
     const contacts = getByRole('navigation', { name: 'Contact links' });
     expect(within(contacts).getAllByRole('link')).toHaveLength(3);
+    expect(
+      within(contacts)
+        .getByRole('link', { name: 'nikavella2022@gmail.com' })
+        .getAttribute('href'),
+    ).toBe('mailto:nikavella2022@gmail.com');
+    expect(
+      within(contacts)
+        .getByRole('link', { name: 'github.com/Valeriya2022' })
+        .getAttribute('href'),
+    ).toBe('https://github.com/Valeriya2022');
   });
 });

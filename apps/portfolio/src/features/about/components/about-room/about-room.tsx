@@ -29,9 +29,15 @@ const education = [
 ] as const;
 
 const contactLinks = [
-  { href: 'mailto:your.email@example.com', label: 'Email' },
-  { href: 'https://www.linkedin.com/in/your-profile', label: 'LinkedIn' },
-  { href: 'https://github.com/your-username', label: 'GitHub' },
+  { href: 'mailto:nikavella2022@gmail.com', label: 'nikavella2022@gmail.com' },
+  {
+    href: 'https://linkedin.com/in/valeriya-nikiforova',
+    label: 'linkedin.com/in/valeriya-nikiforova',
+  },
+  {
+    href: 'https://github.com/Valeriya2022',
+    label: 'github.com/Valeriya2022',
+  },
 ] as const;
 
 export function AboutRoom() {
@@ -74,10 +80,13 @@ export function AboutRoom() {
                 </strong>{' '}
                 building web and mobile products with React, TypeScript, and
                 React Native, alongside substantial backend work with C#/.NET.
-                I’ve worked on everything from landing pages to complex web and
-                mobile applications, building products from scratch and
-                improving existing systems—from designing interfaces to
-                developing the backend logic behind them.
+                I’ve worked on everything{' '}
+                <strong className="font-semibold text-accent-primary">
+                  from landing pages to complex web and mobile applications
+                </strong>
+                , building products from scratch and improving existing
+                systems—from designing interfaces to developing the backend
+                logic behind them.
               </p>
               <p>
                 I enjoy owning features from start to finish and understanding
@@ -166,11 +175,14 @@ export function AboutRoom() {
           </h2>
           <div className="mt-6 max-w-3xl space-y-4 text-base leading-7 text-ink-secondary sm:text-lg sm:leading-8">
             <p>
-              Based in France, currently on exchange in Brussels. Open to{' '}
+              <strong className="font-semibold text-ink-primary">
+                Occitanie, France | Remote
+              </strong>{' '}
+              · Open to{' '}
               <strong className="font-semibold text-ink-primary">
                 software engineering opportunities from March 2027
               </strong>
-              , preferably remote or with occasional office visits.
+              .
             </p>
             <p>
               I speak{' '}
@@ -193,9 +205,6 @@ export function AboutRoom() {
               </a>
             ))}
           </nav>
-          <p className="mt-4 text-xs text-ink-muted">
-            Contact links are placeholders until final URLs are added.
-          </p>
         </section>
       </div>
     </section>
