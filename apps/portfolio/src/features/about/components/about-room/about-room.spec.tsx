@@ -36,6 +36,9 @@ describe('AboutRoom', () => {
     expect(getByText('Ranked 4th out of 41 students.')).toBeTruthy();
     expect(getByText('Magna cum laude')).toBeTruthy();
     expect(getByText('Occitanie, France | Remote')).toBeTruthy();
+    expect(
+      getByText('software engineering opportunities from February 2027'),
+    ).toBeTruthy();
 
     expect(
       getByRole('link', {

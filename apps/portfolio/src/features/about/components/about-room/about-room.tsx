@@ -180,7 +180,7 @@ export function AboutRoom() {
               </strong>{' '}
               · Open to{' '}
               <strong className="font-semibold text-ink-primary">
-                software engineering opportunities from March 2027
+                software engineering opportunities from February 2027
               </strong>
               .
             </p>
