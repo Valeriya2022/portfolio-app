@@ -15,6 +15,11 @@ describe('AboutRoom', () => {
     expect(
       await findByRole('heading', { name: 'Hi, I’m Valeriya.' }),
     ).toBeTruthy();
+    expect(
+      getByText(
+        'Senior Frontend Developer | React · TypeScript · C#/.NET | Full-Stack Experience',
+      ),
+    ).toBeTruthy();
     expect(getByText('5+ years of experience')).toBeTruthy();
     expect(getByAltText('Valeriya Nikiforova')).toBeTruthy();
     expect(getByAltText('KU Leuven logo')).toBeTruthy();

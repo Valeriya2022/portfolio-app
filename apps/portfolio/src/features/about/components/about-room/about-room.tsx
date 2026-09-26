@@ -55,18 +55,15 @@ export function AboutRoom() {
           </figure>
 
           <div>
-            <p className="mb-4 text-sm font-medium tracking-wide text-accent-primary">
-              Senior Frontend Developer | React · TypeScript | Full-Stack
-              Experience
-            </p>
             <h1
               className="text-[clamp(2.5rem,6vw,5rem)] leading-[0.98] font-semibold tracking-[-0.045em] text-ink-primary"
               id="about-title"
             >
               Hi, I’m Valeriya.
             </h1>
-            <p className="mt-5 text-lg font-medium text-ink-primary sm:text-xl">
-              React · TypeScript · C#/.NET
+            <p className="mt-5 text-lg leading-7 font-medium text-accent-primary sm:text-xl sm:leading-8">
+              Senior Frontend Developer | React · TypeScript · C#/.NET |
+              Full-Stack Experience
             </p>
 
             <div className="mt-8 max-w-3xl space-y-5 text-base leading-7 text-ink-secondary sm:text-lg sm:leading-8">
