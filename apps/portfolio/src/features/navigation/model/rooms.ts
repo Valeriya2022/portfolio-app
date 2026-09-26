@@ -12,11 +12,11 @@ export const rooms = [
   {
     id: 'about',
     name: 'Spawn',
-    navLabel: 'About',
+    navLabel: 'About Me',
     number: 1,
     path: '/',
     summary: 'Who I am and how I work.',
-    title: 'Portfolio',
+    title: 'About Me',
   },
   {
     id: 'frontend',
@@ -47,12 +47,12 @@ export const rooms = [
   },
   {
     id: 'projects',
-    name: 'Missions',
-    navLabel: 'Projects',
+    name: 'Achievements',
+    navLabel: 'Portfolio',
     number: 5,
-    path: '/projects',
-    summary: 'Selected work and decisions.',
-    title: 'Selected Projects',
+    path: '/portfolio',
+    summary: 'Achievements, screenshots, and outcomes.',
+    title: 'Portfolio',
   },
   {
     id: 'architecture',
@@ -90,6 +90,11 @@ export const rooms = [
     summary: 'Principles, quality, and delivery.',
     title: 'Engineering Practice',
   },
+] as const satisfies readonly RoomDefinition[];
+
+export const publishedRooms = [
+  rooms[0],
+  { ...rooms[4], number: 2 },
 ] as const satisfies readonly RoomDefinition[];
 
 export type Room = (typeof rooms)[number];

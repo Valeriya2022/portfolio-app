@@ -1,7 +1,7 @@
 import { createMemoryHistory, RouterProvider } from '@tanstack/react-router';
 import { fireEvent, render, within } from '@testing-library/react';
 
-import { rooms } from '../features/navigation';
+import { publishedRooms } from '../features/navigation';
 import { createPortfolioRouter } from './router';
 
 describe('App', () => {
@@ -13,7 +13,7 @@ describe('App', () => {
       <RouterProvider router={router} />,
     );
 
-    expect(await findByRole('region', { name: 'Portfolio' })).toBeTruthy();
+    expect(await findByRole('region', { name: 'About Me' })).toBeTruthy();
     expect(container.querySelector('canvas')).toBeNull();
     const overviewControl = await findByRole('button', {
       name: 'Visualize menu',
@@ -30,10 +30,10 @@ describe('App', () => {
       name: 'Portfolio sections',
     });
     expect(within(roomNavigation).getAllByRole('link')).toHaveLength(
-      rooms.length,
+      publishedRooms.length,
     );
     expect(
-      (await findByRole('link', { name: 'About' })).getAttribute(
+      (await findByRole('link', { name: 'About Me' })).getAttribute(
         'aria-current',
       ),
     ).toBe('page');
@@ -41,13 +41,11 @@ describe('App', () => {
 
   it('renders a registered room path', async () => {
     const router = createPortfolioRouter(
-      createMemoryHistory({ initialEntries: ['/backend'] }),
+      createMemoryHistory({ initialEntries: ['/portfolio'] }),
     );
     const { findByRole } = render(<RouterProvider router={router} />);
 
-    expect(
-      await findByRole('region', { name: 'C# / .NET Engineering' }),
-    ).toBeTruthy();
+    expect(await findByRole('region', { name: 'Portfolio' })).toBeTruthy();
   });
 
   it('navigates between rooms', async () => {
@@ -56,11 +54,9 @@ describe('App', () => {
     );
     const { findByRole } = render(<RouterProvider router={router} />);
 
-    fireEvent.click(await findByRole('link', { name: 'Projects' }));
+    fireEvent.click(await findByRole('link', { name: 'Portfolio' }));
 
-    expect(
-      await findByRole('region', { name: 'Selected Projects' }),
-    ).toBeTruthy();
+    expect(await findByRole('region', { name: 'Portfolio' })).toBeTruthy();
   });
 
   it('allows consecutive room rotations without a cooldown', async () => {
@@ -75,13 +71,9 @@ describe('App', () => {
     });
 
     fireEvent.click(nextRoom);
-    expect(
-      await findByRole('region', { name: 'React Engineering' }),
-    ).toBeTruthy();
+    expect(await findByRole('region', { name: 'Portfolio' })).toBeTruthy();
     fireEvent.click(nextRoom);
-    expect(
-      await findByRole('region', { name: 'C# / .NET Engineering' }),
-    ).toBeTruthy();
+    expect(await findByRole('region', { name: 'About Me' })).toBeTruthy();
   });
 
   it('uses the visualization as the only mobile room menu', async () => {

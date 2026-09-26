@@ -1,7 +1,7 @@
 import { Link, useRouterState } from '@tanstack/react-router';
 
 import { ThemeControl } from '../../../theme';
-import { rooms } from '../../model/rooms';
+import { publishedRooms } from '../../model/rooms';
 
 export type RoomNavigationProps = {
   isVisualizing: boolean;
@@ -15,7 +15,8 @@ export function RoomNavigation({
   const pathname = useRouterState({
     select: (state) => state.location.pathname,
   });
-  const activeRoom = rooms.find((room) => room.path === pathname) ?? rooms[0];
+  const activeRoom =
+    publishedRooms.find((room) => room.path === pathname) ?? publishedRooms[0];
 
   return (
     <header className="glass-surface fixed inset-x-3 top-3 z-50 max-w-[calc(100vw-1.5rem)] rounded-panel lg:inset-x-5 lg:max-w-none">
@@ -32,7 +33,7 @@ export function RoomNavigation({
           aria-label="Portfolio sections"
           className="hidden min-w-0 flex-1 items-center justify-center gap-1 lg:flex"
         >
-          {rooms.map((room) => (
+          {publishedRooms.map((room) => (
             <Link
               activeOptions={{ exact: true }}
               activeProps={{ 'aria-current': 'page' }}
