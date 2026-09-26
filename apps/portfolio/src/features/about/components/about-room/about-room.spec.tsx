@@ -35,9 +35,11 @@ describe('AboutRoom', () => {
     ).toBeTruthy();
     expect(getByText('Ranked 4th out of 41 students.')).toBeTruthy();
     expect(getByText('Magna cum laude')).toBeTruthy();
+    expect(getByText('Best Research Project Award')).toBeTruthy();
     expect(
       getByText(
-        'Best Research Project Award for building a low-cost digital library for remote regions using Raspberry Pi.',
+        'for building a low-cost digital library for remote regions using Raspberry Pi.',
+        { exact: false },
       ),
     ).toBeTruthy();
     expect(getByText('Occitanie, France | Remote')).toBeTruthy();

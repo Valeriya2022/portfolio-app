@@ -24,8 +24,9 @@ const education = [
     image: '/images/about/university-of-central-asia.png',
     name: 'University of Central Asia',
     description: 'BSc in Computer Science.',
-    award:
-      'Best Research Project Award for building a low-cost digital library for remote regions using Raspberry Pi.',
+    award: 'Best Research Project Award',
+    awardDescription:
+      'for building a low-cost digital library for remote regions using Raspberry Pi.',
     highlight: 'Magna cum laude',
   },
 ] as const;
@@ -151,8 +152,11 @@ export function AboutRoom() {
                   {item.description}
                 </p>
                 {'award' in item ? (
-                  <p className="mt-4 font-semibold leading-7 text-accent-primary">
-                    {item.award}
+                  <p className="mt-4 leading-7 text-ink-secondary">
+                    <strong className="font-semibold text-accent-primary">
+                      {item.award}
+                    </strong>{' '}
+                    {item.awardDescription}
                   </p>
                 ) : null}
                 {'focus' in item ? (
