@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
+import { useState } from 'react';
 
 type ProjectMediaProps = {
   label: string;
@@ -15,62 +14,8 @@ type ProjectMediaProps = {
     }
 );
 
-function ExpandIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      fill="none"
-      height="16"
-      viewBox="0 0 16 16"
-      width="16"
-    >
-      <path
-        d="M6 2H2v4M10 2h4v4M6 14H2v-4m8 4h4v-4"
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth="1.4"
-      />
-    </svg>
-  );
-}
-
 export function ProjectMedia(props: ProjectMediaProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    if (!isExpanded) return;
-
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setIsExpanded(false);
-    };
-    const closeAfterLeavingFullscreen = () => {
-      if (!document.fullscreenElement) setIsExpanded(false);
-    };
-
-    document.addEventListener('keydown', closeOnEscape);
-    document.addEventListener('fullscreenchange', closeAfterLeavingFullscreen);
-    return () => {
-      document.removeEventListener('keydown', closeOnEscape);
-      document.removeEventListener(
-        'fullscreenchange',
-        closeAfterLeavingFullscreen,
-      );
-    };
-  }, [isExpanded]);
-
-  const expandMedia = () => {
-    setIsExpanded(true);
-    void document.documentElement.requestFullscreen?.().catch(() => undefined);
-  };
-
-  const closeExpandedMedia = () => {
-    setIsExpanded(false);
-    if (document.fullscreenElement) {
-      void document.exitFullscreen().catch(() => undefined);
-    }
-  };
 
   const media =
     props.type === 'image' ? (
@@ -88,7 +33,6 @@ export function ProjectMedia(props: ProjectMediaProps) {
         aria-label={props.label}
         autoPlay
         className="h-auto w-full"
-        controls
         loop
         muted
         onCanPlay={() => setIsLoaded(true)}
@@ -112,59 +56,6 @@ export function ProjectMedia(props: ProjectMediaProps) {
           />
         ) : null}
       </div>
-
-      {props.type === 'image' ? (
-        <button
-          aria-label={`Expand ${props.label}`}
-          className="mt-3 ml-auto flex items-center gap-2 rounded-control border border-line-subtle bg-house-surface px-3 py-2 text-xs font-medium text-ink-secondary transition-colors hover:text-ink-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary sm:hidden"
-          onClick={expandMedia}
-          type="button"
-        >
-          <ExpandIcon />
-          Expand
-        </button>
-      ) : null}
-
-      {isExpanded
-        ? createPortal(
-            <div
-              aria-label={`${props.label} expanded view`}
-              aria-modal="true"
-              className="fixed inset-0 z-[100] flex h-dvh w-screen flex-col bg-house-background"
-              role="dialog"
-            >
-              <div className="flex shrink-0 justify-end p-3">
-                <button
-                  className="rounded-control border border-line-subtle bg-house-surface px-4 py-2 text-sm font-medium text-ink-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary"
-                  onClick={closeExpandedMedia}
-                  type="button"
-                >
-                  Close
-                </button>
-              </div>
-              <div className="flex min-h-0 flex-1 items-center justify-center p-3 pt-0">
-                {props.type === 'image' ? (
-                  <img
-                    alt=""
-                    className="max-h-full max-w-full object-contain"
-                    src={props.src}
-                  />
-                ) : (
-                  <video
-                    aria-label={`${props.label} expanded`}
-                    autoPlay
-                    className="max-h-full max-w-full object-contain"
-                    loop
-                    muted
-                    playsInline
-                    src={props.src}
-                  />
-                )}
-              </div>
-            </div>,
-            document.body,
-          )
-        : null}
     </figure>
   );
 }

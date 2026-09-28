@@ -1,4 +1,4 @@
-import { fireEvent, render, within } from '@testing-library/react';
+import { render, within } from '@testing-library/react';
 
 import { ProjectsRoom } from './projects-room';
 
@@ -17,25 +17,10 @@ describe('ProjectsRoom', () => {
     expect(getByLabelText('LLP ABR Tech project recordings')).toBeTruthy();
     const firstRecording = getByLabelText('LLP ABR Tech project recording 1');
     expect(firstRecording).toBeTruthy();
-    expect(firstRecording.hasAttribute('controls')).toBe(true);
+    expect(firstRecording.hasAttribute('controls')).toBe(false);
     expect(firstRecording.hasAttribute('loop')).toBe(true);
     expect(getByLabelText('LLP ABR Tech project recording 2')).toBeTruthy();
     expect(getByLabelText('LLP ABR Tech project recording 3')).toBeTruthy();
-    expect(
-      getByRole('button', {
-        name: 'Expand NXT LVL PZA mobile ordering application screens',
-      }),
-    ).toBeTruthy();
-    fireEvent.click(
-      getByRole('button', {
-        name: 'Expand NXT LVL PZA mobile ordering application screens',
-      }),
-    );
-    expect(
-      getByRole('dialog', {
-        name: 'NXT LVL PZA mobile ordering application screens expanded view',
-      }),
-    ).toBeTruthy();
     expect(
       getByAltText('NXT LVL PZA loyalty application screens'),
     ).toBeTruthy();
