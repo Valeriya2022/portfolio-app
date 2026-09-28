@@ -88,6 +88,7 @@ export function ProjectMedia(props: ProjectMediaProps) {
         aria-label={props.label}
         autoPlay
         className="h-auto w-full"
+        controls
         loop
         muted
         onCanPlay={() => setIsLoaded(true)}
@@ -112,15 +113,17 @@ export function ProjectMedia(props: ProjectMediaProps) {
         ) : null}
       </div>
 
-      <button
-        aria-label={`Expand ${props.label}`}
-        className="mt-3 ml-auto flex items-center gap-2 rounded-control border border-line-subtle bg-house-surface px-3 py-2 text-xs font-medium text-ink-secondary transition-colors hover:text-ink-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary sm:hidden"
-        onClick={expandMedia}
-        type="button"
-      >
-        <ExpandIcon />
-        Expand
-      </button>
+      {props.type === 'image' ? (
+        <button
+          aria-label={`Expand ${props.label}`}
+          className="mt-3 ml-auto flex items-center gap-2 rounded-control border border-line-subtle bg-house-surface px-3 py-2 text-xs font-medium text-ink-secondary transition-colors hover:text-ink-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary sm:hidden"
+          onClick={expandMedia}
+          type="button"
+        >
+          <ExpandIcon />
+          Expand
+        </button>
+      ) : null}
 
       {isExpanded
         ? createPortal(
