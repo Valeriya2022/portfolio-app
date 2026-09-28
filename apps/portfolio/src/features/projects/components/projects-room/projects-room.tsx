@@ -271,7 +271,7 @@ export function ProjectsRoom() {
                 {experience.media === 'abr-tech' ? (
                   <div
                     aria-label="LLP ABR Tech project recordings"
-                    className="mt-12 grid gap-4 md:grid-cols-2"
+                    className="mt-12 grid grid-cols-3 items-start gap-2 sm:gap-4"
                     role="group"
                   >
                     {[
@@ -280,14 +280,16 @@ export function ProjectsRoom() {
                       '/videos/portfolio/abr-tech-project-03.mp4',
                     ].map((video, index) => (
                       <ScrollReveal
-                        className={index === 0 ? 'md:col-span-2' : undefined}
                         delay={index * 0.04}
                         key={video}
                       >
                         <video
                           aria-label={`LLP ABR Tech project recording ${index + 1}`}
-                          className="aspect-video w-full rounded-panel bg-house-surface object-cover shadow-[var(--shadow-panel)]"
+                          autoPlay
+                          className="h-auto w-full rounded-panel bg-house-surface shadow-[var(--shadow-panel)]"
                           controls
+                          loop
+                          muted
                           playsInline
                           preload="metadata"
                           src={video}
