@@ -287,7 +287,7 @@ export function ProjectsRoom() {
                           className="h-auto w-full object-contain"
                           height="1205"
                           loading="lazy"
-                          src="/images/portfolio/nxt-lvl-pza-mobile-app.jpeg"
+                          src="/images/portfolio/nxt-lvl-pza-mobile-app.webp"
                           width="1920"
                         />
                       </figure>
@@ -299,7 +299,7 @@ export function ProjectsRoom() {
                           className="h-auto w-full object-contain"
                           height="848"
                           loading="lazy"
-                          src="/images/portfolio/nxt-lvl-pza-loyalty.jpeg"
+                          src="/images/portfolio/nxt-lvl-pza-loyalty.webp"
                           width="1920"
                         />
                       </figure>
