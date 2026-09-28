@@ -24,7 +24,7 @@ const experiences = [
     dates:
       'Feb 2024 - Aug 2025 full-time, on-site · Sep 2025 - present part-time',
     location: 'Almaty, Kazakhstan · hybrid/remote',
-    media: 'coming-soon',
+    media: 'abr-tech',
     metric: '~10',
     metricLabel: 'company web projects',
     role: 'Senior Software Engineer / Full-Stack Developer',
@@ -268,9 +268,34 @@ export function ProjectsRoom() {
                   ))}
                 </ul>
 
-                {experience.media === 'coming-soon' ? (
-                  <div className="mt-12 flex min-h-36 items-center justify-center rounded-panel border border-dashed border-line-default px-6 text-center text-sm text-ink-muted">
-                    Project photos and video coming soon
+                {experience.media === 'abr-tech' ? (
+                  <div
+                    aria-label="LLP ABR Tech project recordings"
+                    className="mt-12 grid gap-4 md:grid-cols-2"
+                    role="group"
+                  >
+                    {[
+                      '/videos/portfolio/abr-tech-project-01.mp4',
+                      '/videos/portfolio/abr-tech-project-02.mp4',
+                      '/videos/portfolio/abr-tech-project-03.mp4',
+                    ].map((video, index) => (
+                      <ScrollReveal
+                        className={index === 0 ? 'md:col-span-2' : undefined}
+                        delay={index * 0.04}
+                        key={video}
+                      >
+                        <video
+                          aria-label={`LLP ABR Tech project recording ${index + 1}`}
+                          className="aspect-video w-full rounded-panel bg-house-surface object-cover shadow-[var(--shadow-panel)]"
+                          controls
+                          playsInline
+                          preload="metadata"
+                          src={video}
+                        >
+                          Your browser does not support embedded videos.
+                        </video>
+                      </ScrollReveal>
+                    ))}
                   </div>
                 ) : null}
 
