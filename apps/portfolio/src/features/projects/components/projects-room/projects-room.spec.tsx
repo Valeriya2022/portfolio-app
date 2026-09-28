@@ -9,9 +9,9 @@ describe('ProjectsRoom', () => {
     expect(
       getByRole('heading', { name: 'Professional Experience' }),
     ).toBeTruthy();
-    expect(getByText('LLP ABR Tech')).toBeTruthy();
-    expect(getByText('NXT LVL PZA')).toBeTruthy();
-    expect(getByText('LLP Bass Technology')).toBeTruthy();
+    expect(getByText(/LLP ABR Tech/)).toBeTruthy();
+    expect(getByText(/NXT LVL PZA/)).toBeTruthy();
+    expect(getByText(/LLP Bass Technology/)).toBeTruthy();
     expect(getByText('Project photos and video coming soon')).toBeTruthy();
     expect(
       getByAltText('NXT LVL PZA loyalty application screens'),
@@ -20,11 +20,19 @@ describe('ProjectsRoom', () => {
       getByAltText('NXT LVL PZA mobile ordering application screens'),
     ).toBeTruthy();
 
-    const bassAchievements = getByRole('list', {
-      name: 'LLP Bass Technology achievements',
+    expect(getByText('~10')).toBeTruthy();
+    expect(getByText('80%')).toBeTruthy();
+
+    const bassTechnologies = getByRole('list', {
+      name: 'LLP Bass Technology technologies',
     });
-    expect(within(bassAchievements).getAllByRole('listitem')).toHaveLength(3);
+    expect(within(bassTechnologies).getAllByRole('listitem')).toHaveLength(4);
     expect(getByRole('heading', { name: 'Technical Skills' })).toBeTruthy();
     expect(getByRole('heading', { name: 'Backend & Data' })).toBeTruthy();
+    expect(
+      within(getByRole('list', { name: 'Backend & Data skills' })).getAllByRole(
+        'listitem',
+      ),
+    ).toHaveLength(5);
   });
 });
