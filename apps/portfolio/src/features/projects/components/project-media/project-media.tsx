@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 type ProjectMediaProps = {
   label: string;
@@ -121,43 +122,46 @@ export function ProjectMedia(props: ProjectMediaProps) {
         Expand
       </button>
 
-      {isExpanded ? (
-        <div
-          aria-label={`${props.label} expanded view`}
-          aria-modal="true"
-          className="fixed inset-0 z-[100] flex h-svh w-screen flex-col bg-house-background"
-          role="dialog"
-        >
-          <div className="flex shrink-0 justify-end p-3 sm:p-4">
-            <button
-              className="rounded-control border border-line-subtle bg-house-surface px-4 py-2 text-sm font-medium text-ink-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary"
-              onClick={closeExpandedMedia}
-              type="button"
+      {isExpanded
+        ? createPortal(
+            <div
+              aria-label={`${props.label} expanded view`}
+              aria-modal="true"
+              className="fixed inset-0 z-[100] flex h-dvh w-screen flex-col bg-house-background"
+              role="dialog"
             >
-              Close
-            </button>
-          </div>
-          <div className="flex min-h-0 flex-1 items-center justify-center p-3 pt-0 sm:p-4 sm:pt-0">
-            {props.type === 'image' ? (
-              <img
-                alt=""
-                className="max-h-full max-w-full object-contain"
-                src={props.src}
-              />
-            ) : (
-              <video
-                aria-label={`${props.label} expanded`}
-                autoPlay
-                className="max-h-full max-w-full object-contain"
-                loop
-                muted
-                playsInline
-                src={props.src}
-              />
-            )}
-          </div>
-        </div>
-      ) : null}
+              <div className="flex shrink-0 justify-end p-3">
+                <button
+                  className="rounded-control border border-line-subtle bg-house-surface px-4 py-2 text-sm font-medium text-ink-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent-primary"
+                  onClick={closeExpandedMedia}
+                  type="button"
+                >
+                  Close
+                </button>
+              </div>
+              <div className="flex min-h-0 flex-1 items-center justify-center p-3 pt-0">
+                {props.type === 'image' ? (
+                  <img
+                    alt=""
+                    className="max-h-full max-w-full object-contain"
+                    src={props.src}
+                  />
+                ) : (
+                  <video
+                    aria-label={`${props.label} expanded`}
+                    autoPlay
+                    className="max-h-full max-w-full object-contain"
+                    loop
+                    muted
+                    playsInline
+                    src={props.src}
+                  />
+                )}
+              </div>
+            </div>,
+            document.body,
+          )
+        : null}
     </figure>
   );
 }
