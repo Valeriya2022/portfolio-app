@@ -2,6 +2,8 @@
 
 A responsive personal portfolio presenting my frontend, full-stack, and mobile engineering experience through visual project chapters rather than a traditional résumé layout.
 
+**[View the live portfolio →](https://portfolio-app-pearl-nine-70.vercel.app/)**
+
 ## Highlights
 
 - About, education, contact, and downloadable CV

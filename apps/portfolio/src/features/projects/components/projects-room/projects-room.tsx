@@ -1,5 +1,7 @@
 import { ScrollReveal } from '@learning-app/motion';
 
+import { ProjectMedia } from '../project-media';
+
 const experiences = [
   {
     achievements: [
@@ -279,23 +281,12 @@ export function ProjectsRoom() {
                       '/videos/portfolio/abr-tech-project-02.mp4',
                       '/videos/portfolio/abr-tech-project-03.mp4',
                     ].map((video, index) => (
-                      <ScrollReveal
-                        delay={index * 0.04}
-                        key={video}
-                      >
-                        <video
-                          aria-label={`LLP ABR Tech project recording ${index + 1}`}
-                          autoPlay
-                          className="h-auto w-full rounded-panel bg-house-surface shadow-[var(--shadow-panel)]"
-                          controls
-                          loop
-                          muted
-                          playsInline
-                          preload="metadata"
+                      <ScrollReveal delay={index * 0.04} key={video}>
+                        <ProjectMedia
+                          label={`LLP ABR Tech project recording ${index + 1}`}
                           src={video}
-                        >
-                          Your browser does not support embedded videos.
-                        </video>
+                          type="video"
+                        />
                       </ScrollReveal>
                     ))}
                   </div>
@@ -308,28 +299,22 @@ export function ProjectsRoom() {
                     role="group"
                   >
                     <ScrollReveal>
-                      <figure className="overflow-hidden rounded-panel bg-white shadow-[var(--shadow-panel)]">
-                        <img
-                          alt="NXT LVL PZA mobile ordering application screens"
-                          className="h-auto w-full object-contain"
-                          height="1205"
-                          loading="lazy"
-                          src="/images/portfolio/nxt-lvl-pza-mobile-app.webp"
-                          width="1920"
-                        />
-                      </figure>
+                      <ProjectMedia
+                        height="1205"
+                        label="NXT LVL PZA mobile ordering application screens"
+                        src="/images/portfolio/nxt-lvl-pza-mobile-app.webp"
+                        type="image"
+                        width="1920"
+                      />
                     </ScrollReveal>
                     <ScrollReveal className="ml-auto w-[94%] sm:w-[86%]">
-                      <figure className="overflow-hidden rounded-panel bg-white shadow-[var(--shadow-panel)]">
-                        <img
-                          alt="NXT LVL PZA loyalty application screens"
-                          className="h-auto w-full object-contain"
-                          height="848"
-                          loading="lazy"
-                          src="/images/portfolio/nxt-lvl-pza-loyalty.webp"
-                          width="1920"
-                        />
-                      </figure>
+                      <ProjectMedia
+                        height="848"
+                        label="NXT LVL PZA loyalty application screens"
+                        src="/images/portfolio/nxt-lvl-pza-loyalty.webp"
+                        type="image"
+                        width="1920"
+                      />
                     </ScrollReveal>
                   </div>
                 ) : null}
