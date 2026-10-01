@@ -75,6 +75,13 @@ export function AboutRoom() {
               Senior Frontend Developer | React · TypeScript · C#/.NET |
               Full-Stack Experience
             </p>
+            <p className="mt-5 max-w-3xl text-base leading-7 text-ink-secondary sm:text-lg">
+              Open to{' '}
+              <strong className="font-semibold text-ink-primary">
+                software engineering opportunities from February 2027
+              </strong>{' '}
+              — CDI · CDD · 6-month internship (stage).
+            </p>
 
             <div className="mt-8 max-w-3xl space-y-5 text-base leading-7 text-ink-secondary sm:text-lg sm:leading-8">
               <p>
@@ -189,10 +196,6 @@ export function AboutRoom() {
             <p>
               <strong className="font-semibold text-ink-primary">
                 Occitanie, France | Remote
-              </strong>{' '}
-              · Open to{' '}
-              <strong className="font-semibold text-ink-primary">
-                software engineering opportunities from February 2027
               </strong>
               .
             </p>

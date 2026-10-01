@@ -53,6 +53,7 @@ describe('AboutRoom', () => {
     expect(
       getByText('software engineering opportunities from February 2027'),
     ).toBeTruthy();
+    expect(getByText(/CDI · CDD · 6-month internship \(stage\)/)).toBeTruthy();
 
     expect(
       getByRole('link', {
