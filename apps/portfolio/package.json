@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "@tanstack/react-router": "^1.170.32"
+    "@tanstack/react-router": "^1.170.32",
+    "@vercel/analytics": "^2.0.1"
   }
 }
