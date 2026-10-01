@@ -34,6 +34,16 @@ describe('AboutRoom', () => {
       ),
     ).toBeTruthy();
     expect(getByText('Rank 4/41')).toBeTruthy();
+    expect(getByText('Finance coursework')).toBeTruthy();
+    expect(getByText('Financial Accounting')).toBeTruthy();
+    expect(getByText('Introduction to Finance')).toBeTruthy();
+    expect(getByText('Cost Accounting')).toBeTruthy();
+    expect(
+      getByText('Introduction to International Finance and Exchange Markets'),
+    ).toBeTruthy();
+    expect(getByText('Asset Pricing and Investment Management')).toBeTruthy();
+    expect(getByText('Sustainable Finance')).toBeTruthy();
+    expect(getByText('Data Science for Finance')).toBeTruthy();
     expect(getByText('Magna cum laude')).toBeTruthy();
     expect(getByText('Sep 2025 - Aug 2027')).toBeTruthy();
     expect(getByText('Sep 2018 - Jul 2022')).toBeTruthy();

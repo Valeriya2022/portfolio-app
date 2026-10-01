@@ -17,6 +17,25 @@ const education = [
     description: 'Sep 2025 - Aug 2027',
     focus:
       'Research focus: Privacy Enhancing Technologies in International Companies.',
+    financeCourses: [
+      {
+        level: 'Master 1',
+        courses: [
+          'Financial Accounting',
+          'Introduction to Finance',
+          'Cost Accounting',
+          'Introduction to International Finance and Exchange Markets',
+        ],
+      },
+      {
+        level: 'Master 2',
+        courses: [
+          'Asset Pricing and Investment Management',
+          'Sustainable Finance',
+          'Data Science for Finance',
+        ],
+      },
+    ],
     highlight: 'Rank 4/41',
   },
   {
@@ -109,6 +128,14 @@ export function AboutRoom() {
                 </strong>
                 .
               </p>
+              <p>
+                I also have a strong interest in{' '}
+                <strong className="font-semibold text-accent-primary">
+                  finance
+                </strong>{' '}
+                and have built a broad finance foundation through my master’s
+                coursework.
+              </p>
             </div>
 
             <div className="mt-9 flex flex-wrap items-center gap-3">
@@ -176,6 +203,35 @@ export function AboutRoom() {
                   <p className="mt-4 font-semibold text-accent-primary">
                     {item.highlight}
                   </p>
+                ) : null}
+                {'financeCourses' in item ? (
+                  <div className="mt-6 border-t border-line-subtle pt-5">
+                    <p className="text-xs font-semibold tracking-[0.12em] text-ink-muted uppercase">
+                      Finance coursework
+                    </p>
+                    <div className="mt-4 space-y-4">
+                      {item.financeCourses.map((courseGroup) => (
+                        <section
+                          aria-label={`${courseGroup.level} finance courses`}
+                          key={courseGroup.level}
+                        >
+                          <h4 className="text-sm font-semibold text-ink-primary">
+                            {courseGroup.level}
+                          </h4>
+                          <ul className="mt-2 flex flex-wrap gap-2">
+                            {courseGroup.courses.map((course) => (
+                              <li
+                                className="rounded-control bg-house-surface px-2.5 py-1.5 text-xs leading-5 text-ink-secondary"
+                                key={course}
+                              >
+                                {course}
+                              </li>
+                            ))}
+                          </ul>
+                        </section>
+                      ))}
+                    </div>
+                  </div>
                 ) : null}
               </article>
             ))}
