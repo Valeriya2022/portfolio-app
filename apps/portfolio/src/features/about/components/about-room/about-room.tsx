@@ -7,7 +7,7 @@ const education = [
     name: 'KU Leuven - Faculty of Economics and Business',
     location: 'Brussels, Belgium',
     description:
-      'Exchange Studies | Sep 2026 - Jan 2027 | ICT Strategy, Enterprise Architecture, Corporate Finance, Financial Markets',
+      'Exchange Studies | Sep 2026 - Jan 2027 | ICT Strategy and Architecture, Data Science for Finance',
   },
   {
     alt: 'IAE Montpellier logo',
@@ -16,7 +16,7 @@ const education = [
     location: 'IAE Montpellier, France',
     description: 'Sep 2025 - Aug 2027',
     focus:
-      'Research focus: Privacy Enhancing Technologies in International Companies.',
+      'Financial Accounting, International Finance and Exchange Markets, Information Systems.',
     highlight: 'Rank 4/41',
   },
   {
@@ -72,15 +72,15 @@ export function AboutRoom() {
               Hi, I’m Valeriya.
             </h1>
             <p className="mt-5 text-lg leading-7 font-medium text-accent-primary sm:text-xl sm:leading-8">
-              Senior Frontend Developer | React · TypeScript · C#/.NET |
-              Full-Stack Experience
+              Senior Software Engineer | Full-Stack
             </p>
             <p className="mt-5 max-w-3xl text-base leading-7 text-ink-secondary sm:text-lg">
               Open to{' '}
               <strong className="font-semibold text-ink-primary">
                 software engineering opportunities from February 2027
               </strong>{' '}
-              — CDI · CDD · 6-month internship (stage).
+              — CDI · CDD · internship (stage) in France, ideally remote or with
+              limited on-site presence.
             </p>
 
             <div className="mt-8 max-w-3xl space-y-5 text-base leading-7 text-ink-secondary sm:text-lg sm:leading-8">
@@ -89,23 +89,20 @@ export function AboutRoom() {
                 <strong className="font-semibold text-ink-primary">
                   5+ years of experience
                 </strong>{' '}
-                building web and mobile products with React, TypeScript, and
-                React Native, alongside substantial backend work with C#/.NET.
-                I’ve worked on everything{' '}
-                <strong className="font-semibold text-accent-primary">
-                  from landing pages to complex web and mobile applications
-                </strong>
-                , building products from scratch and improving existing
-                systems—from designing interfaces to developing the backend
-                logic behind them.
+                across frontend and backend development, specializing in React,
+                TypeScript, and C#/.NET. I build software from the ground up,
+                make technical decisions, modernize legacy applications, and
+                develop backend services. I also establish shared tooling and
+                automated checks to keep code quality consistent as products
+                grow.
               </p>
               <p>
                 I enjoy owning features from start to finish and understanding
                 the business behind what I build. That’s also why I’m pursuing a
-                master’s in International Business Engineering, with a
+                Master 2 in International Business Engineering, with a
                 particular interest in{' '}
                 <strong className="font-semibold text-ink-primary">
-                  ICT strategy and architecture
+                  product-focused engineering and enterprise architecture
                 </strong>
                 .
               </p>
@@ -210,7 +207,8 @@ export function AboutRoom() {
             <p>
               I speak{' '}
               <strong className="font-semibold text-ink-primary">
-                English, Russian, and conversational French
+                English — C1; French — B2 (working toward C1); Kazakh — Native;
+                Russian — Native/Fluent
               </strong>
               .
             </p>

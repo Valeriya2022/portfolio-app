@@ -15,22 +15,15 @@ describe('AboutRoom', () => {
     expect(
       await findByRole('heading', { name: 'Hi, I’m Valeriya.' }),
     ).toBeTruthy();
-    expect(
-      getByText(
-        'Senior Frontend Developer | React · TypeScript · C#/.NET | Full-Stack Experience',
-      ),
-    ).toBeTruthy();
+    expect(getByText('Senior Software Engineer | Full-Stack')).toBeTruthy();
     expect(getByText('5+ years of experience')).toBeTruthy();
-    expect(
-      getByText('from landing pages to complex web and mobile applications'),
-    ).toBeTruthy();
     expect(getByAltText('Valeriya Nikiforova')).toBeTruthy();
     expect(getByAltText('KU Leuven logo')).toBeTruthy();
     expect(getByAltText('IAE Montpellier logo')).toBeTruthy();
     expect(getByAltText('University of Central Asia logo')).toBeTruthy();
     expect(
       getByText(
-        'Research focus: Privacy Enhancing Technologies in International Companies.',
+        'Financial Accounting, International Finance and Exchange Markets, Information Systems.',
       ),
     ).toBeTruthy();
     expect(getByText('Rank 4/41')).toBeTruthy();
@@ -39,7 +32,7 @@ describe('AboutRoom', () => {
     expect(getByText('Sep 2018 - Jul 2022')).toBeTruthy();
     expect(
       getByText(
-        'Exchange Studies | Sep 2026 - Jan 2027 | ICT Strategy, Enterprise Architecture, Corporate Finance, Financial Markets',
+        'Exchange Studies | Sep 2026 - Jan 2027 | ICT Strategy and Architecture, Data Science for Finance',
       ),
     ).toBeTruthy();
     expect(getByText('Best Research Project Award')).toBeTruthy();
@@ -53,7 +46,7 @@ describe('AboutRoom', () => {
     expect(
       getByText('software engineering opportunities from February 2027'),
     ).toBeTruthy();
-    expect(getByText(/CDI · CDD · 6-month internship \(stage\)/)).toBeTruthy();
+    expect(getByText(/CDI · CDD · internship \(stage\)/)).toBeTruthy();
 
     expect(
       getByRole('link', {

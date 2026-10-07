@@ -4,22 +4,42 @@ import { ProjectMedia } from '../project-media';
 
 const experiences = [
   {
-    achievements: [
+    stories: [
       {
-        label: 'Ownership',
-        text: 'Owned frontend development across about 10 company web projects, including client-facing applications, internal products, web views, and landing pages; built with React, TypeScript, Vite, Redux, Nx, and SSR.',
+        title: 'Configurable Restaurant Dashboard',
+        problem:
+          'Every new report for marketing, delivery, or management required Analytics to prepare data, Backend to build an API, and Frontend to implement the UI.',
+        contribution:
+          'I built a configurable frontend system that transformed raw data into calculated metrics, tables, Recharts visualizations, and reusable widgets for role-specific dashboards.',
+        result:
+          'Restricted-access SQL queries and frontend data transformation enabled one-time Analytics setup while keeping sensitive data access role-based.',
       },
       {
-        label: 'Leadership',
-        text: 'Reviewed code, mentored developers, and contributed to technical decisions.',
+        title: 'Shared Architecture Across ~10 Applications',
+        problem:
+          'A growing collection of web applications needed less duplication, simpler maintenance, and consistent development practices.',
+        contribution:
+          'I set up an Nx monorepo with shared libraries and tooling, choosing Vertical Slice or Feature-Sliced Design according to each application’s size and complexity.',
+        result:
+          'Shared code reduced duplication, while feature-based organization and clear module boundaries kept the applications maintainable as they grew.',
       },
       {
-        label: 'Backend',
-        text: 'Developed backend features in C#/.NET 9, including restaurant menu functionality, admin features, and REST APIs; worked with PostgreSQL and MongoDB.',
+        title: 'Three Applications from Scratch to Production',
+        problem:
+          'A lightweight landing page and an internal dashboard had different requirements: fast page delivery for one, reliable use on poor networks for the other.',
+        contribution:
+          'I selected Astro for the landing page and React/PWA for the dashboard, and developed REST APIs, admin functionality, and business logic with C#/.NET 9, PostgreSQL, and MongoDB.',
+        result:
+          'I brought three new web applications to production, choosing the technology around the needs of each product.',
       },
       {
-        label: 'Interfaces',
-        text: 'Built shared UI components and responsive interfaces from Figma using Astro, Radix UI, and Tailwind CSS.',
+        title: 'Automated Quality Checks & Reporting',
+        problem:
+          'Coding conventions needed consistent enforcement, and weekly reporting relied on a recurring manual workflow.',
+        contribution:
+          'I turned team conventions into automated linting and pre-commit checks, and built a reporting bot that processed application data.',
+        result:
+          'Automated checks reduced back-and-forth in code reviews, and the bot replaced manual weekly updates.',
       },
     ],
     company: 'LLP ABR Tech',
@@ -41,26 +61,23 @@ const experiences = [
     ],
   },
   {
-    achievements: [
+    stories: [
       {
-        label: 'Delivery',
-        text: 'Helped deliver a startup web and mobile ordering product to production within a few months, working with rapid iterations and frequent releases.',
-      },
-      {
-        label: 'Ordering & payments',
-        text: 'Built the core mobile ordering flow with React Native, TypeScript, and Redux Toolkit, including card payments and Apple Pay; also developed the web ordering application with React/Next.js and unit tests.',
-      },
-      {
-        label: 'Production',
-        text: 'Implemented responsive Figma designs, analytics, performance optimizations, and production features using Gatsby, Styled Components, Firebase, and WebSockets.',
+        title: 'Mobile & Web Ordering Platform',
+        problem:
+          'The startup needed to launch quickly on iOS and have a fast route to users beyond iOS.',
+        contribution:
+          'I chose a React-based, mobile-first architecture and built the React Native ordering app with card payments, Apple Pay, native camera events, and WebSocket updates. I then reused and adapted the codebase for React/Next.js.',
+        result:
+          'The iOS product went from initial development to production in 4 months, followed by the web application in 1 month.',
       },
     ],
     company: 'NXT LVL PZA',
     dates: 'Jul 2022 - Feb 2023',
     location: 'London, UK · remote',
     media: 'nxt-lvl-pza',
-    metric: 'Months',
-    metricLabel: 'from startup iteration to production',
+    metric: '4 + 1',
+    metricLabel: 'months: iOS to production, then web',
     role: 'Mobile & Web Developer',
     technologies: [
       'React Native',
@@ -73,25 +90,22 @@ const experiences = [
     ],
   },
   {
-    achievements: [
+    stories: [
       {
-        label: 'Modernization',
-        text: 'Rewrote approximately 80% of a legacy JavaScript application in React and TypeScript, modernizing the codebase and improving maintainability.',
-      },
-      {
-        label: 'Product',
-        text: 'Developed and supported an electronic queue monitoring system for queues, employees, and departments using React, TypeScript, and Redux Toolkit.',
-      },
-      {
-        label: 'Migration',
-        text: 'Migrated desktop functionality to the web, adapted interfaces to client requirements, and built responsive layouts from Figma.',
+        title: 'Electronic Queue Management Platform',
+        problem:
+          'A legacy JavaScript application and desktop workflows were difficult to develop and maintain.',
+        contribution:
+          'I rewrote approximately 80% of the application in React and TypeScript, migrated desktop workflows to the web, and built polling-based real-time monitoring of queues, employees, and departments.',
+        result:
+          'The modernized codebase made maintenance easier and reduced the time needed to deliver new features and changes.',
       },
     ],
     company: 'LLP Bass Technology',
     dates: 'Jul 2020 - Jul 2022',
     location: 'Almaty, Kazakhstan · on-site',
     media: 'none',
-    metric: '80%',
+    metric: '~80%',
     metricLabel: 'of the legacy application rewritten',
     role: 'Software Developer',
     technologies: ['React', 'TypeScript', 'Redux Toolkit', 'Figma'],
@@ -112,9 +126,19 @@ const skillGroups = [
       'Redux / Redux Toolkit',
       'TanStack Router/Query',
       'SSR',
+      'PWA',
+      'WebSockets',
+      'Authentication / authorization / Single Sign-On',
+    ],
+  },
+  {
+    name: 'Architecture',
+    skills: [
+      'Frontend architecture',
+      'Feature-Sliced Design',
+      'Vertical Slice Architecture',
       'Nx monorepos',
-      'Astro',
-      'Gatsby',
+      'Performance optimization',
     ],
   },
   {
@@ -165,6 +189,7 @@ const skillGroups = [
       'React Testing Library',
       'Unit/integration testing',
       'ESLint',
+      'Husky',
       'Prettier',
       'GitHub/GitLab code review',
     ],
@@ -241,16 +266,30 @@ export function ProjectsRoom() {
                   </div>
                 </div>
 
-                <div className="mt-12 grid gap-x-12 gap-y-10 md:grid-cols-2">
-                  {experience.achievements.map((achievement, index) => (
-                    <ScrollReveal delay={index * 0.04} key={achievement.label}>
-                      <section aria-label={achievement.label}>
-                        <p className="text-xs font-semibold tracking-[0.12em] text-accent-primary uppercase">
-                          {achievement.label}
-                        </p>
-                        <p className="mt-3 leading-7 text-ink-secondary">
-                          {achievement.text}
-                        </p>
+                <div className="mt-12 space-y-10">
+                  {experience.stories.map((story, index) => (
+                    <ScrollReveal delay={index * 0.04} key={story.title}>
+                      <section aria-label={story.title}>
+                        <h3 className="text-xl font-semibold tracking-tight text-ink-primary sm:text-2xl">
+                          {story.title}
+                        </h3>
+                        <dl className="mt-5 space-y-4 leading-7">
+                          {[
+                            ['Problem', story.problem],
+                            ['My contribution', story.contribution],
+                            ['Architecture & result', story.result],
+                          ].map(([label, text]) => (
+                            <div
+                              className="grid gap-1 sm:grid-cols-[11rem_1fr] sm:gap-6"
+                              key={label}
+                            >
+                              <dt className="font-semibold text-accent-primary">
+                                {label}
+                              </dt>
+                              <dd className="text-ink-secondary">{text}</dd>
+                            </div>
+                          ))}
+                        </dl>
                       </section>
                     </ScrollReveal>
                   ))}

@@ -29,7 +29,7 @@ describe('ProjectsRoom', () => {
     ).toBeTruthy();
 
     expect(getByText('~10')).toBeTruthy();
-    expect(getByText('80%')).toBeTruthy();
+    expect(getByText('~80%')).toBeTruthy();
 
     const bassTechnologies = getByRole('list', {
       name: 'LLP Bass Technology technologies',
