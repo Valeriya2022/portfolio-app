@@ -4,16 +4,15 @@ import { ProjectsRoom } from './projects-room';
 
 describe('ProjectsRoom', () => {
   it('renders professional experience, supplied media, and technical skills', () => {
-    const { getByAltText, getByLabelText, getByRole, getByText } = render(
-      <ProjectsRoom />,
-    );
+    const { getByAltText, getByLabelText, getByRole, getByText, getAllByText } =
+      render(<ProjectsRoom />);
 
     expect(
       getByRole('heading', { name: 'Professional Experience' }),
     ).toBeTruthy();
-    expect(getByText(/LLP ABR Tech/)).toBeTruthy();
-    expect(getByText(/NXT LVL PZA/)).toBeTruthy();
-    expect(getByText(/LLP Bass Technology/)).toBeTruthy();
+    expect(getAllByText(/LLP ABR Tech/).length).toBeGreaterThan(0);
+    expect(getAllByText(/NXT LVL PZA/).length).toBeGreaterThan(0);
+    expect(getAllByText(/LLP Bass Technology/).length).toBeGreaterThan(0);
     expect(getByLabelText('LLP ABR Tech project recordings')).toBeTruthy();
     const firstRecording = getByLabelText('LLP ABR Tech project recording 1');
     expect(firstRecording).toBeTruthy();

@@ -23,7 +23,7 @@ describe('AboutRoom', () => {
     expect(getByAltText('University of Central Asia logo')).toBeTruthy();
     expect(
       getByText(
-        'Financial Accounting, International Finance and Exchange Markets, Information Systems.',
+        'Financial Accounting, International Finance and Exchange Markets,',
       ),
     ).toBeTruthy();
     expect(getByText('Rank 4/41')).toBeTruthy();
@@ -31,9 +31,7 @@ describe('AboutRoom', () => {
     expect(getByText('Sep 2025 - Aug 2027')).toBeTruthy();
     expect(getByText('Sep 2018 - Jul 2022')).toBeTruthy();
     expect(
-      getByText(
-        'Exchange Studies | Sep 2026 - Jan 2027 | ICT Strategy and Architecture, Data Science for Finance',
-      ),
+      getByText('ICT Strategy and Architecture, Data Science for Finance'),
     ).toBeTruthy();
     expect(getByText('Best Research Project Award')).toBeTruthy();
     expect(

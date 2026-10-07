@@ -4,43 +4,13 @@ import { ProjectMedia } from '../project-media';
 
 const experiences = [
   {
-    stories: [
-      {
-        title: 'Configurable Restaurant Dashboard',
-        problem:
-          'Every new report for marketing, delivery, or management required Analytics to prepare data, Backend to build an API, and Frontend to implement the UI.',
-        contribution:
-          'I built a configurable frontend system that transformed raw data into calculated metrics, tables, Recharts visualizations, and reusable widgets for role-specific dashboards.',
-        result:
-          'Restricted-access SQL queries and frontend data transformation enabled one-time Analytics setup while keeping sensitive data access role-based.',
-      },
-      {
-        title: 'Shared Architecture Across ~10 Applications',
-        problem:
-          'A growing collection of web applications needed less duplication, simpler maintenance, and consistent development practices.',
-        contribution:
-          'I set up an Nx monorepo with shared libraries and tooling, choosing Vertical Slice or Feature-Sliced Design according to each application’s size and complexity.',
-        result:
-          'Shared code reduced duplication, while feature-based organization and clear module boundaries kept the applications maintainable as they grew.',
-      },
-      {
-        title: 'Three Applications from Scratch to Production',
-        problem:
-          'A lightweight landing page and an internal dashboard had different requirements: fast page delivery for one, reliable use on poor networks for the other.',
-        contribution:
-          'I selected Astro for the landing page and React/PWA for the dashboard, and developed REST APIs, admin functionality, and business logic with C#/.NET 9, PostgreSQL, and MongoDB.',
-        result:
-          'I brought three new web applications to production, choosing the technology around the needs of each product.',
-      },
-      {
-        title: 'Automated Quality Checks & Reporting',
-        problem:
-          'Coding conventions needed consistent enforcement, and weekly reporting relied on a recurring manual workflow.',
-        contribution:
-          'I turned team conventions into automated linting and pre-commit checks, and built a reporting bot that processed application data.',
-        result:
-          'Automated checks reduced back-and-forth in code reviews, and the bot replaced manual weekly updates.',
-      },
+    achievements: [
+      'Set up an Nx monorepo for ~10 web applications, introducing shared libraries and consistent tooling to reduce duplication and simplify maintenance across products.',
+      'Built 3 web applications from scratch and brought them to production; selected Astro for a lightweight, fast landing page and React/PWA for an internal dashboard requiring fast loading and reliable use on poor networks.',
+      'Adopted Vertical Slice or Feature-Sliced Design architecture depending on application size and complexity, keeping code organized around business features and maintaining clear module boundaries as applications grew.',
+      'Turned team coding conventions into automated linting and pre-commit checks, reducing back-and-forth in code reviews and keeping standards consistent across the codebase.',
+      'Developed REST APIs, admin functionality, and business logic with C#/.NET 9; worked with PostgreSQL and MongoDB.',
+      'Built a reporting bot that processed application data and automated weekly updates, replacing a recurring manual workflow.',
     ],
     company: 'LLP ABR Tech',
     dates:
@@ -61,16 +31,10 @@ const experiences = [
     ],
   },
   {
-    stories: [
-      {
-        title: 'Mobile & Web Ordering Platform',
-        problem:
-          'The startup needed to launch quickly on iOS and have a fast route to users beyond iOS.',
-        contribution:
-          'I chose a React-based, mobile-first architecture and built the React Native ordering app with card payments, Apple Pay, native camera events, and WebSocket updates. I then reused and adapted the codebase for React/Next.js.',
-        result:
-          'The iOS product went from initial development to production in 4 months, followed by the web application in 1 month.',
-      },
+    achievements: [
+      'Delivered a React Native iOS ordering app with card payments and Apple Pay from initial development to production within 4 months, working in a fast-moving startup environment with rapid iterations and frequent releases.',
+      'Chose a React-based, mobile-first approach to enable fast expansion beyond iOS, reusing and adapting the codebase to deliver a React/Next.js web app in 1 month.',
+      'Built native mobile integrations, including camera events, and implemented WebSocket communication for real-time application updates.',
     ],
     company: 'NXT LVL PZA',
     dates: 'Jul 2022 - Feb 2023',
@@ -90,16 +54,9 @@ const experiences = [
     ],
   },
   {
-    stories: [
-      {
-        title: 'Electronic Queue Management Platform',
-        problem:
-          'A legacy JavaScript application and desktop workflows were difficult to develop and maintain.',
-        contribution:
-          'I rewrote approximately 80% of the application in React and TypeScript, migrated desktop workflows to the web, and built polling-based real-time monitoring of queues, employees, and departments.',
-        result:
-          'The modernized codebase made maintenance easier and reduced the time needed to deliver new features and changes.',
-      },
+    achievements: [
+      'Modernized ~80% of a legacy JavaScript application in React and TypeScript, simplifying future development and significantly reducing the time required to deliver new features and changes.',
+      'Built core functionality for a production queue management platform, implementing polling-based real-time monitoring of queues.',
     ],
     company: 'LLP Bass Technology',
     dates: 'Jul 2020 - Jul 2022',
@@ -112,6 +69,39 @@ const experiences = [
   },
 ] as const;
 
+const selectedProjects = [
+  {
+    company: 'LLP ABR Tech',
+    title: 'Configurable Restaurant Dashboard',
+    problem:
+      'Every new report for marketing, delivery, or management required Analytics to prepare data, Backend to build an API, and Frontend to implement the UI.',
+    contribution:
+      'I built a configurable frontend system that transformed raw data into calculated metrics, tables, Recharts visualizations, and reusable widgets for role-specific dashboards.',
+    result:
+      'Restricted-access SQL queries and frontend data transformation enabled one-time Analytics setup while keeping sensitive data access role-based.',
+  },
+  {
+    company: 'NXT LVL PZA',
+    title: 'Mobile & Web Ordering Platform',
+    problem:
+      'The startup needed to launch quickly on iOS and have a fast route to users beyond iOS.',
+    contribution:
+      'I chose a React-based, mobile-first architecture and built the React Native ordering app with card payments, Apple Pay, native camera events, and WebSocket updates. I then reused and adapted the codebase for React/Next.js.',
+    result:
+      'The iOS product went from initial development to production in 4 months, followed by the web application in 1 month.',
+  },
+  {
+    company: 'LLP Bass Technology',
+    title: 'Electronic Queue Management Platform',
+    problem:
+      'A legacy JavaScript application and desktop workflows were difficult to develop and maintain.',
+    contribution:
+      'I rewrote approximately 80% of the application in React and TypeScript, migrated desktop workflows to the web, and built polling-based real-time monitoring of queues, employees, and departments.',
+    result:
+      'The modernized codebase made maintenance easier and reduced the time needed to deliver new features and changes.',
+  },
+] as const;
+
 const skillGroups = [
   {
     name: 'Frontend & Mobile',
@@ -121,6 +111,8 @@ const skillGroups = [
       'JavaScript (ES6+)',
       'React Native',
       'Next.js',
+      'Astro',
+      'Gatsby',
       'Vite',
       'Webpack',
       'Redux / Redux Toolkit',
@@ -167,6 +159,8 @@ const skillGroups = [
       'date-fns',
       'Axios',
       'XLSX',
+      'Apple Pay',
+      'Firebase',
       'Google Maps API',
       'reCAPTCHA',
       'Video.js',
@@ -266,34 +260,14 @@ export function ProjectsRoom() {
                   </div>
                 </div>
 
-                <div className="mt-12 space-y-10">
-                  {experience.stories.map((story, index) => (
-                    <ScrollReveal delay={index * 0.04} key={story.title}>
-                      <section aria-label={story.title}>
-                        <h3 className="text-xl font-semibold tracking-tight text-ink-primary sm:text-2xl">
-                          {story.title}
-                        </h3>
-                        <dl className="mt-5 space-y-4 leading-7">
-                          {[
-                            ['Problem', story.problem],
-                            ['My contribution', story.contribution],
-                            ['Architecture & result', story.result],
-                          ].map(([label, text]) => (
-                            <div
-                              className="grid gap-1 sm:grid-cols-[11rem_1fr] sm:gap-6"
-                              key={label}
-                            >
-                              <dt className="font-semibold text-accent-primary">
-                                {label}
-                              </dt>
-                              <dd className="text-ink-secondary">{text}</dd>
-                            </div>
-                          ))}
-                        </dl>
-                      </section>
-                    </ScrollReveal>
+                <ul
+                  aria-label={`${experience.company} responsibilities and achievements`}
+                  className="mt-10 list-disc space-y-4 pl-5 leading-7 text-ink-secondary marker:text-accent-primary"
+                >
+                  {experience.achievements.map((achievement) => (
+                    <li key={achievement}>{achievement}</li>
                   ))}
-                </div>
+                </ul>
 
                 <ul
                   aria-label={`${experience.company} technologies`}
@@ -361,6 +335,49 @@ export function ProjectsRoom() {
             </ScrollReveal>
           ))}
         </div>
+
+        <section
+          aria-labelledby="selected-projects-title"
+          className="border-t border-line-subtle py-16 sm:py-24"
+        >
+          <h2
+            id="selected-projects-title"
+            className="text-3xl font-semibold tracking-[-0.03em] text-ink-primary sm:text-4xl"
+          >
+            Selected Projects
+          </h2>
+          <div className="mt-10 space-y-12">
+            {selectedProjects.map((project) => (
+              <ScrollReveal key={project.title}>
+                <article aria-label={project.title}>
+                  <p className="text-sm font-medium text-accent-primary">
+                    {project.company}
+                  </p>
+                  <h3 className="mt-2 text-xl font-semibold tracking-tight text-ink-primary sm:text-2xl">
+                    {project.title}
+                  </h3>
+                  <dl className="mt-5 space-y-4 leading-7">
+                    {[
+                      ['Problem', project.problem],
+                      ['My contribution', project.contribution],
+                      ['Architecture & result', project.result],
+                    ].map(([label, text]) => (
+                      <div
+                        className="grid gap-1 sm:grid-cols-[11rem_1fr] sm:gap-6"
+                        key={label}
+                      >
+                        <dt className="font-semibold text-accent-primary">
+                          {label}
+                        </dt>
+                        <dd className="text-ink-secondary">{text}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </article>
+              </ScrollReveal>
+            ))}
+          </div>
+        </section>
 
         <ScrollReveal>
           <section

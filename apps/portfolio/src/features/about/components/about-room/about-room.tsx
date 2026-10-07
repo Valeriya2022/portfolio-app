@@ -6,8 +6,8 @@ const education = [
     image: '/images/about/ku-leuven.png',
     name: 'KU Leuven - Faculty of Economics and Business',
     location: 'Brussels, Belgium',
-    description:
-      'Exchange Studies | Sep 2026 - Jan 2027 | ICT Strategy and Architecture, Data Science for Finance',
+    description: 'Exchange Studies | Sep 2026 - Jan 2027',
+    focus: 'ICT Strategy and Architecture, Data Science for Finance',
   },
   {
     alt: 'IAE Montpellier logo',
@@ -15,8 +15,9 @@ const education = [
     name: 'Master in International Business Engineering',
     location: 'IAE Montpellier, France',
     description: 'Sep 2025 - Aug 2027',
-    focus:
-      'Financial Accounting, International Finance and Exchange Markets, Information Systems.',
+    courses:
+      'Financial Accounting, International Finance and Exchange Markets,',
+    focus: 'Information Systems',
     highlight: 'Rank 4/41',
   },
   {
@@ -173,8 +174,11 @@ export function AboutRoom() {
                   </p>
                 ) : null}
                 {'focus' in item ? (
-                  <p className="mt-4 font-semibold leading-7 text-accent-primary">
-                    {item.focus}
+                  <p className="mt-4 leading-7 text-ink-secondary">
+                    {'courses' in item ? <>{item.courses} </> : null}
+                    <strong className="font-semibold text-accent-primary">
+                      {item.focus}
+                    </strong>
                   </p>
                 ) : null}
                 {'highlight' in item ? (
