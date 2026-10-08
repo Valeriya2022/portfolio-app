@@ -5,12 +5,13 @@ import { ProjectMedia } from '../project-media';
 const experiences = [
   {
     achievements: [
-      'Set up an Nx monorepo for ~10 web applications, introducing shared libraries and consistent tooling to reduce duplication and simplify maintenance across products.',
-      'Built 3 web applications from scratch and brought them to production; selected Astro for a lightweight, fast landing page and React/PWA for an internal dashboard requiring fast loading and reliable use on poor networks.',
+      'Led frontend development across ~10 web applications and set up an Nx monorepo with a shared UI component library, packages, and dependencies, reducing duplicated work and accelerating development across products.',
+      'Built and launched 3 web applications from scratch; selected React/PWA for an internal dashboard requiring fast loading and reliable use on poor networks, and Astro for a lightweight, fast landing page.',
       'Adopted Vertical Slice or Feature-Sliced Design architecture depending on application size and complexity, keeping code organized around business features and maintaining clear module boundaries as applications grew.',
       'Turned team coding conventions into automated linting and pre-commit checks, reducing back-and-forth in code reviews and keeping standards consistent across the codebase.',
       'Developed REST APIs, admin functionality, and business logic with C#/.NET 9; worked with PostgreSQL and MongoDB.',
       'Built a reporting bot that processed application data and automated weekly updates, replacing a recurring manual workflow.',
+      'Leveraged AI-assisted development tools to accelerate implementation and debugging, while reviewing generated code to ensure reuse of existing components, avoid unnecessary complexity, and maintain architectural consistency.',
     ],
     company: 'LLP ABR Tech',
     dates:
@@ -199,6 +200,7 @@ const skillGroups = [
       'Docker',
       'Agile/Scrum',
       'Kanban',
+      'AI-assisted development',
     ],
   },
 ] as const;
@@ -222,6 +224,14 @@ export function ProjectsRoom() {
             <p className="mt-5 text-lg leading-8 text-ink-secondary sm:text-xl">
               5+ years building and shipping web, mobile, and full-stack
               products.
+            </p>
+            <p className="mt-5 max-w-3xl text-base leading-7 text-ink-secondary sm:text-lg">
+              Open to{' '}
+              <strong className="font-semibold text-ink-primary">
+                software engineering opportunities from February 2027
+              </strong>{' '}
+              — CDI · CDD in France, ideally remote or with limited on-site
+              presence.
             </p>
           </header>
         </ScrollReveal>
@@ -415,6 +425,15 @@ export function ProjectsRoom() {
                 </section>
               ))}
             </div>
+            <section className="grid gap-4 border-b border-line-subtle py-6 md:grid-cols-[13rem_1fr] md:gap-10">
+              <h3 className="font-semibold text-ink-primary">
+                Technical Communication
+              </h3>
+              <p className="leading-7 text-ink-secondary">
+                I break down complex technical problems into simple, clear
+                explanations that anyone can understand.
+              </p>
+            </section>
           </section>
         </ScrollReveal>
       </div>

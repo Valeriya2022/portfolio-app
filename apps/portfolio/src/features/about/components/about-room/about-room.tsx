@@ -4,21 +4,21 @@ const education = [
   {
     alt: 'KU Leuven logo',
     image: '/images/about/ku-leuven.png',
-    name: 'KU Leuven - Faculty of Economics and Business',
-    location: 'Brussels, Belgium',
+    name: 'Master’s in International Business Engineering',
+    location: 'KU Leuven, Brussels, Belgium',
     description: 'Exchange Studies | Sep 2026 - Jan 2027',
     focus: 'ICT Strategy and Architecture, Data Science for Finance',
   },
   {
     alt: 'IAE Montpellier logo',
     image: '/images/about/iae-montpellier.png',
-    name: 'Master in International Business Engineering',
+    name: 'Master’s in International Business Engineering',
     location: 'IAE Montpellier, France',
     description: 'Sep 2025 - Aug 2027',
     courses:
       'Financial Accounting, International Finance and Exchange Markets,',
     focus: 'Information Systems',
-    highlight: 'Rank 4/41',
+    highlight: 'Grade 15.979/20 · Rank 4/41',
   },
   {
     alt: 'University of Central Asia logo',
@@ -30,18 +30,6 @@ const education = [
     awardDescription:
       'for building a low-cost digital library for remote regions using Raspberry Pi.',
     highlight: 'Magna cum laude',
-  },
-] as const;
-
-const contactLinks = [
-  { href: 'mailto:nikavella2022@gmail.com', label: 'nikavella2022@gmail.com' },
-  {
-    href: 'https://linkedin.com/in/valeriya-nikiforova',
-    label: 'linkedin.com/in/valeriya-nikiforova',
-  },
-  {
-    href: 'https://github.com/Valeriya2022',
-    label: 'github.com/Valeriya2022',
   },
 ] as const;
 
@@ -80,8 +68,8 @@ export function AboutRoom() {
               <strong className="font-semibold text-ink-primary">
                 software engineering opportunities from February 2027
               </strong>{' '}
-              — CDI · CDD · internship (stage) in France, ideally remote or with
-              limited on-site presence.
+              — CDI · CDD in France, ideally remote or with limited on-site
+              presence.
             </p>
 
             <div className="mt-8 max-w-3xl space-y-5 text-base leading-7 text-ink-secondary sm:text-lg sm:leading-8">
@@ -98,22 +86,16 @@ export function AboutRoom() {
                 grow.
               </p>
               <p>
-                I enjoy owning features from start to finish and understanding
-                the business behind what I build. That’s also why I’m pursuing a
-                Master 2 in International Business Engineering, with a
-                particular interest in{' '}
+                Through my master’s in International Business Engineering, I’m
+                expanding beyond the technical side into{' '}
                 <strong className="font-semibold text-ink-primary">
-                  product-focused engineering and enterprise architecture
+                  product, business strategy, and ICT architecture
                 </strong>
                 .
               </p>
               <p>
-                I also have a strong interest in{' '}
-                <strong className="font-semibold text-accent-primary">
-                  finance
-                </strong>{' '}
-                and have built a broad finance foundation through my master’s
-                coursework.
+                I still enjoy good code, but I’m increasingly interested in the
+                decisions that happen before anyone opens the IDE.
               </p>
             </div>
 
@@ -147,7 +129,7 @@ export function AboutRoom() {
             {education.map((item) => (
               <article
                 className="glass-surface flex min-h-full flex-col p-5 sm:p-6"
-                key={item.name}
+                key={item.image}
               >
                 <div className="mb-8 flex h-24 items-center justify-center overflow-hidden rounded-control bg-white p-4">
                   <img
@@ -189,47 +171,6 @@ export function AboutRoom() {
               </article>
             ))}
           </div>
-        </section>
-
-        <section
-          aria-labelledby="connect-title"
-          className="border-t border-line-subtle pt-12"
-        >
-          <h2
-            className="text-3xl font-semibold tracking-[-0.03em] text-ink-primary sm:text-4xl"
-            id="connect-title"
-          >
-            Let’s connect
-          </h2>
-          <div className="mt-6 max-w-3xl space-y-4 text-base leading-7 text-ink-secondary sm:text-lg sm:leading-8">
-            <p>
-              <strong className="font-semibold text-ink-primary">
-                Occitanie, France | Remote
-              </strong>
-              .
-            </p>
-            <p>
-              I speak{' '}
-              <strong className="font-semibold text-ink-primary">
-                English — C1; French — B2 (working toward C1); Kazakh — Native;
-                Russian — Native/Fluent
-              </strong>
-              .
-            </p>
-          </div>
-          <nav aria-label="Contact links" className="mt-8 flex flex-wrap gap-3">
-            {contactLinks.map((link) => (
-              <a
-                className="glass-control inline-flex min-h-11 items-center px-4 text-sm font-medium"
-                href={link.href}
-                key={link.label}
-                rel="noreferrer"
-                target={link.href.startsWith('http') ? '_blank' : undefined}
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
         </section>
       </div>
     </section>

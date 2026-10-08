@@ -21,12 +21,7 @@ describe('AboutRoom', () => {
     expect(getByAltText('KU Leuven logo')).toBeTruthy();
     expect(getByAltText('IAE Montpellier logo')).toBeTruthy();
     expect(getByAltText('University of Central Asia logo')).toBeTruthy();
-    expect(
-      getByText(
-        'Financial Accounting, International Finance and Exchange Markets,',
-      ),
-    ).toBeTruthy();
-    expect(getByText('Rank 4/41')).toBeTruthy();
+    expect(getByText('Grade 15.979/20 · Rank 4/41')).toBeTruthy();
     expect(getByText('Magna cum laude')).toBeTruthy();
     expect(getByText('Sep 2025 - Aug 2027')).toBeTruthy();
     expect(getByText('Sep 2018 - Jul 2022')).toBeTruthy();
@@ -44,7 +39,7 @@ describe('AboutRoom', () => {
     expect(
       getByText('software engineering opportunities from February 2027'),
     ).toBeTruthy();
-    expect(getByText(/CDI · CDD · internship \(stage\)/)).toBeTruthy();
+    expect(getByText(/CDI · CDD in France/)).toBeTruthy();
 
     expect(
       getByRole('link', {
