@@ -98,11 +98,9 @@ export const french: Record<string, string> = {
   'ABR website': 'Site web ABR',
   'QR landing page': 'Page de présentation QR',
   'Offline menu': 'Menu hors ligne',
-  'Live client-facing apps': 'Applications côté client en ligne',
-  'I fully built each of these client-facing apps. They represent only part of my work at ABR Tech, which also included substantial backend development and work on internal services.':
-    'J’ai entièrement développé chacune de ces applications côté client. Elles ne représentent qu’une partie de mon travail chez ABR Tech, qui comprenait également un important travail de développement backend et sur les services internes.',
-  'Client-facing app fully built by me.':
-    'Application côté client entièrement développée par moi.',
+  'Selected live projects': 'Sélection de projets en ligne',
+  'I independently developed each of these customer-facing applications. These public examples represent a small part of my work at ABR Tech, where I also contributed extensively to backend systems and internal services.':
+    'J’ai développé seule chacune de ces applications destinées aux clients. Ces exemples accessibles au public ne représentent qu’une petite partie de mon travail chez ABR Tech, où j’ai également largement contribué au développement des systèmes backend et des services internes.',
   '(opens in a new tab)': '(s’ouvre dans un nouvel onglet)',
   'Configurable Restaurant Dashboard':
     'Tableau de bord configurable pour la restauration',
