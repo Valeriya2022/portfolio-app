@@ -1,42 +1,46 @@
+import { useLanguage } from '../../../language';
 import { Link } from '@tanstack/react-router';
 
-const education = [
-  {
-    alt: 'KU Leuven logo',
-    image: '/images/about/ku-leuven.png',
-    name: 'Master’s in International Business Engineering',
-    location: 'KU Leuven, Brussels, Belgium',
-    description: 'Exchange Studies | Sep 2026 - Jan 2027',
-    focus: 'ICT Strategy and Architecture, Data Science for Finance',
-  },
-  {
-    alt: 'IAE Montpellier logo',
-    image: '/images/about/iae-montpellier.png',
-    name: 'Master’s in International Business Engineering',
-    location: 'IAE Montpellier, France',
-    description: 'Sep 2025 - Aug 2027',
-    courses:
-      'Financial Accounting, International Finance and Exchange Markets,',
-    focus: 'Information Systems',
-    highlight: 'Grade 15.979/20 · Rank 4/41',
-  },
-  {
-    alt: 'University of Central Asia logo',
-    image: '/images/about/university-of-central-asia.png',
-    name: 'BSc Computer Science',
-    location: 'University of Central Asia, Kyrgyzstan',
-    description: 'Sep 2018 - Jul 2022',
-    award: 'Best Research Project Award',
-    awardDescription:
-      'for building a low-cost digital library for remote regions using Raspberry Pi.',
-    highlight: 'Magna cum laude',
-  },
-] as const;
-
 export function AboutRoom() {
+  const { t } = useLanguage();
+  const education = [
+    {
+      alt: t('KU Leuven logo'),
+      image: '/images/about/ku-leuven.png',
+      name: t('Master’s in International Business Engineering'),
+      location: t('KU Leuven, Brussels, Belgium'),
+      description: t('Exchange Studies | Sep 2026 - Jan 2027'),
+      focus: t('ICT Strategy and Architecture, Data Science for Finance'),
+    },
+    {
+      alt: t('IAE Montpellier logo'),
+      image: '/images/about/iae-montpellier.png',
+      name: t('Master’s in International Business Engineering'),
+      location: 'IAE Montpellier, France',
+      description: t('Sep 2025 - Aug 2027'),
+      courses: t(
+        'Financial Accounting, International Finance and Exchange Markets,',
+      ),
+      focus: t('Information Systems'),
+      highlight: t('Grade 15.979/20 · Rank 4/41'),
+    },
+    {
+      alt: t('University of Central Asia logo'),
+      image: '/images/about/university-of-central-asia.png',
+      name: t('BSc Computer Science'),
+      location: t('University of Central Asia, Kyrgyzstan'),
+      description: t('Sep 2018 - Jul 2022'),
+      award: t('Best Research Project Award'),
+      awardDescription: t(
+        'for building a low-cost digital library for remote regions using Raspberry Pi.',
+      ),
+      highlight: t('Magna cum laude'),
+    },
+  ] as const;
+
   return (
     <section
-      aria-label="About Me"
+      aria-label={t('About Me')}
       className="min-h-svh px-room-inline pt-28 pb-room-block sm:pt-32"
       data-room="About"
       id="room-entrance"
@@ -58,44 +62,44 @@ export function AboutRoom() {
               className="text-[clamp(2.5rem,6vw,5rem)] leading-[0.98] font-semibold tracking-[-0.045em] text-ink-primary"
               id="about-title"
             >
-              Hi, I’m Valeriya.
+              {t('Hi, I’m Valeriya.')}
             </h1>
             <p className="mt-5 text-lg leading-7 font-medium text-accent-primary sm:text-xl sm:leading-8">
-              Senior Software Engineer | Full-Stack
+              {t('Senior Software Engineer | Full-Stack')}
             </p>
             <p className="mt-5 max-w-3xl text-base leading-7 text-ink-secondary sm:text-lg">
-              Open to{' '}
+              {t('Open to')}{' '}
               <strong className="font-semibold text-ink-primary">
-                software engineering opportunities from February 2027
+                {t('software engineering opportunities from February 2027')}
               </strong>{' '}
-              — CDI · CDD in France, ideally remote or with limited on-site
-              presence.
+              {t(
+                '— CDI · CDD in France, ideally remote or with limited on-site presence.',
+              )}
             </p>
 
             <div className="mt-8 max-w-3xl space-y-5 text-base leading-7 text-ink-secondary sm:text-lg sm:leading-8">
               <p>
-                I have{' '}
+                {t('I have')}{' '}
                 <strong className="font-semibold text-ink-primary">
-                  5+ years of experience
+                  {t('5+ years of experience')}
                 </strong>{' '}
-                across frontend and backend development, specializing in React,
-                TypeScript, and C#/.NET. I build software from the ground up,
-                make technical decisions, modernize legacy applications, and
-                develop backend services. I also establish shared tooling and
-                automated checks to keep code quality consistent as products
-                grow.
+                {t(
+                  'across frontend and backend development, specializing in React, TypeScript, and C#/.NET. I build software from the ground up, make technical decisions, modernize legacy applications, and develop backend services. I also establish shared tooling and automated checks to keep code quality consistent as products grow.',
+                )}
               </p>
               <p>
-                Through my master’s in International Business Engineering, I’m
-                expanding beyond the technical side into{' '}
+                {t(
+                  'Through my master’s in International Business Engineering, I’m expanding beyond the technical side into',
+                )}{' '}
                 <strong className="font-semibold text-ink-primary">
-                  product, business strategy, and ICT architecture
+                  {t('product, business strategy, and ICT architecture')}
                 </strong>
                 .
               </p>
               <p>
-                I still enjoy good code, but I’m increasingly interested in the
-                decisions that happen before anyone opens the IDE.
+                {t(
+                  'I still enjoy good code, but I’m increasingly interested in the decisions that happen before anyone opens the IDE.',
+                )}
               </p>
             </div>
 
@@ -104,14 +108,14 @@ export function AboutRoom() {
                 className="glass-control inline-flex min-h-11 items-center px-4 text-sm font-medium"
                 to="/portfolio"
               >
-                Explore my experience &amp; projects →
+                {t('Explore my experience & projects →')}
               </Link>
               <a
                 className="inline-flex min-h-11 items-center rounded-control px-4 text-sm font-medium text-ink-primary underline decoration-line-default underline-offset-4 transition-colors hover:decoration-ink-primary"
                 download
                 href="/documents/Valeriya_Nikiforova_CV.pdf"
               >
-                Download CV
+                {t('Download CV')}
               </a>
             </div>
           </div>
@@ -122,7 +126,7 @@ export function AboutRoom() {
             className="text-3xl font-semibold tracking-[-0.03em] text-ink-primary sm:text-4xl"
             id="education-title"
           >
-            Education
+            {t('Education')}
           </h2>
 
           <div className="mt-8 grid gap-4 md:grid-cols-3">

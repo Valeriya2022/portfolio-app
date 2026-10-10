@@ -1,3 +1,4 @@
+import { useLanguage, LanguageControl } from '../../../language';
 import { Link } from '@tanstack/react-router';
 import { useEffect, useRef, useState } from 'react';
 
@@ -5,6 +6,7 @@ import { ThemeControl } from '../../../theme';
 import { publishedRooms } from '../../model/rooms';
 
 export function RoomNavigation() {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const sidebarRef = useRef<HTMLElement>(null);
@@ -42,7 +44,7 @@ export function RoomNavigation() {
       >
         <div className="mx-auto flex h-12 min-w-0 max-w-[90rem] items-center gap-3 px-4 sm:h-14 sm:gap-5 sm:px-room-inline">
           <Link
-            aria-label="Valeriya Nikiforova — home"
+            aria-label={t('Valeriya Nikiforova — home')}
             className="shrink-0 text-sm font-semibold text-ink-primary"
             to="/"
           >
@@ -50,7 +52,7 @@ export function RoomNavigation() {
           </Link>
 
           <nav
-            aria-label="Portfolio sections"
+            aria-label={t('Portfolio sections')}
             className="hidden min-w-0 flex-1 items-center justify-center gap-1 md:flex"
           >
             {publishedRooms.map((room) => (
@@ -61,12 +63,13 @@ export function RoomNavigation() {
                 key={room.id}
                 to={room.path}
               >
-                {room.navLabel}
+                {t(room.navLabel)}
               </Link>
             ))}
           </nav>
 
           <div className="ml-auto hidden shrink-0 items-center gap-3 md:flex">
+            <LanguageControl />
             <ThemeControl />
           </div>
 
@@ -77,20 +80,20 @@ export function RoomNavigation() {
             onClick={() => setIsOpen((open) => !open)}
             type="button"
           >
-            {isOpen ? 'Close' : 'Menu'}
+            {isOpen ? t('Close') : 'Menu'}
           </button>
         </div>
       </header>
 
       {isOpen && (
         <aside
-          aria-label="Portfolio sidebar"
+          aria-label={t('Portfolio sidebar')}
           className="glass-surface fixed bottom-3 right-3 top-[4.5rem] z-50 w-[min(18rem,calc(100vw-1.5rem))] rounded-panel p-4 md:hidden"
           id="portfolio-sidebar"
           ref={sidebarRef}
         >
           <nav
-            aria-label="Mobile portfolio sections"
+            aria-label={t('Mobile portfolio sections')}
             className="flex flex-col gap-1"
           >
             {publishedRooms.map((room) => (
@@ -102,12 +105,13 @@ export function RoomNavigation() {
                 onClick={() => setIsOpen(false)}
                 to={room.path}
               >
-                {room.navLabel}
+                {t(room.navLabel)}
               </Link>
             ))}
           </nav>
 
-          <div className="mt-6 border-t border-border-subtle pt-4">
+          <div className="mt-6 flex flex-wrap gap-3 border-t border-border-subtle pt-4">
+            <LanguageControl />
             <ThemeControl />
           </div>
         </aside>

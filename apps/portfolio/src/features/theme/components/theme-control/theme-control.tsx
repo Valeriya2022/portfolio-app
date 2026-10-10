@@ -1,12 +1,18 @@
+import { useLanguage } from '../../../language';
 import { useTheme } from '../../hooks/use-theme';
 import { themeModes } from '../../model/theme';
 
 export function ThemeControl() {
+  const { t, language } = useLanguage();
   const { mode, resolvedTheme, setMode } = useTheme();
 
   return (
     <div
-      aria-label={`Appearance: ${mode}, currently ${resolvedTheme}`}
+      aria-label={
+        language === 'fr'
+          ? `Apparence : ${t(mode)}, actuellement ${t(resolvedTheme)}`
+          : `Appearance: ${mode}, currently ${resolvedTheme}`
+      }
       className="glass-surface flex items-center gap-0.5 p-0.5"
       role="group"
     >
@@ -18,7 +24,7 @@ export function ThemeControl() {
           onClick={() => setMode(themeMode)}
           type="button"
         >
-          {themeMode}
+          {t(themeMode)}
         </button>
       ))}
     </div>

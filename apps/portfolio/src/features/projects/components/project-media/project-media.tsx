@@ -1,3 +1,4 @@
+import { useLanguage } from '../../../language';
 import { useState } from 'react';
 
 type ProjectMediaProps = {
@@ -15,6 +16,7 @@ type ProjectMediaProps = {
 );
 
 export function ProjectMedia(props: ProjectMediaProps) {
+  const { t, language } = useLanguage();
   const [isLoaded, setIsLoaded] = useState(false);
 
   const media =
@@ -40,7 +42,7 @@ export function ProjectMedia(props: ProjectMediaProps) {
         preload="metadata"
         src={props.src}
       >
-        Your browser does not support embedded videos.
+        {t('Your browser does not support embedded videos.')}
       </video>
     );
 
@@ -50,7 +52,11 @@ export function ProjectMedia(props: ProjectMediaProps) {
         {media}
         {!isLoaded ? (
           <div
-            aria-label={`${props.label} loading`}
+            aria-label={
+              language === 'fr'
+                ? `Chargement : ${props.label}`
+                : `${props.label} loading`
+            }
             className="absolute inset-0 animate-pulse bg-house-surface"
             role="status"
           />
