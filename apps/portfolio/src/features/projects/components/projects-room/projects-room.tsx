@@ -5,6 +5,23 @@ import { ProjectMedia } from '../project-media';
 
 export function ProjectsRoom() {
   const { t, language } = useLanguage();
+  const liveProjects = [
+    {
+      title: t('ABR website'),
+      href: 'https://abr.dev/en',
+      contribution: t('Client-facing app fully built by me.'),
+    },
+    {
+      title: t('QR landing page'),
+      href: 'https://qr-landing.abr.dev/en/',
+      contribution: t('Client-facing app fully built by me.'),
+    },
+    {
+      title: t('Offline menu'),
+      href: 'https://offline-menu.abr.dev/offline-menu/e30316e3-5b77-47f4-aaad-0c2bd390d7e3?lang=en',
+      contribution: t('Client-facing app fully built by me.'),
+    },
+  ];
   const experiences = [
     {
       achievements: [
@@ -334,6 +351,47 @@ export function ProjectsRoom() {
                     </li>
                   ))}
                 </ul>
+
+                {experience.media === 'abr-tech' ? (
+                  <section
+                    aria-labelledby="abr-live-projects-title"
+                    className="mt-12"
+                  >
+                    <h3
+                      id="abr-live-projects-title"
+                      className="text-xl font-semibold tracking-tight text-ink-primary"
+                    >
+                      {t('Live client-facing apps')}
+                    </h3>
+                    <p className="mt-3 leading-7 text-ink-secondary">
+                      {t(
+                        'I fully built each of these client-facing apps. They represent only part of my work at ABR Tech, which also included substantial backend development and work on internal services.',
+                      )}
+                    </p>
+                    <ul className="mt-6 grid gap-6 sm:grid-cols-3">
+                      {liveProjects.map((project) => (
+                        <li key={project.href}>
+                          <a
+                            className="font-semibold text-accent-primary underline underline-offset-4 transition-colors hover:text-ink-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent-primary"
+                            href={project.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {project.title}
+                            <span aria-hidden="true"> ↗</span>
+                            <span className="sr-only">
+                              {' '}
+                              {t('(opens in a new tab)')}
+                            </span>
+                          </a>
+                          <p className="mt-2 text-sm leading-6 text-ink-secondary">
+                            {project.contribution}
+                          </p>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                ) : null}
 
                 {experience.media === 'abr-tech' ? (
                   <div

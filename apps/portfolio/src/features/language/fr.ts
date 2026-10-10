@@ -95,6 +95,15 @@ export const french: Record<string, string> = {
   'of the legacy application rewritten': 'de l’application existante réécrite',
   'Software Developer': 'Développeuse logiciel',
   'Selected Projects': 'Sélection de projets',
+  'ABR website': 'Site web ABR',
+  'QR landing page': 'Page de présentation QR',
+  'Offline menu': 'Menu hors ligne',
+  'Live client-facing apps': 'Applications côté client en ligne',
+  'I fully built each of these client-facing apps. They represent only part of my work at ABR Tech, which also included substantial backend development and work on internal services.':
+    'J’ai entièrement développé chacune de ces applications côté client. Elles ne représentent qu’une partie de mon travail chez ABR Tech, qui comprenait également un important travail de développement backend et sur les services internes.',
+  'Client-facing app fully built by me.':
+    'Application côté client entièrement développée par moi.',
+  '(opens in a new tab)': '(s’ouvre dans un nouvel onglet)',
   'Configurable Restaurant Dashboard':
     'Tableau de bord configurable pour la restauration',
   'Every new report for marketing, delivery, or management required Analytics to prepare data, Backend to build an API, and Frontend to implement the UI.':
